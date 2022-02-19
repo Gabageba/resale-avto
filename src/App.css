@@ -1,38 +1,84 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'akzidenzLightEx';
+  src: url('fonts/akzidenz_lightex.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'akzidenzRegular';
+  src: url('fonts/akzidenz_regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'akzidenzRegularEx';
+  src: url('fonts/akzidenz_regex.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'akzidenzMediumEx';
+  src: url('fonts/akzidenz_medex.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'akzidenzBoldEx';
+  src: url('fonts/akzidenz_boldex.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+  font-size: 16px;
+  background-color: #1a1a1d;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+ul,
+li {
+  display: block;
+  padding: 0;
+  margin: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+h1 {
+  padding: 0;
+  margin: 0;
+  font-size: 64px;
+  font-family: akzidenzBoldEx, serif;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+  color: #fff;
 }
 
-.App-link {
-  color: #61dafb;
+h2 {
+  padding: 0;
+  margin: 0;
+  font-size: 40px;
+  font-family: akzidenzMediumEx, serif;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.035em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
 }
+
+
+.app-wrapper {
+  display: grid;
+  width: 1160px;
+  margin: 0 auto;
+  grid-template-rows: 100px 1fr;
+}
+
