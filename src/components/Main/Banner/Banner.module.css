@@ -1,0 +1,29 @@
+.banner {
+  /*background: url('../../../img/header_bg.png') no-repeat center top;*/
+
+}
+
+.fill {
+  /*margin-top: 300px;*/
+  margin-left: 2px;
+  padding-top: 400px;
+  /*padding-right: 980px;*/
+}
+
+
+.stroke {
+  margin-top: -10px;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 3px #c3073f;
+}
+
+.slogan {
+  font-size: 24px;
+  text-transform: uppercase;
+  font-weight: 275;
+  color: #fff;
+  margin: 10px 0 0 0;
+  width: 483px;
+  letter-spacing: 0.08em;
+  padding-bottom: 338px;
+}

@@ -35,7 +35,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   color: #fff;
   font-size: 16px;
-  background-color: #1a1a1d;
+  background: #1a1a1d url("img/main-bg.png") center top no-repeat;
 }
 
 ul,
@@ -76,9 +76,20 @@ h6 {
 
 
 .app-wrapper {
-  display: grid;
+  /*display: grid;*/
   width: 1160px;
   margin: 0 auto;
-  grid-template-rows: 100px 1fr;
+  /*grid-template-rows: 1fr 1fr;*/
+}
+
+.header-info {
+  margin-top: 230px;
+  margin-bottom: 84px;
+}
+
+.line {
+  width: 560px;
+  height: 0;
+  border: 1px solid #717171;
 }
 

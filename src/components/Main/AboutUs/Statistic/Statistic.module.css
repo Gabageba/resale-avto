@@ -1,0 +1,13 @@
+.statistic p {
+  color: #fff;
+  font-size: 13px;
+  letter-spacing: 0.015em;
+  font-variant: small-caps;
+  font-weight: 300;
+  margin-right: 136px;
+  margin-top: 0;
+}
+
+.statistic h2 {
+  margin-top: 84px;
+}

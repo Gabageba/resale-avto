@@ -15,6 +15,7 @@ const Header = () => {
         <Navigation name={'Контакты'} link={'#'}/>
       </ul>
       <Profile />
+      <div className={style.line}/>
     </header>
   )
 }
