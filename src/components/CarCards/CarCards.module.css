@@ -1,0 +1,50 @@
+.carCards {
+  border: 2px solid #494949;
+  width: 360px;
+  margin-right: 40px;
+}
+
+.carCards img {
+  width: 360px;
+  height: 222px;
+}
+
+.carCards p {
+  font-weight: 400;
+  letter-spacing: 0.015em;
+}
+
+.carName {
+  color: #fff;
+  font-family: akzidenzRegularEx, serif;
+  font-size: 24px;
+  margin-top: 17px;
+  margin-bottom: 0;
+  margin-left: 35px;
+}
+
+.year {
+  color: #fff;
+  font-size: 16px;
+  font-family: akzidenzRegular, serif;
+  line-height: 20px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  margin-left: 35px;
+}
+
+.otherSpec {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.price {
+  color: #fff;
+  font-family: akzidenzRegularEx, serif;
+  font-size: 24px;
+  margin-top: 17px;
+  margin-bottom: 0;
+  text-align: right;
+  /* margin-right: 26px; */
+  width: 320px;
+}
