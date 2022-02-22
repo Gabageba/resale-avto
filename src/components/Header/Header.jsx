@@ -9,10 +9,10 @@ const Header = () => {
     <header className={style.header}>
       <img src={logo} alt="Resale Avto" className={style.logo}/>
       <ul className={style.nav}>
-        <Navigation name={'Главная'} link={'#'}/>
-        <Navigation name={'Каталог'} link={'#'}/>
-        <Navigation name={'Услуги'} link={'#'}/>
-        <Navigation name={'Контакты'} link={'#'}/>
+        <Navigation name={'Главная'} link={'/main'}/>
+        <Navigation name={'Каталог'} link={'/catalog'}/>
+        <Navigation name={'Услуги'} link={'/services'}/>
+        <Navigation name={'Контакты'} link={'/contacts'}/>
       </ul>
       <Profile />
       <div className={style.line}/>

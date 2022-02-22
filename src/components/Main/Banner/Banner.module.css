@@ -1,6 +1,8 @@
 .banner {
-  /*background: url('../../../img/header_bg.png') no-repeat center top;*/
-
+  background: url('../../../img/main-bg.png') no-repeat center top;
+  background-position-x: -500px;
+  background-position-y: 40px;
+  width: 140%;
 }
 
 .fill {
@@ -26,4 +28,7 @@
   width: 483px;
   letter-spacing: 0.08em;
   padding-bottom: 338px;
+}
+
+.bg {
 }

@@ -35,7 +35,8 @@ body {
   font-family: 'Montserrat', sans-serif;
   color: #fff;
   font-size: 16px;
-  background: #1a1a1d url("img/main-bg.png") center top no-repeat;
+  background: #1a1a1d;
+  overflow-x: hidden;
 }
 
 ul,
