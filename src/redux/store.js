@@ -1,4 +1,6 @@
-let state = {
+// import {createStore} from 'redux';
+
+let store = {
   carCards: {
     car: [
       {
@@ -18,4 +20,4 @@ let state = {
   }
 }
 
-export default state
+export default store
