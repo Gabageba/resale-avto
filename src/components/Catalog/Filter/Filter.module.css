@@ -3,7 +3,6 @@
   letter-spacing: 0.015em;
   font-weight: 400;
   font-size: 18px;
-  border: 2px solid #494949;
   height: 46px;
   background-color: #1a1a1d;
   color: #494949;
@@ -11,19 +10,5 @@
   box-sizing: border-box;
   margin-bottom: 25px;
   outline: 0;
-}
-
-.selectedLong {
-  width: 344px;
-  margin-right: 40px;
-}
-
-.selectedShort {
-  margin-right: 0;
-  width: 172px;
-  height: 46px;
-}
-
-.groupShort {
-  margin-right: 40px;
+  padding-left: 17px;
 }

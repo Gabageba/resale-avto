@@ -15,7 +15,7 @@ const App = (props) => {
         <Header/>
         <Routes >
           <Route path='/main' element={<Main state={props.state}/>}/>
-          <Route path='/catalog/*' element={<Catalog/>}/>
+          <Route path='/catalog/*' element={<Catalog state={props.state}/>}/>
           <Route path='/services/*' element={<Services/>}/>
           <Route path='/contacts' element={<Contacts/>}/>
         </Routes>

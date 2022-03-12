@@ -1,5 +1,4 @@
 // import {createStore} from 'redux';
-
 let store = {
   carCards: {
     car: [
@@ -15,7 +14,6 @@ let store = {
         id: 3, name: 'Rolls-Royce Wraith', img: 'https://i.imgur.com/dIBghJl.png', year: 2014, price: '14 000 000 ₽',
         mileage: '46 170 км', owners: '3'
       }
-
     ]
   }
 }
