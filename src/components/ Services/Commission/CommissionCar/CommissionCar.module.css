@@ -1,0 +1,37 @@
+.header {
+  display: grid;
+  grid-template-columns: 69px 1fr;
+  grid-column-gap: 46px;
+}
+
+.header h2 {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #c3073f;
+  margin: 30px 48px 30px 20px;
+}
+
+.header p {
+  font-family: akzidenzLightEx, serif;
+  color: #fff;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  font-size: 36px;
+  margin-top: 33px;
+}
+
+.line {
+  width: 890px;
+  height: 0;
+  border-bottom: 2px solid #717171;
+}
+
+.content {
+  width: 513px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  letter-spacing: 0.015em;
+  margin-left: 135px;
+  margin-top: 0;
+  margin-bottom: 43px;
+}

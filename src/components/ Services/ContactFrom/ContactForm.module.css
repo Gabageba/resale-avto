@@ -1,0 +1,38 @@
+.info {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: #717171;
+}
+
+.entryField {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  height: 46px;
+  background-color: #1a1a1d;
+  color: #494949;
+  border-radius: 0;
+  font-weight: 400;
+  box-sizing: border-box;
+  margin-bottom: 25px;
+  outline: 0;
+  padding-left: 17px;
+  width: 344px;
+  margin-right: 40px;
+  border: 2px solid #494949;
+}
+
+.sendButton {
+  width: 360px;
+  height: 46px;
+  margin-top: 11px;
+  font-family: 'akzidenzBoldEx', sans-serif;
+  font-size: 20px;
+  background-color: #1a1a1d;
+  letter-spacing: 0.015em;
+  color: #C3073F;
+  font-weight: 700;
+  border-radius: 0;
+  box-sizing: border-box;
+  outline: 0;
+  border: 2px solid #C3073F;
+}

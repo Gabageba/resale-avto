@@ -1,4 +1,4 @@
-let store = {
+let initialState = {
   carCards: {
     car: [
       {
@@ -16,5 +16,3 @@ let store = {
     ]
   }
 }
-
-export default store

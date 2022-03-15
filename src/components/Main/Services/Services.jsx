@@ -10,13 +10,11 @@ const Services = () => {
         <div className="line"/>
         <Service serviceName={'Продажа авто'} serviceId={'01'}/>
         <div className="line"/>
-        <Service serviceName={'Trade-in'} serviceId={'02'}/>
+        <Service serviceName={'Trade-In'} serviceId={'02'}/>
         <div className="line"/>
         <Service serviceName={'Авто на комиссию'} serviceId={'03'}/>
         <div className="line"/>
       </ul>
-
-
     </div>
   )
 }

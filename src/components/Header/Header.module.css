@@ -15,6 +15,7 @@
 
 .nav {
   display: flex;
+  overflow: hidden;
 }
 
 .line {
@@ -22,6 +23,6 @@
   position: fixed;
   width: 100%;
   left: 0;
-  border: 1px solid #c3073f;
+  border-bottom: 2px solid #c3073f;
   /*margin-top: 230px;*/
 }

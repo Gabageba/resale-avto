@@ -3,6 +3,7 @@ import style from './Header.module.css'
 import logo from './../../img/logo.svg'
 import Navigation from './Navigation/Navigation';
 import Profile from './Profile/Profile';
+import DropDown from './DropDown/DropDown';
 
 const Header = () => {
   return (
@@ -11,7 +12,7 @@ const Header = () => {
       <ul className={style.nav}>
         <Navigation name={'Главная'} link={'/main'}/>
         <Navigation name={'Каталог'} link={'/catalog'}/>
-        <Navigation name={'Услуги'} link={'/services'}/>
+        <DropDown />
         <Navigation name={'Контакты'} link={'/contacts'}/>
       </ul>
       <Profile />
