@@ -16,7 +16,7 @@ const App = (props) => {
       <div className="app-wrapper">
         <Header/>
         <Routes >
-          <Route path='/main' element={<Main state={props.state}/>}/>
+          <Route path='/' element={<Main state={props.state}/>}/>
           <Route path='/catalog/*' element={<Catalog state={props.state}/>}/>
           <Route path='/contacts' element={<Contacts/>}/>
           <Route path='/trade-in' element={<TradeIn/>}/>

@@ -10,7 +10,7 @@ const Header = () => {
     <header className={style.header}>
       <img src={logo} alt="Resale Avto" className={style.logo}/>
       <ul className={style.nav}>
-        <Navigation name={'Главная'} link={'/main'}/>
+        <Navigation name={'Главная'} link={'/'}/>
         <Navigation name={'Каталог'} link={'/catalog'}/>
         <DropDown />
         <Navigation name={'Контакты'} link={'/contacts'}/>
