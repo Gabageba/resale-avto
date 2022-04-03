@@ -1,28 +1,28 @@
 .header {
-  display: flex;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #1a1a1d;
-  align-items: center;
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #1a1a1d;
+    align-items: center;
 
 }
 
 .logo {
-  width: 100px;
-  margin-right: 100px;
+    width: 100px;
+    margin-right: 100px;
 }
 
 .nav {
-  display: flex;
-  overflow: hidden;
+    display: flex;
+    overflow: hidden;
 }
 
 .line {
-  top:99px;
-  position: fixed;
-  width: 100%;
-  left: 0;
-  border-bottom: 2px solid #c3073f;
-  /*margin-top: 230px;*/
+    top:99px;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    border-bottom: 2px solid #c3073f;
+    /*margin-top: 230px;*/
 }

@@ -1,9 +1,0 @@
-.contacts {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.info {
-  margin-top: 182px;
-  margin-left: 140px;
-}
