@@ -1,0 +1,22 @@
+.name {
+    font-family: Montserrat, serif;
+    font-weight: 400;
+    line-height: 25px;
+    font-size: 20px;
+    letter-spacing: 0.015em;
+    color: #717171;
+    margin-bottom: 0;
+}
+
+.data {
+    font-family: akzidenzMediumEx, serif;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: 0.015em;
+    color: #fff;
+    margin-top: 7px;
+    margin-bottom: 35px;
+    width: 431px;
+    height: auto;
+    overflow-wrap: break-word;
+}

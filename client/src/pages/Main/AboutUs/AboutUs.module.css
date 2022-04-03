@@ -1,0 +1,25 @@
+.aboutUs{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.info {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.015em;
+    color: #fff;
+    font-weight: 300;
+    width: 513px;
+    font-size: 18px;
+    font-variant: small-caps;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.statistics {
+    display: flex;
+}
+
+.dealership {
+    margin-top: 240px;
+    margin-left: 70px;
+}

@@ -1,0 +1,19 @@
+.service h2 {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #c3073f;
+    margin: 30px 48px 30px 20px;
+}
+
+.service p {
+    font-family: akzidenzLightEx, serif;
+    /* font-variant: small-caps; */
+    color: #fff;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    font-size: 36px;
+    margin-top: 33px;
+}
+
+.service {
+    display: flex;
+}
