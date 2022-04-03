@@ -1,0 +1,20 @@
+.selectorSplit {
+  margin-right: 40px;
+}
+
+.selectorSplit input {
+  width: 172px;
+  height: 46px;
+  border-bottom: 2px solid #494949;
+  border-top: 2px solid #494949;
+}
+
+.selectorLeft {
+  border-right: 1px solid #494949;
+  border-left: 2px solid #494949;
+}
+
+.selectorRight {
+  border-left: 1px solid #494949;
+  border-right: 2px solid #494949;
+}
