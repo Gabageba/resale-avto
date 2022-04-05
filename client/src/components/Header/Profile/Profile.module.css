@@ -7,3 +7,18 @@
     float: left;
     margin-left: 425px;
 }
+
+.dropDownContent {
+
+}
+
+.authButton {
+    margin-left: 360px;
+    height: 40px;
+    width: 100px;
+    border-radius: 30px;
+    font-family: akzidenzLightEx, serif;
+    font-size: 15px;
+    cursor: pointer;
+
+}

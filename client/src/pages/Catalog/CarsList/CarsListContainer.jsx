@@ -1,5 +1,6 @@
 import {connect} from "react-redux";
 import CarsList from "./CarsList";
+import {setCarsAC} from "../../../redux/carsReducer";
 
 let mapStateToProps = (state) => {
   return {
@@ -9,7 +10,9 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-
+    setCars: (carsData) => {
+      dispatch(setCarsAC(carsData))
+    }
   }
 }
 

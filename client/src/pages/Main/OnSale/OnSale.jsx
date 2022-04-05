@@ -2,11 +2,18 @@ import React from 'react';
 import style from './OnSale.module.css'
 import CarCards from "../../../components/CarCards/CarCards";
 import {NavLink} from 'react-router-dom';
+import * as axios from "axios";
 
 const OnSale = (props) => {
 
+  if (props.carsData.length === 0) {
+    axios.get('http://localhost:5000/api/car').then(response => {
+      props.setCars(response.data.rows)
+    })
+  }
+
   let cards = props.carsData.map(c => (
-    <CarCards state={c}/>
+    <CarCards state={c} key={c.id}/>
   ))
 
   return (

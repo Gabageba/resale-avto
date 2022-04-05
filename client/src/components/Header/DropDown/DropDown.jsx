@@ -3,11 +3,11 @@ import style from './DropDown.module.css'
 import {NavLink} from 'react-router-dom';
 import {COMMISSION_ROUTE, DETAILING_ROUTE, TRADEIN_ROUTE} from "../../../utils/const";
 
-const SelectedLink = () => {
-  return (
-    select => select.isActive ? style.activeLink : style.dropDownContent
-  )
-}
+// const SelectedLink = () => {
+//   return (
+//     select => select.isActive ? style.btnActive : style.dropBtn
+//   )
+// }
 
 const DropDown = () => {
   return (

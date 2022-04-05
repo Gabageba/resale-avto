@@ -2,9 +2,9 @@ import React from 'react';
 import style from './Header.module.css'
 import logo from './../../assets/logo.svg'
 import Navigation from './Navigation/Navigation';
-import Profile from './Profile/Profile';
 import DropDown from './DropDown/DropDown';
 import {CATALOG_ROUTE, CONTACTS_ROUTE, MAIN_ROUTE} from "../../utils/const";
+import ProfileContainer from "./Profile/ProfileContainer";
 
 const Header = () => {
   return (
@@ -16,7 +16,7 @@ const Header = () => {
         <DropDown />
         <Navigation name={'Контакты'} link={CONTACTS_ROUTE}/>
       </ul>
-      <Profile />
+      <ProfileContainer/>
       <div className={style.line}/>
     </header>
   )

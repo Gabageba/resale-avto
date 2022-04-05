@@ -1,0 +1,47 @@
+.registrationForm {
+    height: 680px;
+    width: 560px;
+    border: 2px solid #C3073F;
+    margin: 200px auto auto;
+    text-align: center;
+}
+
+.loginForm {
+    height: 550px;
+    width: 560px;
+    border: 2px solid #C3073F;
+    margin: 250px auto auto;
+    text-align: center;
+}
+
+.sendButton {
+    width: 360px;
+    height: 46px;
+    margin-top: 70px;
+    cursor: pointer;
+}
+
+.authInput {
+    width: 360px;
+    border: 2px solid #494949;
+    margin-top: 26px;
+    margin-bottom: 0;
+}
+
+.header {
+    font-size: 36px;
+    margin-top: 85px;
+    margin-bottom: 29px;
+}
+
+.link {
+    margin-top: 10px;
+    width: 269px;
+    text-align: left;
+    margin-left: 100px;
+}
+
+.navigateLink {
+    color: #C3073F;
+    text-decoration: none;
+}

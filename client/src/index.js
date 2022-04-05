@@ -8,7 +8,7 @@ import {Provider} from 'react-redux';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    <App state={store.getState()}/>
   </Provider>, document.getElementById('root'))
 
 reportWebVitals()

@@ -4,3 +4,8 @@ export const CONTACTS_ROUTE = '/contacts'
 export const TRADEIN_ROUTE = '/trade-in'
 export const COMMISSION_ROUTE = '/commission'
 export const DETAILING_ROUTE = '/detailing'
+export const LOGIN_ROUTE = '/login'
+export const REGISTRATION_ROUTE = '/registration'
+export const ADMIN_ROUTE = '/admin'
+
+export const API_URL='http://localhost:5000/'

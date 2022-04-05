@@ -25,14 +25,5 @@
   width: 360px;
   height: 46px;
   margin-top: 11px;
-  font-family: 'akzidenzBoldEx', sans-serif;
-  font-size: 20px;
-  background-color: #1a1a1d;
-  letter-spacing: 0.015em;
-  color: #C3073F;
-  font-weight: 700;
-  border-radius: 0;
-  box-sizing: border-box;
-  outline: 0;
-  border: 2px solid #C3073F;
+  margin-left: 200px;
 }

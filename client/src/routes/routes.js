@@ -1,9 +1,18 @@
-import {CATALOG_ROUTE, COMMISSION_ROUTE, DETAILING_ROUTE, MAIN_ROUTE, TRADEIN_ROUTE} from "../utils/const";
+import {
+  CATALOG_ROUTE,
+  COMMISSION_ROUTE,
+  DETAILING_ROUTE,
+  LOGIN_ROUTE,
+  MAIN_ROUTE,
+  REGISTRATION_ROUTE,
+  TRADEIN_ROUTE
+} from "../utils/const";
 import Main from "../pages/Main/Main";
 import Catalog from "../pages/Catalog/Catalog";
 import TradeIn from "../pages/TradeIn/TradeIn";
 import Commission from "../pages/Commission/Commission";
 import Detailing from "../pages/Detailing/Detailing";
+import AuthContainer from "../pages/Auth/AuthContainer";
 
 export const authRoutes = [
 
@@ -29,5 +38,13 @@ export const publicRoutes = [
   {
     path: DETAILING_ROUTE,
     element: <Detailing/>
+  },
+  {
+    path: LOGIN_ROUTE,
+    element: <AuthContainer/>
+  },
+  {
+    path: REGISTRATION_ROUTE,
+    element: <AuthContainer/>
   }
 ]
