@@ -12,6 +12,7 @@ const Navigation = (props) => {
   return (
     <li className={style.nav}>
       <NavLink to={props.link} className={SelectedLink()}>{props.name}</NavLink>
+      {/*<NavLink to={props.link} className={style.navMenu}>{props.name}</NavLink>*/}
     </li>
   )
 }

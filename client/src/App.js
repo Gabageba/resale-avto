@@ -4,6 +4,7 @@ import AppRouter from "./components/AppRouter";
 import Header from "./components/Header/Header";
 import {useEffect} from "react";
 import {check} from "./http/userAPI";
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 const App = (props) => {
 
@@ -21,6 +22,7 @@ const App = (props) => {
       <div className="app-wrapper">
         <Header/>
         <AppRouter/>
+        {/*<ErrorPage/>*/}
       </div>
     </BrowserRouter>
   )
