@@ -45,3 +45,12 @@
     color: #C3073F;
     text-decoration: none;
 }
+
+.error {
+  font-size: 15px;
+  margin-top: 20px;
+  width: 300px;
+  text-align: left;
+  margin-left: 100px;
+  color: #950740
+}

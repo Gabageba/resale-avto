@@ -1,0 +1,18 @@
+.number {
+  font-size: 200px;
+  font-family: 'akzidenzBoldEx', sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  width: 510px;
+  margin-top: 200px;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 3px #c3073f;
+
+}
+
+.errorText {
+  font-size: 23px;
+  /*width: 400px;*/
+  margin-left: 390px;
+  nav-right: auto;
+}
