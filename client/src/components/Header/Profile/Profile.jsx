@@ -11,6 +11,7 @@ const Profile = (props) => {
   const isAuth = useSelector(state => state.userData.isAuth)
   console.log(isAuth)
 
+  debugger
   return (
     <span>
       {isAuth ?
