@@ -6,13 +6,13 @@ import {
   MAIN_ROUTE,
   REGISTRATION_ROUTE,
   TRADEIN_ROUTE
-} from "../utils/const";
+} from '../utils/const';
 import Main from "../pages/Main/Main";
 import Catalog from "../pages/Catalog/Catalog";
 import TradeIn from "../pages/TradeIn/TradeIn";
 import Commission from "../pages/Commission/Commission";
 import Detailing from "../pages/Detailing/Detailing";
-import AuthContainer from "../pages/Auth/AuthContainer";
+import Auth from '../pages/Auth/Auth';
 
 export const authRoutes = [
 
@@ -41,10 +41,10 @@ export const publicRoutes = [
   },
   {
     path: LOGIN_ROUTE,
-    element: <AuthContainer/>
+    element: <Auth/>
   },
   {
     path: REGISTRATION_ROUTE,
-    element: <AuthContainer/>
+    element: <Auth/>
   }
 ]

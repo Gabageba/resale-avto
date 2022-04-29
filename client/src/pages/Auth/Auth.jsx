@@ -1,29 +1,35 @@
 import React, {useState} from 'react';
 import style from './Auth.module.css'
-import {NavLink, useLocation, useNavigate} from "react-router-dom";
-import {LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE} from "../../utils/const";
-import {login, registration} from "../../http/userAPI";
+import {LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE} from '../../utils/const';
+import {NavLink, useLocation, useNavigate} from 'react-router-dom';
+import {login, registration} from '../../http/userAPI';
+import {useDispatch, useSelector} from 'react-redux';
+import {setIsAuthAC, setUserAC} from '../../redux/userReducer';
 
 const Auth = (props) => {
-  const navigate = useNavigate()
+
   const location = useLocation()
   const isLogin = location.pathname === LOGIN_ROUTE
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [name, setName] = useState('')
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.userData.user)
+  const navigate = useNavigate()
 
-  const click = async () => {
+  const loginClick = async () => {
     try {
       let data
       if (isLogin) {
         data = await login(email, password)
       } else {
-        data = await registration(email, password)
+        data = await registration(email, password, name)
       }
-      props.setUser(props.userData)
-      props.setIsAuth(true)
+      dispatch(setUserAC(user))
+      dispatch(setIsAuthAC(true))
       navigate(MAIN_ROUTE)
     } catch (e) {
-      alert(e.response.message)
+      alert(e.response.data.message)
     }
   }
 
@@ -32,10 +38,19 @@ const Auth = (props) => {
       <h1 className={style.header}>{isLogin ? 'Вход' : 'Регистрация'}</h1>
       {isLogin ?
         <span></span>
-        : <input type="text" placeholder='Имя' className={style.authInput}/>
+        : <input type="text"
+                 placeholder='Имя'
+                 className={style.authInput}
+                 onChange={e => setName(e.target.value)}/>
       }
-      <input type="email" placeholder='Email' className={style.authInput} onChange={e => setEmail(e.target.value)}/>
-      <input type="password" placeholder='Пароль' className={style.authInput} onChange={e => setPassword(e.target.value)}/>
+      <input type="email"
+             placeholder='Email'
+             className={style.authInput}
+             onChange={e => setEmail(e.target.value)}/>
+      <input type="password"
+             placeholder='Пароль'
+             className={style.authInput}
+             onChange={e => setPassword(e.target.value)}/>
       {isLogin ?
         <span></span>
         : <input type="text" placeholder='Повторите пароль' className={style.authInput}/>
@@ -47,7 +62,8 @@ const Auth = (props) => {
           :  <div className={style.link}>Есть аккаунт? <NavLink className={style.navigateLink} to={LOGIN_ROUTE}>Войди</NavLink></div>
         }
       </div>
-      <button className={style.sendButton} onClick={click}>{isLogin ? 'Войти' : 'Зарегистрироваться'}</button>
+      {/*<div className={style.error}>Неверное имя пользователя или пароль</div>*/}
+      <button className={style.sendButton} onClick={loginClick}>{isLogin ? 'Войти' : 'Зарегистрироваться'}</button>
     </div>
   )
 }

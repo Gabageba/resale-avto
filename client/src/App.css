@@ -54,6 +54,8 @@ h1 {
   letter-spacing: 0.035em;
   text-transform: uppercase;
   color: #fff;
+  height: 82px;
+
 }
 
 h2 {
@@ -120,5 +122,33 @@ button {
   width: 560px;
   height: 0;
   border-bottom: 2px solid #717171;
+}
+
+input {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.015em;
+  font-weight: 400;
+  font-size: 18px;
+  height: 46px;
+  background-color: #1a1a1d;
+  color: #494949;
+  border-radius: 0;
+  box-sizing: border-box;
+  margin-bottom: 25px;
+  outline: 0;
+  padding-left: 17px;
+}
+
+button {
+  background-color: transparent;
+  font-family: 'akzidenzBoldEx', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.015em;
+  color: #C3073F;
+  border-radius: 0;
+  box-sizing: border-box;
+  outline: 0;
+  border: 2px solid #C3073F;
 }
 
