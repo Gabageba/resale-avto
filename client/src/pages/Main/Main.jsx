@@ -3,9 +3,9 @@ import style from './Main.module.css'
 import Banner from './Banner/Banner';
 import AboutUs from './AboutUs/AboutUs';
 import Contacts from './Contacts/Contacts';
-import OnSaleContainer from "./OnSale/OnSaleContainer";
 import Services from "./Services/Services";
 import Footer from "../../components/Footer/Footer";
+import OnSale from './OnSale/OnSale';
 
 const Main = (props) => {
   return (
@@ -13,7 +13,7 @@ const Main = (props) => {
       <Banner />
       <AboutUs />
       <Services/>
-      <OnSaleContainer/>
+      <OnSale/>
       <Contacts/>
       <Footer />
     </div>

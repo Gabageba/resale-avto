@@ -4,7 +4,7 @@ import AdditionalSpec from './AdditionalSpec/AdditionalSpec';
 
 const CarCards = (props) => {
   return (
-    <div className={style.carCards}>
+    <div className={style.carCards} key={props.id}>
       <img src={props.state.img} alt={props.state.name}/>
       <p className={style.carName}>{props.state.name}</p>
       <p className={style.year}>{props.state.year}</p>

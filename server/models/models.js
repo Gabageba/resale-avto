@@ -3,15 +3,10 @@ const {DataTypes} = require('sequelize')
 
 const User = sequelize.define('user', {
   id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+  name: {type: DataTypes.STRING, allowNull: false},
   email: {type: DataTypes.STRING, unique: true,},
   password: {type: DataTypes.STRING},
   role: {type: DataTypes.STRING, defaultValue: "USER"}
-})
-
-const UserInfo = sequelize.define('user_info', {
-  id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-  title: {type: DataTypes.STRING, allowNull: false},
-  description: {type: DataTypes.STRING, allowNull: false}
 })
 
 const Favorites = sequelize.define('favorites', {
@@ -83,9 +78,6 @@ const ModelBrand = sequelize.define('type_brand', {
 User.hasOne(Favorites)
 Favorites.belongsTo(User)
 
-User.hasMany(UserInfo)
-UserInfo.belongsTo(User)
-
 Favorites.hasMany(FavoritesCar)
 FavoritesCar.belongsTo(Favorites)
 
@@ -127,7 +119,6 @@ Brand.belongsToMany(Model, {through: ModelBrand })
 
 module.exports = {
   User,
-  UserInfo,
   Application,
   ApplicationType,
   Favorites,
