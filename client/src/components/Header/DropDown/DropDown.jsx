@@ -3,12 +3,6 @@ import style from './DropDown.module.css'
 import {NavLink} from 'react-router-dom';
 import {COMMISSION_ROUTE, DETAILING_ROUTE, TRADEIN_ROUTE} from "../../../utils/const";
 
-const SelectedLink = () => {
-  return (
-    select => select.isActive ? style.activeLink : style.dropDownContent
-  )
-}
-
 const DropDown = () => {
   return (
     <span className={style.dropDown}>
@@ -19,7 +13,6 @@ const DropDown = () => {
         <NavLink to={COMMISSION_ROUTE} className={style.dropDownLink}>Комиссия</NavLink>
         <div className={style.line}/>
         <NavLink to={DETAILING_ROUTE} className={style.dropDownLink}>Детейлинг</NavLink>
-
       </div>
     </span>
   )

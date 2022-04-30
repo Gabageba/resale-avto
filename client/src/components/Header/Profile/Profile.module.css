@@ -4,21 +4,67 @@
   height: 50px;
   /*padding: 50%;*/
   border-radius: 50%;
-  float: left;
-  margin-left: 425px;
-}
-
-.dropDownContent {
-
+  /*float: left;*/
+  /*margin-left: 425px;*/
 }
 
 .authButton {
-  margin-left: 360px;
+  /*margin-left: 360px;*/
+  margin-left: 150px;
   height: 40px;
   width: 100px;
   border-radius: 30px;
   font-family: akzidenzLightEx, serif;
   font-size: 15px;
   cursor: pointer;
+}
 
+.dropDownLink {
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 300;
+  line-height: 17px;
+  display: block;
+  text-align: left;
+  margin-left: 10px;
+  margin-top: 15px;
+  margin-bottom: 7px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.dropDownContent {
+  display: none;
+  position: absolute;
+  background-color: #1a1a1d;
+  width: 184px;
+  /*height: 200px;*/
+  /*border: 1px solid transparent;*/
+  /*border-image: linear-gradient(to top, transparent, #C3073F, #C3073F, transparent );*/
+  /*border-image-slice: 1;*/
+  z-index: 1;
+  /*margin-top: 60px;*/
+  margin-left: 100px;
+  padding-top: 10px;
+}
+
+.dropDown:hover .dropDownContent {
+  display: block;
+}
+
+.dropDownLink:hover {
+  color: #C3073F;
+}
+
+.profile {
+  display: flex;
+  font-family: akzidenzMediumEx, serif;
+  text-transform: uppercase;
+  margin-left: 100px;
+}
+
+.name {
+  margin-left: 15px;
 }

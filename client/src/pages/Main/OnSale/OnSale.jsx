@@ -4,8 +4,7 @@ import CarCards from "../../../components/CarCards/CarCards";
 import {NavLink} from 'react-router-dom';
 import {fetchCars} from '../../../http/carAPI';
 import {useDispatch, useSelector} from 'react-redux';
-import {setTotalCountAC} from '../../../redux/carsReducer';
-import {setUserAC} from '../../../redux/userReducer';
+import {setCarsAC, setTotalCountAC} from '../../../redux/carsReducer';
 
 const OnSale = (props) => {
   const dispatch = useDispatch()
@@ -14,9 +13,9 @@ const OnSale = (props) => {
   useEffect(() => {
     fetchCars(1, 3).then(data => {
       dispatch(setTotalCountAC(data.count))
-      dispatch(setUserAC(data.rows))
+      dispatch(setCarsAC(data.rows))
     })
-  })
+  },[])
 
   let cards = cars.map(c => (
     <CarCards state={c}/>

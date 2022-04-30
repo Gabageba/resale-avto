@@ -1,0 +1,61 @@
+.profileImg {
+  margin-top: 206px;
+}
+
+.name {
+  font-family: akzidenzMediumEx, serif;
+  font-weight: 500;
+  font-size: 36px;
+  text-transform: uppercase;
+  width: 569px;
+  /*vertical-align: top;*/
+  margin-top: 222px;
+  margin-left: 140px;
+  margin-bottom: 20px;
+}
+
+.profileInfo {
+display: flex;
+}
+
+.info {
+  display: flex;
+
+}
+
+.headerInfo {
+  font-family: Montserrat, serif;
+  font-weight: 400;
+  font-size: 20px;
+  text-transform: capitalize;
+  color: #717171;
+  margin-left: 140px;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.contentInfo {
+  font-family: akzidenzLightEx, serif;
+  font-size: 20px;
+  margin-left: 69px;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.infoWrapper {
+  margin: 0;
+  width: 100%;
+}
+
+.settingButton {
+  font-family: akzidenzLightEx, serif;
+  font-weight: 300;
+  margin-left: 140px;
+  margin-top: 35px;
+  width: 360px;
+  height: 46px;
+}
+
+.historyHeader {
+  margin-top: 84px;
+}

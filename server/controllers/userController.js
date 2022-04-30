@@ -3,9 +3,9 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const {User, Favorites} = require('../models/models')
 
-const generateJwt = (id, email, role, name) => {
+const generateJwt = (id, email, role) => {
   return jwt.sign(
-    {id, email, role, name},
+    {id, email, role},
     process.env.SECRET_KEY,
     {expiresIn: '24h'}
   )
@@ -22,10 +22,14 @@ class UserController {
       return next(ApiError.badRequest('Пользователь с таким email уже существует'))
     }
     const hashPassword = await bcrypt.hash(password, 5)
-    const user = await User.create({email, role, password: hashPassword, name})
+    const user = await User.create({  email, role, password: hashPassword, name})
     const favorites = await Favorites.create({userId: user.id})
-    const token = generateJwt(user.id, user.email, user.role, user.name)
-    return res.json({token})
+    const token = generateJwt(user.id, user.email, user.role)
+    const userInfo = {
+      name: user.name,
+      avatar: user.avatar
+    }
+    return res.json({token, userInfo})
   }
 
   async login(req, res, next) {
@@ -39,13 +43,22 @@ class UserController {
       return next(ApiError.internal('Указан неверный пароль'))
     }
     const token = generateJwt(user.id, user.email, user.role)
-    return res.json({token})
+    const userInfo = {
+      name: user.name,
+      avatar: user.avatar
+    }
+    return res.json({token, userInfo})
   }
 
 
   async check(req, res, next) {
-    const token = generateJwt(req.user.id, req.user.email, req.user.role, req.user.name)
-    return res.json({token})
+    const token = generateJwt(req.user.id, req.user.email, req.user.role)
+    const user = await User.findOne({where: req.user.id})
+    const userInfo = {
+      name: user.name,
+      avatar: user.avatar
+    }
+    return res.json({token, userInfo})
   }
 }
 

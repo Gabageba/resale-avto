@@ -3,7 +3,7 @@ import {
   COMMISSION_ROUTE,
   DETAILING_ROUTE,
   LOGIN_ROUTE,
-  MAIN_ROUTE,
+  MAIN_ROUTE, PROFILE_ROUTE,
   REGISTRATION_ROUTE,
   TRADEIN_ROUTE
 } from '../utils/const';
@@ -13,9 +13,13 @@ import TradeIn from "../pages/TradeIn/TradeIn";
 import Commission from "../pages/Commission/Commission";
 import Detailing from "../pages/Detailing/Detailing";
 import Auth from '../pages/Auth/Auth';
+import MyProfile from '../pages/MyProfile/MyProfile';
 
 export const authRoutes = [
-
+  {
+    path: PROFILE_ROUTE,
+    element: <MyProfile/>
+  }
 ]
 
 export const publicRoutes = [

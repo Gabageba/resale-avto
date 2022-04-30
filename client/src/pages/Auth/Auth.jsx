@@ -6,7 +6,7 @@ import {login, registration} from '../../http/userAPI';
 import {useDispatch, useSelector} from 'react-redux';
 import {setIsAuthAC, setUserAC} from '../../redux/userReducer';
 
-const Auth = (props) => {
+const Auth = () => {
 
   const location = useLocation()
   const isLogin = location.pathname === LOGIN_ROUTE
@@ -14,7 +14,6 @@ const Auth = (props) => {
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
   const dispatch = useDispatch()
-  const user = useSelector(state => state.userData.user)
   const navigate = useNavigate()
 
   const loginClick = async () => {
@@ -25,7 +24,8 @@ const Auth = (props) => {
       } else {
         data = await registration(email, password, name)
       }
-      dispatch(setUserAC(user))
+      console.log(data)
+      dispatch(setUserAC(data))
       dispatch(setIsAuthAC(true))
       navigate(MAIN_ROUTE)
     } catch (e) {

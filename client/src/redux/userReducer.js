@@ -12,9 +12,6 @@ const userReducer = (state = initialState, action) => {
       return {...state, isAuth: action.auth}
     case SET_USER:
       return {...state, user: action.user}
-    case 'test':
-      console.log('vse zbs')
-      return state
     default:
       return state
   }
@@ -22,7 +19,6 @@ const userReducer = (state = initialState, action) => {
 
 export const setIsAuthAC = (auth) => ({type: SET_IS_AUTH, auth})
 export const setUserAC = (user) => ({type: SET_USER, user})
-export const testAC = () => ({type: 'test'})
 
 
 export default userReducer
