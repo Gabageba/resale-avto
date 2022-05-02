@@ -11,10 +11,9 @@ import {
 import AutoCompleteDropDown from '../../AutoCompleteDropDown/AutoCompleteDropDown';
 import Spinner from '../../Spinner/Spinner';
 import style from './AddCarModal.module.css'
-import AddSpecificationModal from '../AddSpecification/AddSpecificationModal';
 
 
-const AddCarModal = ({active, setActive}) => {
+const AddCarModal = ({active, setActive , choseSpecAdd}) => {
 
   const [bodyTypes, setBodyTypes] = useState([])
   const [brands, setBrands] = useState([])
@@ -44,14 +43,14 @@ const AddCarModal = ({active, setActive}) => {
       <div className={style.addCarModal}>
         <h2>Добавить автомобиль</h2>
         <div className={style.contentBlock}>
-          <AutoCompleteDropDown dropDownName={'Марка'} optionsData={brands} isAdd={true}/>
-          <AutoCompleteDropDown dropDownName={'Модель'} optionsData={models} isAdd={true}/>
-          <AutoCompleteDropDown dropDownName={'Тип кузова'} optionsData={bodyTypes} isAdd={true}/>
-          <input type="text" placeholder='Пробег' className={style.textInput}/>
+          <AutoCompleteDropDown dropDownName={'Марка'} optionsData={brands} isAdd={true} choseSpecAdd={choseSpecAdd}/>
+          <AutoCompleteDropDown dropDownName={'Модель'} optionsData={models} isAdd={true} choseSpecAdd={choseSpecAdd}/>
+          <AutoCompleteDropDown dropDownName={'Тип кузова'} optionsData={bodyTypes} isAdd={true} choseSpecAdd={choseSpecAdd}/>
+          <input type="text" placeholder='Пробег' className={style.textInput} />
           <input type="text" placeholder='Мощность' className={style.textInput}/>
-          <AutoCompleteDropDown dropDownName={'Привод'} optionsData={driveUnits} isAdd={true}/>
-          <AutoCompleteDropDown dropDownName={'Цвет'} optionsData={colors} isAdd={true}/>
-          <AutoCompleteDropDown dropDownName={'Руль'} optionsData={steeringWheels} isAdd={true}/>
+          <AutoCompleteDropDown dropDownName={'Привод'} optionsData={driveUnits} isAdd={true} choseSpecAdd={choseSpecAdd}/>
+          <AutoCompleteDropDown dropDownName={'Цвет'} optionsData={colors} isAdd={true} choseSpecAdd={choseSpecAdd}/>
+          <AutoCompleteDropDown dropDownName={'Руль'} optionsData={steeringWheels} isAdd={true} choseSpecAdd={choseSpecAdd}/>
           <input type="text" placeholder='Год' className={style.textInput}/>
           <input type="text" placeholder='Цена' className={style.textInput}/>
           <input type="text" placeholder='Владельцев' className={style.textInput}/>

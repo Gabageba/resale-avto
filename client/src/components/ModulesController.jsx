@@ -5,12 +5,17 @@ import AddSpecificationModal from './Modals/AddSpecification/AddSpecificationMod
 const ModulesController = ({addCarModalActive, setAddCarModalActive}) => {
 
   const [addSpecModalActive, setAddSpecModalActive] = useState(false)
+  const [chosenSpec, setChosenSpec] = useState('')
 
+  const choseSpecAdd = (name) => {
+    setChosenSpec(name)
+    setAddSpecModalActive(true)
+  }
 
   return (
     <div>
-      <AddCarModal active={addCarModalActive} setActive={setAddCarModalActive}/>
-      <AddSpecificationModal active={addSpecModalActive} setActive={setAddSpecModalActive}/>
+      <AddCarModal active={addCarModalActive} setActive={setAddCarModalActive} choseSpecAdd={choseSpecAdd}/>
+      <AddSpecificationModal active={addSpecModalActive} setActive={setAddSpecModalActive} chosenSpec={chosenSpec}/>
     </div>
   );
 };

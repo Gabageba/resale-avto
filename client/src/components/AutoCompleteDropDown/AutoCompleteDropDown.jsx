@@ -1,7 +1,7 @@
 import {useEffect, useRef, useState} from 'react';
 import style from './AutoCompleteDropDown.module.css'
 
-const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd}) => {
+const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd}) => {
   const [display, setDisplay] = useState(false);
   const [options, setOptions] = useState([]);
   const [search, setSearch] = useState("");
@@ -43,7 +43,7 @@ const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd}) => {
         <div className={style.options}>
           {isAdd ?
             <div
-              onClick={() => updateInput('')}
+              onClick={() => choseSpecAdd(dropDownName)}
               key={'add'}
               tabIndex="0"
               className={style.content}
