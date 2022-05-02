@@ -1,0 +1,41 @@
+.selector {
+  width: 344px;
+  /*margin-right: 40px;*/
+  border: 2px solid #494949;
+  margin-bottom: 0;
+}
+
+.content {
+  padding-left: 17px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.015em;
+  font-weight: 400;
+  font-size: 18px;
+  height: 46px;
+  color: #717171;
+}
+
+.options {
+  border-left: 2px solid #494949;
+  border-right: 2px solid #494949;
+  border-bottom: 2px solid #494949;
+  box-sizing: border-box;
+  width: 344px;
+  position: absolute;
+  background-color: #1a1a1d;
+  max-height: 213px;
+  overflow: auto;
+}
+
+.dropDown {
+  margin-bottom: 25px;
+}
+
+.name {
+  padding-top: 12px;
+  cursor: pointer;
+}
+
+.content:hover {
+  color: #c3073f;
+}

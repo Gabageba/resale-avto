@@ -1,0 +1,22 @@
+.contentBlock {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 25px;
+}
+
+.filterBlock button {
+  margin-left: 5px;
+  width: 46px;
+  height: 46px;
+  box-sizing: border-box;
+}
+
+.addCarModal {
+
+}
+
+.textInput {
+  width: 344px;
+  margin-bottom: 25px;
+  border: 2px solid #494949;
+}

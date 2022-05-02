@@ -1,4 +1,5 @@
 import {
+  ADD_CAR_ROUTE,
   CATALOG_ROUTE,
   COMMISSION_ROUTE,
   DETAILING_ROUTE,
@@ -14,11 +15,16 @@ import Commission from "../pages/Commission/Commission";
 import Detailing from "../pages/Detailing/Detailing";
 import Auth from '../pages/Auth/Auth';
 import MyProfile from '../pages/MyProfile/MyProfile';
+import AddCar from '../pages/AddCar/AddCar';
 
 export const authRoutes = [
   {
     path: PROFILE_ROUTE,
     element: <MyProfile/>
+  },
+  {
+    path: ADD_CAR_ROUTE,
+    element: <AddCar/>
   }
 ]
 
@@ -50,5 +56,5 @@ export const publicRoutes = [
   {
     path: REGISTRATION_ROUTE,
     element: <Auth/>
-  }
+  },
 ]

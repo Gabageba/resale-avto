@@ -1,0 +1,69 @@
+.modal {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.modalActive {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s;
+  opacity: 1;
+  pointer-events: all;
+}
+
+
+
+.bigModalContent {
+  padding: 20px;
+  background-color: #1a1a1d;
+  transform: scale(0.5);
+  transition: 0.4s all;
+  width: 700px;
+  border: 2px solid #C3073F;
+
+}
+
+.bigModalContentActive {
+  padding: 20px;
+  background-color: #1a1a1d;
+  width: 700px;
+  transform: scale(1);
+  transition: 0.4s all;
+  border: 2px solid #C3073F;
+}
+
+.smallModalContent {
+  padding: 20px;
+  background-color: #1a1a1d;
+  transform: scale(0.5);
+  transition: 0.4s all;
+  width: 700px;
+  border: 2px solid #C3073F;
+
+}
+
+.smallModalContentActive {
+  padding: 20px;
+  background-color: #1a1a1d;
+  width: 700px;
+  transform: scale(1);
+  transition: 0.4s all;
+  border: 2px solid #C3073F;
+}

@@ -5,10 +5,14 @@
   font-size: 18px;
   height: 46px;
   background-color: #1a1a1d;
-  color: #494949;
+  /*color: #494949;*/
   border-radius: 0;
   box-sizing: border-box;
-  margin-bottom: 25px;
   outline: 0;
   padding-left: 17px;
+}
+
+.filter {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }

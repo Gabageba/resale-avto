@@ -4,7 +4,7 @@ import userReducer from './userReducer';
 
 let reducers = combineReducers({
   cars: carsReducer,
-  userData: userReducer
+  userData: userReducer,
 })
 
 let store = createStore(reducers)

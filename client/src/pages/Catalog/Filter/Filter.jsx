@@ -1,25 +1,28 @@
 import React from 'react';
 import style from './Filter.module.css'
-import SelectorLong from "../../../components/Filters/SelectorLong/SelectorLong";
 import SelectorSplit from "../../../components/Filters/SelectorSplit/SelectorSplit";
 import SelectorShort from "../../../components/Filters/SelectorShort/SelectorShort";
+import AutoCompleteDropDown from '../../../components/AutoCompleteDropDown/AutoCompleteDropDown';
 
-const Filter = () => {
+const Filter = ({bodyTypes, brands, driveUnits, models}) => {
   return (
     <div className={style.filter}>
-      <SelectorLong selectorName='Марка'/>
-      <SelectorLong selectorName='Модель'/>
-      <SelectorLong selectorName='Тип кузова'/>
+      <AutoCompleteDropDown optionsData={brands} dropDownName={'Марка'}/>
+      <AutoCompleteDropDown optionsData={models} dropDownName={'Модель'}/>
+      <AutoCompleteDropDown optionsData={bodyTypes} dropDownName={'Тип кузова'}/>
+
 
       <SelectorSplit selectorName='Цена'/>
       <SelectorSplit selectorName='Год'/>
       <SelectorSplit selectorName='Пробег'/>
       <SelectorSplit selectorName='Объем'/>
 
-      <SelectorLong selectorName='Привод'/>
+      <AutoCompleteDropDown optionsData={driveUnits} dropDownName={'Привод'}/>
 
-      <SelectorShort selectorName='КПП'/>
-      <SelectorShort selectorName='Руль'/>
+      <div>
+        <SelectorShort selectorName='КПП'/>
+        <SelectorShort selectorName='Руль'/>
+      </div>
     </div>)
 }
 
