@@ -1,12 +1,14 @@
 import {useEffect, useRef, useState} from 'react';
 import style from './AutoCompleteDropDown.module.css'
+import {useDispatch} from 'react-redux';
 
-const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd}) => {
+const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, setChosen}) => {
   const [display, setDisplay] = useState(false);
   const [options, setOptions] = useState([]);
   const [search, setSearch] = useState("");
   const wrapperRef = useRef(null);
 
+  const dispatch = useDispatch()
   useEffect(() => {
     setOptions(optionsData)
   }, []);
@@ -43,10 +45,13 @@ const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd}) 
         <div className={style.options}>
           {isAdd ?
             <div
-              onClick={() => choseSpecAdd(dropDownName)}
+              onClick={() => {
+                choseSpecAdd(dropDownName)
+                setDisplay(false)
+              }}
               key={'add'}
               tabIndex="0"
-              className={style.content}
+              className={style.contentAdd}
             >
               <div className={style.name}>добавить</div>
             </div> :
@@ -54,7 +59,7 @@ const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd}) 
               onClick={() => updateInput('')}
               key={'all'}
               tabIndex="0"
-              className={style.content}
+              className={style.contentAdd}
             >
               <div className={style.name}>все</div>
             </div>
@@ -64,7 +69,10 @@ const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd}) 
             .map((value, i) => {
               return (
                 <div
-                  onClick={() => updateInput(value.name)}
+                  onClick={() => {
+                    dispatch(setChosen(value.id))
+                    updateInput(value.name)
+                  }}
                   key={i}
                   tabIndex="0"
                   className={style.content}

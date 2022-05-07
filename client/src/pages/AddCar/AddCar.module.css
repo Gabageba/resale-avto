@@ -1,0 +1,62 @@
+.addCar input {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.015em;
+  font-weight: 400;
+  font-size: 18px;
+  /*height: 46px;*/
+  background-color: #1a1a1d;
+  /*color: #494949;*/
+  border-radius: 0;
+  box-sizing: border-box;
+  outline: 0;
+  padding-left: 17px;
+  margin-bottom: 0;
+}
+
+.filter {
+  display: grid;
+  grid-template-columns: repeat(3, 344px);
+  margin-top: 84px;
+  grid-column-gap: 40px;
+  grid-row-gap: 25px;
+}
+.addCar {
+  margin-top: 200px;
+}
+
+.textInput {
+  width: 344px;
+  margin-bottom: 25px;
+  border: 2px solid #494949;
+}
+
+.fileInput {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.descriptionInput {
+  margin-bottom: 0;
+  border: 2px solid #494949;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 6;
+  grid-row-end: 8;
+  height: 117px;
+  text-align: start;
+  margin-right: 40px;
+  width: 728px;
+}
+
+.addButton {
+  width: 344px;
+  height: 46px;
+  margin-left: 384px;
+  margin-top: 25px;
+  cursor: pointer;
+}
+
+.spec {
+  display: flex;
+  margin-top: 25px;
+}

@@ -1,77 +1,41 @@
 import React from 'react';
 import Modal from '../Modal/Modal';
-import style from './AddSpecificationModal.module.css'
+import CreateBrand from './CreateBrand';
+import CreateModel from './CreateModel';
+import CreateBodyType from './CreateBodyType';
+import CreateDriveUnit from './CreateDriveUnit';
+import CreateColor from './CreateColor';
+import CreateSteeringWheel from './CreateSteeringWheel';
+import CreateTransmission from './CreateTransmission';
 
-const content = (chosenSpec) => {
+
+const content = (chosenSpec, setActive) => {
   let content = <div>Что-то не то</div>
-
   switch (chosenSpec) {
     case 'Марка':
-      content = (
-        <div>
-          <h2>Добавить марку</h2>
-          <input type="text" placeholder={'Новая марка'} className={style.addInput}/>
-          <button className={style.addButton}>Добавить</button>
-        </div>
-      )
-      return content
+      return <CreateBrand setActive={setActive}/>
     case 'Модель':
-      content = (
-        <div>
-          <h2>Добавить модель</h2>
-          <input type="text" placeholder={'Выберите марку'} className={style.addInput}/>
-          <input type="text" placeholder={'Новая модель'} className={style.addInput}/>
-          <button className={style.addButton}>Добавить</button>
-        </div>
-      )
-      return content
+      return <CreateModel setActive={setActive}/>
     case 'Тип кузова':
-      content = (
-        <div>
-          <h2>Добавить тип кузова</h2>
-          <input type="text" placeholder={'Новый тип кузова'} className={style.addInput}/>
-          <button className={style.addButton}>Добавить</button>
-        </div>
-      )
-      return content
+      return <CreateBodyType setActive={setActive}/>
     case 'Привод':
-      content = (
-        <div>
-          <h2>Добавить привод</h2>
-          <input type="text" placeholder={'Новый вид привода'} className={style.addInput}/>
-          <button className={style.addButton}>Добавить</button>
-        </div>
-      )
-      return content
+      return <CreateDriveUnit setActive={setActive}/>
     case 'Цвет':
-      content = (
-        <div>
-          <h2>Добавить цвет</h2>
-          <input type="text" placeholder={'Новый цвет'} className={style.addInput}/>
-          <button className={style.addButton}>Добавить</button>
-        </div>
-      )
-      return content
+      return <CreateColor setActive={setActive}/>
     case 'Руль':
-      content = (
-        <div>
-          <h2>Добавить расположение руля</h2>
-          <input type="text" placeholder={'Новое расположение руля'} className={style.addInput}/>
-          <button className={style.addButton}>Добавить</button>
-        </div>
-      )
-      return content
+      return <CreateSteeringWheel setActive={setActive}/>
+    case 'КПП':
+      return <CreateTransmission setActive={setActive}/>
     default:
       return content
   }
 }
 
 const AddSpecificationModal = ({active, setActive, chosenSpec}) => {
-
   return (
     <Modal active={active} setActive={setActive} size={'small'}>
       <div>
-        {content(chosenSpec)}
+        {content(chosenSpec ,setActive)}
       </div>
     </Modal>
   );

@@ -11,11 +11,12 @@
 .authButton {
   /*margin-left: 360px;*/
   margin-left: 150px;
+  text-transform: uppercase;
+  border-radius: 15px;
   height: 40px;
   width: 100px;
-  border-radius: 30px;
   font-family: akzidenzLightEx, serif;
-  font-size: 15px;
+  font-size: 13px;
   cursor: pointer;
 }
 

@@ -10,8 +10,8 @@ class DriveUnitController {
   }
 
   async getAll(req, res) {
-    const bodyType = await DriveUnit.findAll()
-    return res.json(bodyType)
+    const driveUnit = await DriveUnit.findAll()
+    return res.json(driveUnit)
   }
 }
 

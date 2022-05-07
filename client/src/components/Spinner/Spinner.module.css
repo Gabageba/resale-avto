@@ -5,7 +5,7 @@
   transform:translate(-50%,-50%);
   width:150px;
   height:150px;
-  background:transparent;
+  background:#1a1a1d;
   border:3px solid #3c3c3c;
   border-radius:50%;
   text-align:center;
@@ -76,4 +76,14 @@
   {
     transform:rotate(405deg);
   }
+}
+
+.spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #1a1a1d;
+  width: 100%;
+  height: 100%;
+
 }

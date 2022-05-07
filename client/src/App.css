@@ -112,6 +112,22 @@ input {
   padding-left: 17px;
 }
 
+textarea {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.015em;
+  font-weight: 400;
+  font-size: 18px;
+  height: 46px;
+  background-color: #1a1a1d;
+  color: #717171;
+  border-radius: 0;
+  box-sizing: border-box;
+  margin-bottom: 25px;
+  outline: 0;
+  padding-left: 17px;
+  resize: none;
+}
+
 button {
   background-color: transparent;
   font-family: 'akzidenzBoldEx', sans-serif;

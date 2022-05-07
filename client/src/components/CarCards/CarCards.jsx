@@ -9,10 +9,10 @@ const CarCards = (props) => {
       <p className={style.carName}>{props.state.name}</p>
       <p className={style.year}>{props.state.year}</p>
       <div className={style.otherSpec}>
-        <AdditionalSpec nameSpec='Пробег' dataSpec={props.state.mileage}/>
+        <AdditionalSpec nameSpec='Пробег' dataSpec={props.state.millage}/>
         <AdditionalSpec nameSpec='Владельцев' dataSpec={props.state.owners}/>
       </div>
-      <pre><p className={style.price}>{props.state.price}</p></pre>
+      <pre><p className={style.price}>{props.state.price} р.</p></pre>
     </div>
   )
 }

@@ -1,0 +1,66 @@
+.form-group {
+  padding: 1em;
+  margin: 1em
+}
+
+.fileLoadInput input[type=file] {
+  outline: 0;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none
+}
+
+.label {
+  width: 304px;
+  border: 2px dashed #494949;
+  border-radius: 5px;
+  display: block;
+  padding: 1.2em;
+  transition: border 300ms ease;
+  cursor: pointer;
+  text-align: center;
+  height: 77px;
+}
+
+.labelActive {
+  width: 304px;
+  border: 2px solid #c3073f;
+  border-radius: 5px;
+  display: block;
+  padding: 1.2em;
+  transition: border 300ms ease;
+  cursor: pointer;
+  text-align: center;
+  height: 77px;
+}
+
+.labelActive i {
+  display: block;
+  font-size: 42px;
+  padding-bottom: 16px
+}
+
+.labelActive i, .labelActive .title {
+  color: #c3073f;
+  transition: 200ms color
+}
+
+.label i {
+  display: block;
+  font-size: 42px;
+  padding-bottom: 16px
+}
+
+.label i, .label .title {
+  color: #494949;
+  transition: 200ms color
+}
+
+.label:hover {
+  border: 2px solid #c3073f;
+}
+
+.label:hover i,
+.label:hover .title {
+  color: #c3073f
+}

@@ -6,13 +6,10 @@ import {ADD_CAR_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE} from '../../../utils/const';
 import {useDispatch, useSelector} from 'react-redux';
 import {setIsAuthAC, setUserAC} from '../../../redux/userReducer';
 
-const Profile = ({setActive}) => {
+const Profile = () => {
   const navigate = useNavigate()
   const isAuth = useSelector(state => state.userData.isAuth)
   const user = useSelector(state => state.userData.user)
-  // const name = useSelector(state => state.userData.user.additionalInfo.name)
-  // const role = useSelector(state => state.userData.user.mainInfo.role)
-  // const avatar = useSelector(state => state.userData.user.additionalInfo.avatar)
   const dispatch = useDispatch()
 
   const logOut = () => {
@@ -33,7 +30,7 @@ const Profile = ({setActive}) => {
             </div>
             <div className={style.dropDownContent}>
               <NavLink to={PROFILE_ROUTE} className={style.dropDownLink}>Мой профиль</NavLink>
-              {user.mainInfo.role === 'ADMIN' ? <div className={style.dropDownLink} onClick={setActive} >Добавить автомобиль</div> : null}
+              {user.mainInfo.role === 'ADMIN' ? <div className={style.dropDownLink} onClick={() => navigate(ADD_CAR_ROUTE)} >Добавить автомобиль</div> : null}
               <NavLink to={''} className={style.dropDownLink}>Избранное</NavLink>
               <NavLink to={''} className={style.dropDownLink}>История автомобилей</NavLink>
               <NavLink to={''} className={style.dropDownLink}>История поиска</NavLink>

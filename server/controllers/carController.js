@@ -19,7 +19,8 @@ class CarController {
         steeringWheelId,
         colorId,
         owners,
-        description
+        description,
+        transmissionId
       } = req.body
       const {img} = req.files
       let fileName = uuid.v4() + '.jpg'
@@ -38,7 +39,8 @@ class CarController {
         colorId,
         owners,
         description,
-        img: fileName
+        img: fileName,
+        transmissionId
       })
 
       return res.json(car)

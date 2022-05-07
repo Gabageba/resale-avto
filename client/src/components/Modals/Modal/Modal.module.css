@@ -54,7 +54,7 @@
   background-color: #1a1a1d;
   transform: scale(0.5);
   transition: 0.4s all;
-  width: 30%;
+  width: 345px;
   border: 2px solid #C3073F;
 
 }
@@ -62,7 +62,7 @@
 .smallModalContentActive {
   padding: 20px;
   background-color: #1a1a1d;
-  width: 30%;
+  width: 345px;
   transform: scale(1);
   transition: 0.4s all;
   border: 2px solid #C3073F;

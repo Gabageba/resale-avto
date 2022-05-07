@@ -7,13 +7,11 @@ import {check} from './http/userAPI';
 import {useDispatch} from 'react-redux';
 import {setIsAuthAC, setUserAC} from './redux/userReducer';
 import Spinner from './components/Spinner/Spinner';
-import ModulesController from './components/ModulesController';
 
 const App = () => {
 
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
-  const [addCarModalActive, setAddCarModalActive] = useState(false)
 
   useEffect(() => {
     check().then(data => {
@@ -29,9 +27,8 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
-        <Header setActive={setAddCarModalActive}/>
+        <Header/>
         <AppRouter />
-        <ModulesController addCarModalActive={addCarModalActive} setAddCarModalActive={setAddCarModalActive}/>
 
       </div>
     </BrowserRouter>

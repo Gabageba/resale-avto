@@ -26,7 +26,7 @@ export const authRoutes = [
     path: ADD_CAR_ROUTE,
     element: <AddCar/>
   }
-]
+  ]
 
 export const publicRoutes = [
   {

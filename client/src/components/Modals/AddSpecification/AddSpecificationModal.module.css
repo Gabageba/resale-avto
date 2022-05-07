@@ -1,5 +1,19 @@
+.header {
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
 .addInput {
   width: 344px;
   margin-bottom: 25px;
   border: 2px solid #494949;
+}
+
+.addButton {
+  height: 40px;
+  width: 200px;
+  font-family: akzidenzLightEx, serif;
+  font-size: 15px;
+  cursor: pointer;
+  margin-left: 70px;
 }

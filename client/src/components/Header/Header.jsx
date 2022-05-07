@@ -6,7 +6,7 @@ import Profile from './Profile/Profile';
 import DropDown from './DropDown/DropDown';
 import {CATALOG_ROUTE, CONTACTS_ROUTE, MAIN_ROUTE} from "../../utils/const";
 
-const Header = ({setActive}) => {
+const Header = () => {
   return (
     <header className={style.header}>
       <img src={logo} alt="Resale Avto" className={style.logo}/>
@@ -16,7 +16,7 @@ const Header = ({setActive}) => {
         <DropDown />
         <Navigation name={'Контакты'} link={CONTACTS_ROUTE}/>
       </ul>
-      <Profile setActive={setActive}/>
+      <Profile/>
       <div className={style.line}/>
     </header>
   )

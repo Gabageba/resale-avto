@@ -75,6 +75,11 @@ const ModelBrand = sequelize.define('type_brand', {
   id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
 })
 
+const Transmission = sequelize.define('transmission', {
+  id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+  name: {type: DataTypes.STRING, unique: true, allowNull: false}
+})
+
 
 User.hasOne(Favorites)
 Favorites.belongsTo(User)
@@ -84,6 +89,9 @@ FavoritesCar.belongsTo(Favorites)
 
 Brand.hasMany(Car)
 Car.belongsTo(Brand)
+
+Transmission.hasMany(Car)
+Car.belongsTo(Transmission)
 
 Model.hasMany(Car)
 Car.belongsTo(Model)
@@ -130,5 +138,7 @@ module.exports = {
   Color,
   Brand,
   Model,
-  SteeringWheel
+  SteeringWheel,
+  ModelBrand,
+  Transmission
 }
