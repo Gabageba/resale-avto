@@ -1,3 +1,21 @@
 .catalog {
 
 }
+
+.searchButton {
+  width: 344px;
+  height: 46px;
+  /*margin-left: 384px;*/
+  margin-top: 25px;
+  cursor: pointer;
+}
+
+.clearButton {
+  width: 172px;
+  height: 46px;
+  margin-left: 40px;
+  margin-top: 25px;
+  cursor: pointer;
+  color: #494949;
+  border: 2px solid #494949;
+}

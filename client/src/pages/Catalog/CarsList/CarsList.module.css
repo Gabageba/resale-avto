@@ -1,8 +1,8 @@
 .cars {
     margin-top: 25px;
-    /*display: grid;*/
-    /*grid-template-columns: repeat(3, 1fr);*/
-    /*grid-template-rows: repeat(3, 1fr);*/
-    /*width: 1160px;*/
-    /*grid-gap: 40px;*/
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 1160px;
+    /*grid-column-gap: 25px;*/
+    grid-row-gap: 40px;
 }

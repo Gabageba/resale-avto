@@ -1,30 +1,28 @@
-import React, {useState} from 'react';
+import React from 'react';
 import style from './Filter.module.css'
 import SelectorSplit from "../../../components/Filters/SelectorSplit/SelectorSplit";
 import AutoCompleteDropDown from '../../../components/AutoCompleteDropDown/AutoCompleteDropDown';
+import {
+  setSelectedBodyTypeAC,
+  setSelectedBrandAC,
+  setSelectedDriveUnitAC,
+  setSelectedModelsAC, setSelectedSteeringWheelAC, setSelectedTransmissionAC
+} from '../../../redux/carSpecReducer';
 
 const Filter = ({bodyTypes, brands, driveUnits, models, transmission, steeringWheel}) => {
-  const [chosenModel, setChosenModel] = useState('')
-  // console.log(chosenModel)
 
-
-  console.log(models)
-  console.log(brands)
   return (
     <div className={style.filter}>
-      <AutoCompleteDropDown optionsData={brands} dropDownName={'Марка'}/>
-      <AutoCompleteDropDown optionsData={models} dropDownName={'Модель'} />
-      <AutoCompleteDropDown optionsData={bodyTypes} dropDownName={'Тип кузова'}/>
-      <AutoCompleteDropDown optionsData={driveUnits} dropDownName={'Привод'}/>
-      <AutoCompleteDropDown optionsData={transmission} dropDownName={'КПП'}/>
-      <AutoCompleteDropDown optionsData={steeringWheel} dropDownName={'Руль'}/>
+      <AutoCompleteDropDown optionsData={brands} dropDownName={'Марка'} setChosen={setSelectedBrandAC}/>
+      <AutoCompleteDropDown optionsData={models} dropDownName={'Модель'} setChosen={setSelectedModelsAC}/>
+      <AutoCompleteDropDown optionsData={bodyTypes} dropDownName={'Тип кузова'} setChosen={setSelectedBodyTypeAC}/>
+      <AutoCompleteDropDown optionsData={driveUnits} dropDownName={'Привод'} setChosen={setSelectedDriveUnitAC}/>
+      <AutoCompleteDropDown optionsData={transmission} dropDownName={'КПП'} setChosen={setSelectedTransmissionAC}/>
+      <AutoCompleteDropDown optionsData={steeringWheel} dropDownName={'Руль'} setChosen={setSelectedSteeringWheelAC}/>
 
       <SelectorSplit selectorName='Цена'/>
       <SelectorSplit selectorName='Год'/>
       <SelectorSplit selectorName='Пробег'/>
-
-
-
     </div>)
 }
 

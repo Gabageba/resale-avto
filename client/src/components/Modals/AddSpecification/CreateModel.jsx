@@ -1,38 +1,32 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import style from './AddSpecificationModal.module.css';
-import {createModel, fetchBrands} from '../../../http/carAPI';
+import {createModel} from '../../../http/carAPI';
 import AutoCompleteDropDown from '../../AutoCompleteDropDown/AutoCompleteDropDown';
-import Spinner from '../../Spinner/Spinner';
+import {useSelector} from 'react-redux';
+import {setSelectedBrandAC} from '../../../redux/carSpecReducer';
 
 const CreateModel = ({setActive}) => {
 
-  const [brands, setBrands] = useState([])
   const [value, setValue] = useState('')
-  const [loading, setLoading] = useState(true)
-  const [chosen, setChosen] = useState('')
 
-  useEffect(() => {
-    fetchBrands().then(data => setBrands(data))
-      .finally(() => setLoading(false))
-  }, [])
+  const selectedBrand = useSelector(state => state.specifications.selectedBrand)
+  const brands = useSelector(state => state.specifications.brands)
 
-  if (loading) {
-    return <Spinner/>
-  }
   const addModel = () => {
     const formData = new FormData()
     formData.append('name', value)
-    formData.append('brandId', chosen)
+    formData.append('brandId', selectedBrand)
     createModel(formData).then(r => setActive(false))
   }
+
 
   return (
     <div>
       <h2 className={style.header}>Добавить модель</h2>
-      <AutoCompleteDropDown dropDownName={'Марка'} optionsData={brands} setChosen={setChosen}/>
+      <AutoCompleteDropDown dropDownName={'Марка'} optionsData={brands} setChosen={setSelectedBrandAC}/>
       <input type="text"
              placeholder={'Новая модель'}
-             className={style.addInput}
+             className={style.addModelInput}
              value={value}
              onChange={e => setValue(e.target.value)}/>
       <button className={style.addButton} onClick={addModel}>Добавить</button>

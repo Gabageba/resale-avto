@@ -5,7 +5,7 @@ const AdditionalSpec = (props) => {
   return (
     <div>
       <p className={style.nameSpec}>{props.nameSpec}</p>
-      <pre><p className={style.dataSpec}>{props.dataSpec}</p></pre>
+      <p className={style.dataSpec}>{props.dataSpec}</p>
     </div>
   )
 }
