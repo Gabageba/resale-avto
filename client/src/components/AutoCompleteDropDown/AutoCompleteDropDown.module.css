@@ -4,6 +4,7 @@
   margin-right: 0;
   border: 2px solid #494949;
   margin-bottom: 0;
+  text-transform: capitalize;
 }
 
 .content {
@@ -14,6 +15,7 @@
   font-size: 18px;
   height: 46px;
   color: #717171;
+  text-transform: capitalize;
 }
 
 .contentAdd {
@@ -33,6 +35,7 @@
   box-sizing: border-box;
   width: 344px;
   position: absolute;
+  z-index: 100;
   background-color: #1a1a1d;
   max-height: 213px;
   overflow: auto;

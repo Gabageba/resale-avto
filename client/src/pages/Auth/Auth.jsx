@@ -24,7 +24,6 @@ const Auth = () => {
       } else {
         data = await registration(email, password, name)
       }
-      console.log(data)
       dispatch(setUserAC(data))
       dispatch(setIsAuthAC(true))
       navigate(MAIN_ROUTE)

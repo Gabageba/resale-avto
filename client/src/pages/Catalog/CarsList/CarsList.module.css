@@ -6,3 +6,7 @@
     /*grid-column-gap: 25px;*/
     grid-row-gap: 40px;
 }
+
+.selectedPage {
+  color: #c3073f;
+}

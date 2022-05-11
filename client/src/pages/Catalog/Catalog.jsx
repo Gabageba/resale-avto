@@ -16,55 +16,88 @@ import CarsList from './CarsList/CarsList';
 import {
   setBodyTypesAC,
   setBrandsAC,
-  setDriveUnitsAC,
+  setDriveUnitsAC, setFilterModels,
   setModelsAC,
-  setSteeringWheelsAC,
+  setSteeringWheelsAC, setTest,
   setTransmissionsAC
 } from '../../redux/carSpecReducer';
 import {useDispatch, useSelector} from 'react-redux';
+import {setCarsAC, setCurrentPageAC, setTotalCountAC} from '../../redux/carsReducer';
+import Pages from './CarsList/Pages/Pages';
+import InputSpinner from '../../components/InputSpinner/InputSpinner';
 
-const Catalog = (props) => {
+const Catalog = () => {
 
   const [loading, setLoading] = useState(true)
 
-  const brands = useSelector(state => state.specifications.brands)
-  const models = useSelector(state => state.specifications.models)
-  const driveUnits = useSelector(state => state.specifications.driveUnits)
-  const transmissions = useSelector(state => state.specifications.transmissions)
-  const steeringWheels = useSelector(state => state.specifications.steeringWheels)
-  const bodyTypes = useSelector(state => state.specifications.bodyTypes)
+  const currentPage = useSelector(state => state.cars.currentPage)
+  const limit = useSelector(state => state.cars.limit)
   const dispatch = useDispatch()
+
+  const selectedBrand = useSelector(state => state.specifications.selectedBrand)
+  const selectedBodyType = useSelector(state => state.specifications.selectedBodyType)
+  const selectedModel = useSelector(state => state.specifications.selectedModel)
+  const selectedColor = useSelector(state => state.specifications.selectedColor)
+  const selectedDriveUnit = useSelector(state => state.specifications.selectedDriveUnit)
+  const selectedSteeringWheel = useSelector(state => state.specifications.selectedSteeringWheel)
 
 
   useEffect(() => {
     fetchBrands().then(data => dispatch(setBrandsAC(data)))
-    fetchModels().then(data => dispatch(setModelsAC(data)))
+    fetchModels().then(data => {
+      dispatch(setModelsAC(data))
+      dispatch(setFilterModels(data))
+    })
     fetchDriveUnits().then(data => dispatch(setDriveUnitsAC(data)))
     fetchTransmission().then(data => dispatch(setTransmissionsAC(data)))
     fetchSteeringWheels().then(data => dispatch(setSteeringWheelsAC(data)))
     fetchBodyTypes().then(data => dispatch(setBodyTypesAC(data)))
+    fetchCars(currentPage, limit).then(data => {
+      dispatch(setTotalCountAC(data.count))
+      dispatch(setCarsAC(data.rows))
+    })
       .finally(() => setLoading(false))
   }, [])
+
+  useEffect(() => {
+    fetchCars(currentPage, limit).then(data => {
+      dispatch(setTotalCountAC(data.count))
+      dispatch(setCarsAC(data.rows))
+    })
+  }, [currentPage])
+
+  useEffect(() => {
+    setLoading(true)
+    fetchModels(selectedBrand.id).then(data => {
+      dispatch(setFilterModels(data))
+    }).finally(() => setLoading(false))
+  }, [selectedBrand])
 
   if (loading) {
     return <Spinner/>
   }
 
+  const onSearchClick = () => {
+    setCurrentPageAC(1)
+    fetchCars(currentPage, limit, selectedBodyType.id, selectedBrand.id, selectedModel.id, selectedColor.id, selectedDriveUnit.id,selectedSteeringWheel.id ).then(data => {
+      dispatch(setTotalCountAC(data.count))
+      dispatch(setCarsAC(data.rows))
+      console.log(data)
+    })
+  }
+
+
   return (
     <div className={style.catalog}>
       <h1 className="header-info">Авто в продаже</h1>
-      <Filter bodyTypes={bodyTypes}
-              brands={brands}
-              models={models}
-              steeringWheel={steeringWheels}
-              transmission={transmissions}
-              driveUnits={driveUnits}/>
+      <Filter/>
       <div>
-        <button className={style.searchButton}>Искать</button>
+        <button className={style.searchButton} onClick={onSearchClick}>Искать</button>
         <button className={style.clearButton}>Сбросить</button>
       </div>
       <ShowSetting/>
       <CarsList/>
+      <Pages/>
       <Footer/>
     </div>
   )

@@ -6,6 +6,8 @@ const SET_MODELS = 'SET_MODELS'
 const SET_STEERING_WHEELS = 'SET_STEERING_WHEELS'
 const SET_TRANSMISSIONS = 'SET_TRANSMISSIONS'
 
+const SET_FILTER_MODELS = 'SET_FILTER_MODEL'
+
 const SET_SELECTED_BODY_TYPE = 'SET_SELECTED_BODY_TYPE'
 const SET_SELECTED_BRAND = 'SET_SELECTED_BRAND'
 const SET_SELECTED_COLOR = 'SET_SELECTED_COLOR'
@@ -23,10 +25,21 @@ const SET_SELECTED_DESCRIPTION = 'SET_SELECTED_DESCRIPTION'
 
 let initialState = {
   bodyTypes: [],
-  brands: [],
+  brands: [
+    {
+      id: '',
+      name: 'asd'
+    }
+  ],
   colors: [],
   driveUnits: [],
-  models: [],
+  models: [
+    {
+      id: '',
+      name: 'asd'
+    }
+  ],
+  filterModels: [],
   steeringWheels: [],
   transmissions: [],
 
@@ -43,7 +56,9 @@ let initialState = {
   selectedPrice: '',
   selectedOwners: '',
   selectedFile: '',
-  selectedDescription: ''
+  selectedDescription: '',
+
+  test: 1
 }
 
 const carsReducer = (state = initialState, action) => {
@@ -64,6 +79,12 @@ const carsReducer = (state = initialState, action) => {
       return {...state, driveUnits: action.driveUnits}
     case SET_SELECTED_DRIVE_UNIT:
       return {...state, selectedDriveUnit: action.selectedDriveUnit}
+
+    case SET_FILTER_MODELS:
+      return {...state, filterModels: [...action.filterModels]}
+    case "SET_TEST":
+      return {...state, test: action.test}
+
     case SET_MODELS:
       return {...state, models: action.models}
     case SET_SELECTED_MODEL:
@@ -102,6 +123,10 @@ export const setSelectedBrandAC = (selectedBrand) => ({type: SET_SELECTED_BRAND,
 export const setColorsAC = (colors) => ({type: SET_COLORS, colors})
 export const setSelectedColorAC = (selectedColor) => ({type: SET_SELECTED_COLOR, selectedColor})
 export const setModelsAC = (models) => ({type: SET_MODELS, models})
+export const setFilterModels = (filterModels) => ({type: SET_FILTER_MODELS, filterModels})
+
+export const setTest = (test) => ({type: "SET_TEST", test})
+
 export const setSelectedModelsAC = (selectedModel) => ({type: SET_SELECTED_MODEL, selectedModel})
 export const setDriveUnitsAC = (driveUnits) => ({type: SET_DRIVE_UNITS, driveUnits})
 export const setSelectedDriveUnitAC = (selectedDriveUnit) => ({type: SET_SELECTED_DRIVE_UNIT, selectedDriveUnit})

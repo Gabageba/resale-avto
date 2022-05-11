@@ -10,7 +10,20 @@ class ModelController {
   }
 
   async getAll(req, res) {
-    const models = await Model.findAll()
+    const {brandId} = req.query
+    console.log(brandId)
+    let models =[]
+    if (!brandId) {
+      models = await Model.findAll()
+    }
+    if (brandId) {
+      const modelBrand = await ModelBrand.findAll({where: {brandId}})
+      for (let i = 0; i < modelBrand.length; i++) {
+        const m = await Model.findAll({where: {id: modelBrand[i].modelId}})
+        models = [...models, m[0]]
+      }
+
+    }
     return res.json(models)
   }
 }

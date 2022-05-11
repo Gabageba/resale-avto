@@ -14,7 +14,7 @@ const CreateModel = ({setActive}) => {
 
   const addModel = () => {
     const formData = new FormData()
-    formData.append('name', value)
+    formData.append('name', value.toLowerCase())
     formData.append('brandId', selectedBrand)
     createModel(formData).then(r => setActive(false))
   }

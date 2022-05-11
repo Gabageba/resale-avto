@@ -111,14 +111,14 @@ Car.belongsTo(BodyType)
 Car.hasMany(FavoritesCar)
 FavoritesCar.belongsTo(Car)
 
-Application.hasMany(User)
-User.belongsTo(Application)
+User.hasMany(Application)
+Application.belongsTo(User)
 
-Application.hasMany(Brand)
-Brand.belongsTo(Application)
+Brand.hasMany(Application)
+Application.belongsTo(Brand)
 
-Application.hasMany(Model)
-Model.belongsTo(Application)
+Model.hasMany(Application)
+Application.belongsTo(Model)
 
 ApplicationType.hasMany(Application)
 Application.belongsTo(ApplicationType)

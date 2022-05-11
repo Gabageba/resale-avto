@@ -1,12 +1,15 @@
 import {useEffect, useRef, useState} from 'react';
 import style from './AutoCompleteDropDown.module.css'
 import {useDispatch} from 'react-redux';
+import InputSpinner from '../InputSpinner/InputSpinner';
 
-const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, setChosen}) => {
+const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, setChosen, chosen}) => {
+
   const [display, setDisplay] = useState(false);
   const [options, setOptions] = useState([]);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(chosen ? chosen.name : '');
   const wrapperRef = useRef(null);
+
 
   const dispatch = useDispatch()
   useEffect(() => {
@@ -32,6 +35,7 @@ const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, s
     setDisplay(false);
   };
 
+
   return (
     <div ref={wrapperRef} className={style.dropDown}>
       <input
@@ -41,6 +45,7 @@ const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, s
         value={search}
         onChange={event => setSearch(event.target.value)}
       />
+
       {display && (
         <div className={style.options}>
           {isAdd ?
@@ -53,7 +58,7 @@ const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, s
               tabIndex="0"
               className={style.contentAdd}
             >
-              <div className={style.name}>добавить</div>
+              <div className={style.name}>Добавить</div>
             </div> :
             <div
               onClick={() => updateInput('')}
@@ -61,7 +66,7 @@ const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, s
               tabIndex="0"
               className={style.contentAdd}
             >
-              <div className={style.name}>все</div>
+              <div className={style.name}>Все</div>
             </div>
           }
           {options
@@ -70,7 +75,7 @@ const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, s
               return (
                 <div
                   onClick={() => {
-                    dispatch(setChosen(value.id))
+                    dispatch(setChosen(value))
                     updateInput(value.name)
                   }}
                   key={i}

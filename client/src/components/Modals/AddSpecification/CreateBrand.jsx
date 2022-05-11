@@ -6,7 +6,7 @@ const CreateBrand = ({setActive}) => {
 
   const [value, setValue] = useState('')
   const addBrand = () => {
-    createBrand({name: value}).then(data => {
+    createBrand({name: value.toLowerCase()}).then(data => {
       setValue('')
       setActive(false)
     })

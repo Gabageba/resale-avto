@@ -6,7 +6,7 @@ const CreateBodyType = ({setActive}) => {
 
   const [value, setValue] = useState('')
   const addBodyType = () => {
-    createBodyType({name: value}).then(data => {
+    createBodyType({name: value.toLowerCase()}).then(data => {
       setValue('')
       setActive(false)
     })

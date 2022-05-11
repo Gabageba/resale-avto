@@ -39,8 +39,8 @@ export const createCar = async (car) => {
   return data
 }
 
-export const fetchModels = async () => {
-  const {data} = await $host.get('api/model')
+export const fetchModels = async (brandId) => {
+  const {data} = await $host.get('api/model', {params: {brandId}})
   return data
 }
 

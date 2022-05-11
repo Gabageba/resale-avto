@@ -6,7 +6,7 @@ const CreateTransmission = ({setActive}) => {
 
   const [value, setValue] = useState('')
   const addColor = () => {
-    createTransmission({name: value}).then(data => {
+    createTransmission({name: value.toLowerCase()}).then(data => {
       setValue('')
       setActive(false)
     })

@@ -6,7 +6,7 @@ const CreateColor = ({setActive}) => {
 
   const [value, setValue] = useState('')
   const addColor = () => {
-    createColor({name: value}).then(data => {
+    createColor({name: value.toLowerCase()}).then(data => {
       setValue('')
       setActive(false)
     })

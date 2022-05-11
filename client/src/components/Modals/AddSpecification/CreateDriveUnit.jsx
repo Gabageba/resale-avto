@@ -6,7 +6,7 @@ const CreateDriveUnit = ({setActive}) => {
 
   const [value, setValue] = useState('')
   const addDriveUnit = () => {
-    createDriveUnit({name: value}).then(data => {
+    createDriveUnit({name: value.toLowerCase()}).then(data => {
       setValue('')
       setActive(false)
     })

@@ -5,17 +5,18 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 let initialState = {
   carsData: [],
   totalCount: 0,
-  currentPage: 1
+  currentPage: 1,
+  limit: 9
 }
 
 const carsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SET_CURRENT_PAGE:
+      return {...state, currentPage: action.page}
     case SET_CARS:
       return {...state, carsData: action.cars}
     case SET_TOTAL_COUNT:
       return {...state, totalCount: action.totalCount}
-    case SET_CURRENT_PAGE:
-      return {...state, currentPage: action.currentPage}
     default:
       return state
   }
@@ -23,6 +24,6 @@ const carsReducer = (state = initialState, action) => {
 
 export const setCarsAC = (cars) => ({type: SET_CARS, cars})
 export const setTotalCountAC = (totalCount) => ({type: SET_TOTAL_COUNT, totalCount})
-export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
+export const setCurrentPageAC = (page) => ({type: SET_CURRENT_PAGE, page})
 
 export default carsReducer

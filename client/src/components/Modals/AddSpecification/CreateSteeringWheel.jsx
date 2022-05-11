@@ -6,7 +6,7 @@ const CreateSteeringWheel = ({setActive}) => {
 
   const [value, setValue] = useState('')
   const addSteeringWheel = () => {
-    createSteeringWheel({name: value}).then(data => {
+    createSteeringWheel({name: value.toLowerCase()}).then(data => {
       setValue('')
       setActive(false)
     })
