@@ -26,7 +26,6 @@ const Filter = () => {
   const steeringWheels = useSelector(state => state.specifications.steeringWheels)
   const bodyTypes = useSelector(state => state.specifications.bodyTypes)
 
-  console.log(filterModels)
 
   return (
     <div className={style.filter}>

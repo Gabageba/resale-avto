@@ -50,24 +50,41 @@ class CarController {
   }
 
   async getAll(req, res) {
-    let {brandId, modelId, limit, page} = req.query
+    let {brandId, modelId,bodyTypeId, driveUnitId, transmissionId, steeringWheelId, limit, page} = req.query
+    let findFilter
+
+    if (brandId) {
+      findFilter = {...findFilter, brandId}
+    }
+    if (modelId) {
+      findFilter = {...findFilter, modelId}
+    }
+    if (bodyTypeId) {
+      findFilter = {...findFilter, bodyTypeId}
+    }
+    if (driveUnitId) {
+      findFilter = {...findFilter, driveUnitId}
+    }
+    if (transmissionId) {
+      findFilter = {...findFilter, transmissionId}
+    }
+    if (steeringWheelId) {
+      findFilter = {...findFilter, steeringWheelId}
+    }
+
     page = page || 1
     limit = limit || 9
     let offset = page * limit - limit
-    let cars
 
-    if (!brandId && !modelId) {
+
+    let cars
+    if (findFilter === {}) {
       cars = await Car.findAndCountAll({limit, offset})
     }
-    if (brandId && !modelId) {
-      cars = await Car.findAndCountAll({where:{brandId}, limit, offset})
+    else {
+      cars = await Car.findAndCountAll({where:findFilter, limit, offset})
     }
-    if (!brandId && modelId) {
-      cars = await Car.findAndCountAll({where:{modelId}, limit, offset})
-    }
-    if (brandId && modelId) {
-      cars = await Car.findAndCountAll({where:{modelId, brandId}, limit, offset})
-    }
+
     return res.json(cars)
   }
 

@@ -57,8 +57,6 @@ let initialState = {
   selectedOwners: '',
   selectedFile: '',
   selectedDescription: '',
-
-  test: 1
 }
 
 const carsReducer = (state = initialState, action) => {
@@ -81,10 +79,7 @@ const carsReducer = (state = initialState, action) => {
       return {...state, selectedDriveUnit: action.selectedDriveUnit}
 
     case SET_FILTER_MODELS:
-      return {...state, filterModels: [...action.filterModels]}
-    case "SET_TEST":
-      return {...state, test: action.test}
-
+      return {...state, filterModels: action.filterModels}
     case SET_MODELS:
       return {...state, models: action.models}
     case SET_SELECTED_MODEL:
@@ -124,8 +119,6 @@ export const setColorsAC = (colors) => ({type: SET_COLORS, colors})
 export const setSelectedColorAC = (selectedColor) => ({type: SET_SELECTED_COLOR, selectedColor})
 export const setModelsAC = (models) => ({type: SET_MODELS, models})
 export const setFilterModels = (filterModels) => ({type: SET_FILTER_MODELS, filterModels})
-
-export const setTest = (test) => ({type: "SET_TEST", test})
 
 export const setSelectedModelsAC = (selectedModel) => ({type: SET_SELECTED_MODEL, selectedModel})
 export const setDriveUnitsAC = (driveUnits) => ({type: SET_DRIVE_UNITS, driveUnits})

@@ -11,11 +11,20 @@ const CarsList = () => {
 
   return (
     <div className={style.carList}>
-      <div className={style.cars}>
-        {carsData.map(car=>(
-          <CarCards key={car.id} carData={car} />
-        ))}
-      </div>
+      {
+        carsData.length === 0 ?
+          <div className={style.error}>
+            <div className={style.errorText}>Извините, но по вашим критериям ничего не нашлось...</div>
+          </div>
+          :
+          <div className={style.cars}>
+            {
+              carsData.map(car=>(
+                <CarCards key={car.id} carData={car} />
+              ))}
+          </div>
+      }
+
     </div>
 
   )

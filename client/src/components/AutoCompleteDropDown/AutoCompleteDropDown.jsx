@@ -1,20 +1,25 @@
 import {useEffect, useRef, useState} from 'react';
 import style from './AutoCompleteDropDown.module.css'
 import {useDispatch} from 'react-redux';
-import InputSpinner from '../InputSpinner/InputSpinner';
 
 const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, setChosen, chosen}) => {
 
   const [display, setDisplay] = useState(false);
   const [options, setOptions] = useState([]);
-  const [search, setSearch] = useState(chosen ? chosen.name : '');
+  const [search, setSearch] = useState( '');
   const wrapperRef = useRef(null);
 
 
   const dispatch = useDispatch()
   useEffect(() => {
     setOptions(optionsData)
-  }, []);
+  }, [optionsData]);
+
+  useEffect(() => {
+    if (chosen === '') {
+      updateInput('')
+    }
+  }, [chosen])
 
   useEffect(() => {
     window.addEventListener("mousedown", handleClickOutside);
@@ -61,7 +66,10 @@ const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, s
               <div className={style.name}>Добавить</div>
             </div> :
             <div
-              onClick={() => updateInput('')}
+              onClick={() => {
+                dispatch(setChosen(''))
+                updateInput('')
+              }}
               key={'all'}
               tabIndex="0"
               className={style.contentAdd}

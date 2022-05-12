@@ -5,7 +5,7 @@ import Filter from './Filter/Filter';
 import ShowSetting from './ShowSetting/ShowSetting';
 import {
   fetchBodyTypes,
-  fetchBrands, fetchCars, fetchColors,
+  fetchBrands, fetchCars,
   fetchDriveUnits,
   fetchModels,
   fetchSteeringWheels,
@@ -16,15 +16,20 @@ import CarsList from './CarsList/CarsList';
 import {
   setBodyTypesAC,
   setBrandsAC,
-  setDriveUnitsAC, setFilterModels,
+  setDriveUnitsAC,
+  setFilterModels,
   setModelsAC,
-  setSteeringWheelsAC, setTest,
+  setSelectedBodyTypeAC,
+  setSelectedBrandAC,
+  setSelectedDriveUnitAC,
+  setSelectedModelsAC,
+  setSelectedTransmissionAC,
+  setSteeringWheelsAC,
   setTransmissionsAC
 } from '../../redux/carSpecReducer';
 import {useDispatch, useSelector} from 'react-redux';
 import {setCarsAC, setCurrentPageAC, setTotalCountAC} from '../../redux/carsReducer';
 import Pages from './CarsList/Pages/Pages';
-import InputSpinner from '../../components/InputSpinner/InputSpinner';
 
 const Catalog = () => {
 
@@ -37,9 +42,9 @@ const Catalog = () => {
   const selectedBrand = useSelector(state => state.specifications.selectedBrand)
   const selectedBodyType = useSelector(state => state.specifications.selectedBodyType)
   const selectedModel = useSelector(state => state.specifications.selectedModel)
-  const selectedColor = useSelector(state => state.specifications.selectedColor)
   const selectedDriveUnit = useSelector(state => state.specifications.selectedDriveUnit)
   const selectedSteeringWheel = useSelector(state => state.specifications.selectedSteeringWheel)
+  const selectedTransmission = useSelector(state => state.specifications.selectedTransmission)
 
 
   useEffect(() => {
@@ -67,10 +72,10 @@ const Catalog = () => {
   }, [currentPage])
 
   useEffect(() => {
-    setLoading(true)
     fetchModels(selectedBrand.id).then(data => {
       dispatch(setFilterModels(data))
-    }).finally(() => setLoading(false))
+      dispatch(setSelectedModelsAC(''))
+    })
   }, [selectedBrand])
 
   if (loading) {
@@ -79,11 +84,25 @@ const Catalog = () => {
 
   const onSearchClick = () => {
     setCurrentPageAC(1)
-    fetchCars(currentPage, limit, selectedBodyType.id, selectedBrand.id, selectedModel.id, selectedColor.id, selectedDriveUnit.id,selectedSteeringWheel.id ).then(data => {
+    fetchCars(currentPage, limit, selectedBrand.id, selectedModel.id, selectedBodyType.id, selectedDriveUnit.id,  selectedTransmission.id, selectedSteeringWheel.id,).then(data => {
       dispatch(setTotalCountAC(data.count))
       dispatch(setCarsAC(data.rows))
-      console.log(data)
     })
+  }
+
+  const onClearClick = () => {
+    setCurrentPageAC(1)
+    fetchCars(currentPage, limit).then(data => {
+      dispatch(setTotalCountAC(data.count))
+      dispatch(setCarsAC(data.rows))
+    })
+    dispatch(setSelectedBrandAC(''))
+    dispatch(setSelectedModelsAC(''))
+    dispatch(setSelectedBodyTypeAC(''))
+    dispatch(setSelectedDriveUnitAC(''))
+    dispatch(setSelectedTransmissionAC(''))
+    dispatch(setSelectedDriveUnitAC(''))
+
   }
 
 
@@ -93,7 +112,7 @@ const Catalog = () => {
       <Filter/>
       <div>
         <button className={style.searchButton} onClick={onSearchClick}>Искать</button>
-        <button className={style.clearButton}>Сбросить</button>
+        <button className={style.clearButton} onClick={onClearClick}>Сбросить</button>
       </div>
       <ShowSetting/>
       <CarsList/>

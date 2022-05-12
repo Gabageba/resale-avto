@@ -74,24 +74,12 @@ export const fetchTransmission = async () => {
   return data
 }
 
-export const fetchCars = async (page,
-                                limit,
-                                bodyTypeId,
-                                brandId,
-                                modelId,
-                                colorId,
-                                driveUnitId,
-                                steeringWheelId
-                                ) => {
-const {data} = await $host.get('api/car', {params: {
-    bodyTypeId,
-    brandId,
-    modelId,
-    colorId,
-    driveUnitId,
-    steeringWheelId,
-    page,
-    limit
-  }})
+export const fetchCars = async (page, limit, brandId, modelId, bodyTypeId, driveUnitId, transmissionId, steeringWheelId
+) => {
+  const {data} = await $host.get('api/car', {
+    params: {
+      brandId, modelId, bodyTypeId, driveUnitId, transmissionId, steeringWheelId, limit, page
+    }
+  })
   return data
 }
