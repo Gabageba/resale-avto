@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
 import style from './AutoCompleteDropDown.module.css'
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, setChosen, chosen}) => {
 
@@ -9,8 +9,11 @@ const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, s
   const [search, setSearch] = useState( '');
   const wrapperRef = useRef(null);
 
+  const specErrorSearch = useSelector(state => state.specifications.specErrorSearch)
+
 
   const dispatch = useDispatch()
+
   useEffect(() => {
     setOptions(optionsData)
   }, [optionsData]);
@@ -20,6 +23,8 @@ const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, s
       updateInput('')
     }
   }, [chosen])
+
+
 
   useEffect(() => {
     window.addEventListener("mousedown", handleClickOutside);
@@ -44,7 +49,7 @@ const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, s
   return (
     <div ref={wrapperRef} className={style.dropDown}>
       <input
-        className={style.selector}
+        className={specErrorSearch && chosen === '' ? style.selectorError : style.selector }
         onClick={() => setDisplay(!display)}
         placeholder={dropDownName}
         value={search}

@@ -17,11 +17,11 @@ import {
   setColorsAC,
   setDriveUnitsAC,
   setModelsAC, setSelectedBodyTypeAC, setSelectedBrandAC, setSelectedColorAC,
-  setSelectedDescriptionAC, setSelectedDriveUnitAC,
+  setSelectedDescriptionAC, setSelectedDriveUnitAC, setSelectedFileAC,
   setSelectedMillageAC, setSelectedModelsAC, setSelectedOwnersAC,
   setSelectedPowerAC,
   setSelectedPriceAC, setSelectedSteeringWheelAC, setSelectedTransmissionAC,
-  setSelectedYearAC,
+  setSelectedYearAC, setSpecErrorSearch,
   setSteeringWheelsAC,
   setTransmissionsAC
 } from '../../redux/carSpecReducer';
@@ -35,11 +35,13 @@ const AddCar = () => {
   const [loading, setLoading] = useState(true)
   const [addSpecActive, setAddSpecActive] = useState(false)
   const [chosenSpec, setChosenSpec] = useState('')
+  const specErrorSearch = useSelector(state => state.specifications.specErrorSearch)
 
   const choseSpecAdd = (name) => {
     setChosenSpec(name)
     setAddSpecActive(true)
   }
+
 
   const brands = useSelector(state => state.specifications.brands)
   const models = useSelector(state => state.specifications.models)
@@ -80,48 +82,51 @@ const AddCar = () => {
     return <Spinner/>
   }
 
-  // const test = () => {
-  //   console.log({
-  //     selectedPrice,
-  //     selectedYear,
-  //     selectedMillage,
-  //     selectedPower,
-  //     selectedOwners,
-  //     selectedFile,
-  //     selectedBrand,
-  //     selectedTransmission,
-  //     selectedModel,
-  //     selectedSteeringWheel,
-  //     selectedColor,
-  //     selectedDriveUnit,
-  //     selectedBodyType,
-  //     selectedDescription
-  //
-  //   })
-  // }
+  const addCar = () => {
 
+    if (selectedPrice && selectedYear && selectedMillage && selectedPower && selectedOwners && selectedFile && selectedBrand && selectedTransmission &&
+      selectedModel && selectedSteeringWheel && selectedColor && selectedDriveUnit && selectedBodyType && selectedDescription) {
+      console.log('все заполнено')
+      const formData = new FormData()
+      formData.append('price', `${selectedPrice}`)
+      formData.append('year', `${selectedYear}`)
+      formData.append('millage', `${selectedMillage}`)
+      formData.append('power', `${selectedPower}`)
+      formData.append('owners', `${selectedOwners}`)
+      formData.append('img', selectedFile)
+      formData.append('brandId', selectedBrand)
+      formData.append('transmissionId', selectedTransmission)
+      formData.append('modelId', selectedModel)
+      formData.append('steeringWheelId', selectedSteeringWheel)
+      formData.append('colorId', selectedColor)
+      formData.append('driveUnitId', selectedDriveUnit)
+      formData.append('bodyTypeId', selectedBodyType)
+      formData.append('description', selectedDescription)
+      createCar(formData).then(data => {
+        console.log(data)
+      })
+      clear()
+    } else {
+      dispatch(setSpecErrorSearch(true))
+    }
+  }
 
-
-  const addCar =  () => {
-    const formData = new FormData()
-    formData.append('price', `${selectedPrice}`)
-    formData.append('year', `${selectedYear}`)
-    formData.append('millage', `${selectedMillage}`)
-    formData.append('power', `${selectedPower}`)
-    formData.append('owners', `${selectedOwners}`)
-    formData.append('img', selectedFile)
-    formData.append('brandId', selectedBrand)
-    formData.append('transmissionId', selectedTransmission)
-    formData.append('modelId', selectedModel)
-    formData.append('steeringWheelId', selectedSteeringWheel)
-    formData.append('colorId', selectedColor)
-    formData.append('driveUnitId', selectedDriveUnit)
-    formData.append('bodyTypeId', selectedBodyType)
-    formData.append('description', selectedDescription)
-
-    createCar(formData).then(data => {
-      console.log(data)
-    })
+  const clear = () => {
+    dispatch(setSelectedBrandAC(''))
+    dispatch(setSelectedModelsAC(''))
+    dispatch(setSelectedPriceAC(''))
+    dispatch(setSelectedYearAC(''))
+    dispatch(setSelectedMillageAC(''))
+    dispatch(setSelectedPowerAC(''))
+    dispatch(setSelectedOwnersAC(''))
+    dispatch(setSelectedFileAC(''))
+    dispatch(setSelectedTransmissionAC(''))
+    dispatch(setSelectedColorAC(''))
+    dispatch(setSelectedDriveUnitAC(''))
+    dispatch(setSelectedBodyTypeAC(''))
+    dispatch(setSelectedDescriptionAC(''))
+    dispatch(setSelectedSteeringWheelAC(''))
+    dispatch(setSpecErrorSearch(false))
   }
 
   return (
@@ -129,30 +134,56 @@ const AddCar = () => {
       <AddSpecificationModal active={addSpecActive} setActive={setAddSpecActive} chosenSpec={chosenSpec}/>
       <h1>Добавить автомобиль</h1>
       <div className={style.filter}>
-        <AutoCompleteDropDown optionsData={brands} dropDownName={'Марка'} isAdd={true} setChosen={setSelectedBrandAC} choseSpecAdd={choseSpecAdd}/>
-        <AutoCompleteDropDown optionsData={models} dropDownName={'Модель'} isAdd={true} setChosen={setSelectedModelsAC} choseSpecAdd={choseSpecAdd}/>
-        <AutoCompleteDropDown optionsData={bodyTypes} dropDownName={'Тип кузова'} isAdd={true} setChosen={setSelectedBodyTypeAC} choseSpecAdd={choseSpecAdd}/>
-        <AutoCompleteDropDown optionsData={driveUnits} dropDownName={'Привод'} isAdd={true} setChosen={setSelectedDriveUnitAC} choseSpecAdd={choseSpecAdd}/>
-        <AutoCompleteDropDown optionsData={transmissions} dropDownName={'КПП'} isAdd={true} setChosen={setSelectedTransmissionAC} choseSpecAdd={choseSpecAdd}/>
-        <AutoCompleteDropDown optionsData={steeringWheels} dropDownName={'Руль'} isAdd={true} setChosen={setSelectedSteeringWheelAC} choseSpecAdd={choseSpecAdd}/>
-        <AutoCompleteDropDown optionsData={colors} dropDownName={'Цвет'} isAdd={true} setChosen={setSelectedColorAC} choseSpecAdd={choseSpecAdd}/>
-        <input type="number" placeholder="Год выпуска" className={style.textInput}
+        <AutoCompleteDropDown optionsData={brands} dropDownName={'Марка'} isAdd={true} setChosen={setSelectedBrandAC}
+                              choseSpecAdd={choseSpecAdd} chosen={selectedBrand}/>
+        <AutoCompleteDropDown optionsData={models} dropDownName={'Модель'} isAdd={true} setChosen={setSelectedModelsAC}
+                              choseSpecAdd={choseSpecAdd} chosen={selectedModel}/>
+        <AutoCompleteDropDown optionsData={bodyTypes} dropDownName={'Тип кузова'} isAdd={true}
+                              setChosen={setSelectedBodyTypeAC} choseSpecAdd={choseSpecAdd} chosen={selectedBodyType}/>
+        <AutoCompleteDropDown optionsData={driveUnits} dropDownName={'Привод'} isAdd={true}
+                              setChosen={setSelectedDriveUnitAC} choseSpecAdd={choseSpecAdd}
+                              chosen={selectedDriveUnit}/>
+        <AutoCompleteDropDown optionsData={transmissions} dropDownName={'КПП'} isAdd={true}
+                              setChosen={setSelectedTransmissionAC} choseSpecAdd={choseSpecAdd}
+                              chosen={selectedTransmission}/>
+        <AutoCompleteDropDown optionsData={steeringWheels} dropDownName={'Руль'} isAdd={true}
+                              setChosen={setSelectedSteeringWheelAC} choseSpecAdd={choseSpecAdd}
+                              chosen={selectedSteeringWheel}/>
+        <AutoCompleteDropDown optionsData={colors} dropDownName={'Цвет'} isAdd={true} setChosen={setSelectedColorAC}
+                              choseSpecAdd={choseSpecAdd} chosen={selectedColor}/>
+
+        <input type="number" placeholder="Год выпуска"
+               className={specErrorSearch && selectedYear === '' ? style.textInputError : style.textInput}
+               value={selectedYear}
                onChange={e => dispatch(setSelectedYearAC(e.target.value))}/>
-        <input type="number" placeholder="Пробег" className={style.textInput}
+        <input type="number" placeholder="Пробег"
+               className={specErrorSearch && selectedYear === '' ? style.textInputError : style.textInput}
+               value={selectedMillage}
                onChange={e => dispatch(setSelectedMillageAC(e.target.value))}/>
-        <input type="number" placeholder="Мощность" className={style.textInput}
+        <input type="number" placeholder="Мощность"
+               className={specErrorSearch && selectedYear === '' ? style.textInputError : style.textInput}
+               value={selectedPower}
                onChange={e => dispatch(setSelectedPowerAC(e.target.value))}/>
-        <input type="number" placeholder="Цена" className={style.textInput}
+        <input type="number" placeholder="Цена"
+               className={specErrorSearch && selectedYear === '' ? style.textInputError : style.textInput}
+               value={selectedPrice}
                onChange={e => dispatch(setSelectedPriceAC(e.target.value))}/>
-        <input type="number" placeholder="Владельцев" className={style.textInput}
+        <input type="number" placeholder="Владельцев"
+               className={specErrorSearch && selectedYear === '' ? style.textInputError : style.textInput}
+               value={selectedOwners}
                onChange={e => dispatch(setSelectedOwnersAC(e.target.value))}/>
       </div>
       <div className={style.spec}>
-         <textarea placeholder="Описание" className={style.descriptionInput}
+         <textarea placeholder="Описание" className={specErrorSearch && selectedYear === '' ? style.descriptionInputError : style.descriptionInput}
+                   value={selectedDescription}
                    onChange={e => dispatch(setSelectedDescriptionAC(e.target.value))}/>
         <FileLoadInput classname={style.fileInput}/>
       </div>
-      <button className={style.addButton} onClick={addCar}>Добавить</button>
+      <div>
+        <button className={style.addButton} onClick={addCar}>Добавить</button>
+        <button className={style.clearButton} onClick={clear}>Сбросить</button>
+      </div>
+
     </div>
   )
 

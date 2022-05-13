@@ -1,5 +1,6 @@
 .showSetting {
   margin-top: 59px;
+  display: flex;
 }
 
 .showSetting button {
@@ -24,5 +25,14 @@
 .view {
   width: 189px;
   height: 46px;
+}
+
+.edit {
+  margin-left: 580px;
+}
+
+.edit :hover {
+  stroke: #c3073f;
+  cursor: pointer;
 }
 

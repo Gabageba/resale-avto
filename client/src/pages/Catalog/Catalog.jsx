@@ -91,7 +91,7 @@ const Catalog = () => {
   }
 
   const onClearClick = () => {
-    setCurrentPageAC(1)
+    dispatch(setCurrentPageAC(1))
     fetchCars(currentPage, limit).then(data => {
       dispatch(setTotalCountAC(data.count))
       dispatch(setCarsAC(data.rows))
@@ -115,7 +115,7 @@ const Catalog = () => {
         <button className={style.clearButton} onClick={onClearClick}>Сбросить</button>
       </div>
       <ShowSetting/>
-      <CarsList/>
+      <CarsList />
       <Pages/>
       <Footer/>
     </div>

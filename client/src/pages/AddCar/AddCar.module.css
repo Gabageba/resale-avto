@@ -29,6 +29,13 @@
   border: 2px solid #494949;
 }
 
+.textInputError {
+  width: 344px;
+  margin-bottom: 0;
+  border: 2px solid #950740;
+}
+
+
 .fileInput {
   grid-column-start: 1;
   grid-column-end: 4;
@@ -37,6 +44,19 @@
 .descriptionInput {
   margin-bottom: 0;
   border: 2px solid #494949;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 6;
+  grid-row-end: 8;
+  height: 117px;
+  text-align: start;
+  margin-right: 40px;
+  width: 728px;
+}
+
+.descriptionInputError {
+  margin-bottom: 0;
+  border: 2px solid #950740;
   grid-column-start: 1;
   grid-column-end: 4;
   grid-row-start: 6;
@@ -58,4 +78,14 @@
 .spec {
   display: flex;
   margin-top: 25px;
+}
+
+.clearButton {
+  width: 172px;
+  height: 46px;
+  margin-left: 40px;
+  margin-top: 25px;
+  cursor: pointer;
+  color: #494949;
+  border: 2px solid #494949;
 }

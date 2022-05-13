@@ -83,3 +83,10 @@ export const fetchCars = async (page, limit, brandId, modelId, bodyTypeId, drive
   })
   return data
 }
+
+export const deleteCar = async (page, limit, id) => {
+  const {data} = await $authHost.delete('api/car', {
+    params: { page, limit, id}
+  })
+  return data
+}

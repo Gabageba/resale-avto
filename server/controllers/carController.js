@@ -1,6 +1,6 @@
 const uuid = require('uuid')
 const path = require('path')
-const {static} = require("express");
+const {static} = require('express');
 const {Car} = require('../models/models')
 const ApiError = require('../error/ApiError')
 
@@ -50,7 +50,7 @@ class CarController {
   }
 
   async getAll(req, res) {
-    let {brandId, modelId,bodyTypeId, driveUnitId, transmissionId, steeringWheelId, limit, page} = req.query
+    let {brandId, modelId, bodyTypeId, driveUnitId, transmissionId, steeringWheelId, limit, page} = req.query
     let findFilter
 
     if (brandId) {
@@ -80,9 +80,8 @@ class CarController {
     let cars
     if (findFilter === {}) {
       cars = await Car.findAndCountAll({limit, offset})
-    }
-    else {
-      cars = await Car.findAndCountAll({where:findFilter, limit, offset})
+    } else {
+      cars = await Car.findAndCountAll({where: findFilter, limit, offset})
     }
 
     return res.json(cars)
@@ -90,12 +89,22 @@ class CarController {
 
   async getOne(req, res) {
     const {id} = req.params
-    const car = await Car.findOne(
-      {
-        where: {id}
-      }
+    const car = await Car.findOne({where: {id}}
     )
     return res.json(car)
+  }
+
+  async delete(req, res) {
+    let {id, limit, page} = req.query
+
+    page = page || 1
+    limit = limit || 9
+    let offset = page * limit - limit
+
+    await Car.destroy({where: {id}})
+
+    const cars = await Car.findAndCountAll({limit, offset})
+    return res.json(cars)
   }
 }
 

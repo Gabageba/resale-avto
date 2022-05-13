@@ -7,6 +7,16 @@
   text-transform: capitalize;
 }
 
+.selectorError {
+  width: 344px;
+  /*margin-right: 40px;*/
+  margin-right: 0;
+  border: 2px solid #950740;
+  margin-bottom: 0;
+  text-transform: capitalize;
+}
+
+
 .content {
   padding-left: 17px;
   font-family: 'Montserrat', sans-serif;

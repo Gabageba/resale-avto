@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Profile.module.css'
 import userPhoto from '../../../assets/user.png'
 import {NavLink, useNavigate} from 'react-router-dom'
-import {ADD_CAR_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE} from '../../../utils/const';
+import {ADD_CAR_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, PROFILE_ROUTE} from '../../../utils/const';
 import {useDispatch, useSelector} from 'react-redux';
 import {setIsAuthAC, setUserAC} from '../../../redux/userReducer';
 
@@ -16,6 +16,7 @@ const Profile = () => {
     dispatch(setUserAC({}))
     dispatch(setIsAuthAC(false))
     localStorage.removeItem('token')
+    navigate(MAIN_ROUTE)
   }
 
 

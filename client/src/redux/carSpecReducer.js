@@ -7,6 +7,7 @@ const SET_STEERING_WHEELS = 'SET_STEERING_WHEELS'
 const SET_TRANSMISSIONS = 'SET_TRANSMISSIONS'
 
 const SET_FILTER_MODELS = 'SET_FILTER_MODEL'
+const SET_SPEC_ERROR_SEARCH = 'SET_SPEC_MODEL_SEARCH'
 
 const SET_SELECTED_BODY_TYPE = 'SET_SELECTED_BODY_TYPE'
 const SET_SELECTED_BRAND = 'SET_SELECTED_BRAND'
@@ -57,6 +58,8 @@ let initialState = {
   selectedOwners: '',
   selectedFile: '',
   selectedDescription: '',
+
+  specErrorSearch: false
 }
 
 const carsReducer = (state = initialState, action) => {
@@ -106,6 +109,8 @@ const carsReducer = (state = initialState, action) => {
       return {...state, selectedFile: action.selectedFile}
     case SET_SELECTED_DESCRIPTION:
       return {...state, selectedDescription: action.selectedDescription}
+    case SET_SPEC_ERROR_SEARCH:
+      return {...state, specErrorSearch: action.bool}
     default:
       return state
   }
@@ -134,6 +139,7 @@ export const setSelectedPriceAC = (selectedPrice) => ({type: SET_SELECTED_PRICE,
 export const setSelectedOwnersAC = (selectedOwners) => ({type: SET_SELECTED_OWNERS, selectedOwners})
 export const setSelectedFileAC = (selectedFile) => ({type: SET_SELECTED_FILE, selectedFile})
 export const setSelectedDescriptionAC = (selectedDescription) => ({type: SET_SELECTED_DESCRIPTION, selectedDescription})
+export const setSpecErrorSearch = (bool) => ({type: SET_SPEC_ERROR_SEARCH, bool})
 
 
 export default carsReducer

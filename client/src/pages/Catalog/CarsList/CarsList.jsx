@@ -20,7 +20,7 @@ const CarsList = () => {
           <div className={style.cars}>
             {
               carsData.map(car=>(
-                <CarCards key={car.id} carData={car} />
+                <CarCards key={car.id} carData={car}/>
               ))}
           </div>
       }
