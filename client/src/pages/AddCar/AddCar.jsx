@@ -15,8 +15,8 @@ import {
   setBodyTypesAC,
   setBrandsAC,
   setColorsAC,
-  setDriveUnitsAC,
-  setModelsAC, setSelectedBodyTypeAC, setSelectedBrandAC, setSelectedColorAC,
+  setDriveUnitsAC, setFilterModels,
+  setSelectedBodyTypeAC, setSelectedBrandAC, setSelectedColorAC,
   setSelectedDescriptionAC, setSelectedDriveUnitAC, setSelectedFileAC,
   setSelectedMillageAC, setSelectedModelsAC, setSelectedOwnersAC,
   setSelectedPowerAC,
@@ -44,7 +44,7 @@ const AddCar = () => {
 
 
   const brands = useSelector(state => state.specifications.brands)
-  const models = useSelector(state => state.specifications.models)
+  const filterModels = useSelector(state => state.specifications.filterModels)
   const driveUnits = useSelector(state => state.specifications.driveUnits)
   const transmissions = useSelector(state => state.specifications.transmissions)
   const colors = useSelector(state => state.specifications.colors)
@@ -69,7 +69,7 @@ const AddCar = () => {
 
   useEffect(() => {
     fetchBrands().then(data => dispatch(setBrandsAC(data)))
-    fetchModels().then(data => dispatch(setModelsAC(data)))
+    fetchModels().then(data => dispatch(setFilterModels(data)))
     fetchDriveUnits().then(data => dispatch(setDriveUnitsAC(data)))
     fetchTransmission().then(data => dispatch(setTransmissionsAC(data)))
     fetchColors().then(data => dispatch(setColorsAC(data)))
@@ -77,6 +77,13 @@ const AddCar = () => {
     fetchBodyTypes().then(data => dispatch(setBodyTypesAC(data)))
       .finally(() => setLoading(false))
   }, [])
+
+  useEffect(() => {
+    fetchModels(selectedBrand.id).then(data => {
+      dispatch(setFilterModels(data))
+      dispatch(setSelectedModelsAC(''))
+    })
+  }, [selectedBrand])
 
   if (loading) {
     return <Spinner/>
@@ -136,7 +143,7 @@ const AddCar = () => {
       <div className={style.filter}>
         <AutoCompleteDropDown optionsData={brands} dropDownName={'Марка'} isAdd={true} setChosen={setSelectedBrandAC}
                               choseSpecAdd={choseSpecAdd} chosen={selectedBrand}/>
-        <AutoCompleteDropDown optionsData={models} dropDownName={'Модель'} isAdd={true} setChosen={setSelectedModelsAC}
+        <AutoCompleteDropDown optionsData={filterModels} dropDownName={'Модель'} isAdd={true} setChosen={setSelectedModelsAC}
                               choseSpecAdd={choseSpecAdd} chosen={selectedModel}/>
         <AutoCompleteDropDown optionsData={bodyTypes} dropDownName={'Тип кузова'} isAdd={true}
                               setChosen={setSelectedBodyTypeAC} choseSpecAdd={choseSpecAdd} chosen={selectedBodyType}/>
