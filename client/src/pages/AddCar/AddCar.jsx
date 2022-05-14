@@ -157,24 +157,24 @@ const AddCar = () => {
                value={selectedYear}
                onChange={e => dispatch(setSelectedYearAC(e.target.value))}/>
         <input type="number" placeholder="Пробег"
-               className={specErrorSearch && selectedYear === '' ? style.textInputError : style.textInput}
+               className={specErrorSearch && selectedMillage === '' ? style.textInputError : style.textInput}
                value={selectedMillage}
                onChange={e => dispatch(setSelectedMillageAC(e.target.value))}/>
         <input type="number" placeholder="Мощность"
-               className={specErrorSearch && selectedYear === '' ? style.textInputError : style.textInput}
+               className={specErrorSearch && selectedPower === '' ? style.textInputError : style.textInput}
                value={selectedPower}
                onChange={e => dispatch(setSelectedPowerAC(e.target.value))}/>
         <input type="number" placeholder="Цена"
-               className={specErrorSearch && selectedYear === '' ? style.textInputError : style.textInput}
+               className={specErrorSearch && selectedPrice === '' ? style.textInputError : style.textInput}
                value={selectedPrice}
                onChange={e => dispatch(setSelectedPriceAC(e.target.value))}/>
         <input type="number" placeholder="Владельцев"
-               className={specErrorSearch && selectedYear === '' ? style.textInputError : style.textInput}
+               className={specErrorSearch && selectedOwners === '' ? style.textInputError : style.textInput}
                value={selectedOwners}
                onChange={e => dispatch(setSelectedOwnersAC(e.target.value))}/>
       </div>
       <div className={style.spec}>
-         <textarea placeholder="Описание" className={specErrorSearch && selectedYear === '' ? style.descriptionInputError : style.descriptionInput}
+         <textarea placeholder="Описание" className={specErrorSearch && selectedDescription === '' ? style.descriptionInputError : style.descriptionInput}
                    value={selectedDescription}
                    onChange={e => dispatch(setSelectedDescriptionAC(e.target.value))}/>
         <FileLoadInput classname={style.fileInput}/>

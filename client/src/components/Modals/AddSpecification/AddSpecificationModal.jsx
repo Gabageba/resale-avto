@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Modal from '../Modal/Modal';
 import CreateBrand from './CreateBrand';
 import CreateModel from './CreateModel';
@@ -32,8 +32,37 @@ const content = (chosenSpec, setActive) => {
 }
 
 const AddSpecificationModal = ({active, setActive, chosenSpec}) => {
+
+  const [modalName, setModalName] = useState('')
+
+  useEffect(() => {
+    if (chosenSpec === 'Марка') {
+      setModalName('Добавить марку')
+    }
+    if (chosenSpec === 'Модель') {
+      setModalName('Добавить модель')
+    }
+    if (chosenSpec === 'Тип кузова') {
+      setModalName('Добавить тип кузова')
+    }
+    if (chosenSpec === 'Привод') {
+      setModalName('Добавить привод')
+    }
+    if (chosenSpec === 'Цвет') {
+      setModalName('Добавить цвет')
+    }
+    if (chosenSpec === 'Руль') {
+      setModalName('Добавить расположение руля')
+    }
+    if (chosenSpec === 'КПП') {
+      setModalName('Добавить трансмиссию')
+    }
+  }, [chosenSpec])
+
+
+
   return (
-    <Modal active={active} setActive={setActive} size={'small'}>
+    <Modal active={active} setActive={setActive} size={'small'} modalName={modalName}>
       <div>
         {content(chosenSpec ,setActive)}
       </div>

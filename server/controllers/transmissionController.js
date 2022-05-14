@@ -3,15 +3,20 @@ const {Transmission} = require('../models/models');
 
 
 class TransmissionController {
-  async create(req, res) {
-    const {name} = req.body
-    const transmission = await Transmission.create({name})
-    return res.json(transmission)
+  async create(req, res, next) {
+    try {
+      const {name} = req.body
+      await Transmission.create({name})
+      const transmissions = await Transmission.findAll()
+      return res.json(transmissions)
+    } catch (e) {
+      next(ApiError.badRequest(e.message))
+    }
   }
 
   async getAll(req, res) {
-    const transmission = await Transmission.findAll()
-    return res.json(transmission)
+    const transmissions = await Transmission.findAll()
+    return res.json(transmissions)
   }
 }
 

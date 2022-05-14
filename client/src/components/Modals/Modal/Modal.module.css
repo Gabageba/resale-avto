@@ -11,6 +11,29 @@
   opacity: 0;
   pointer-events: none;
   transition: 0.5s;
+  z-index: 30;
+}
+
+.header {
+  /*text-transform: uppercase;*/
+  font-size: 20px;
+  width: 436px;
+}
+
+.head {
+  margin-bottom: 40px;
+  padding: 10px 10px 10px 20px;
+  background-color: #c3073f;
+  display: flex;
+  position: relative
+}
+
+.close {
+  float: right;
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+
 }
 
 .modalActive {
@@ -26,6 +49,7 @@
   transition: 0.5s;
   opacity: 1;
   pointer-events: all;
+  z-index: 30;
 }
 
 
@@ -50,20 +74,21 @@
 }
 
 .smallModalContent {
-  padding: 20px;
+  /*padding: 20px;*/
   background-color: #1a1a1d;
   transform: scale(0.5);
   transition: 0.4s all;
-  width: 345px;
+  width: 500px;
   border: 2px solid #C3073F;
 
 }
 
 .smallModalContentActive {
-  padding: 20px;
+  /*padding: 20px;*/
   background-color: #1a1a1d;
-  width: 345px;
+  width: 500px;
   transform: scale(1);
   transition: 0.4s all;
   border: 2px solid #C3073F;
 }
+

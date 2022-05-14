@@ -3,15 +3,20 @@ const ApiError = require('../error/ApiError')
 
 
 class ColorController {
-  async create(req, res) {
-    const {name} = req.body
-    const color = await Color.create({name})
-    return res.json(color)
+  async create(req, res, next) {
+    try {
+      const {name} = req.body
+      await Color.create({name})
+      const colors = await Color.findAll()
+      return res.json(colors)
+    } catch (e) {
+      next(ApiError.badRequest(e.message))
+    }
   }
 
   async getAll(req, res) {
-    const bodyType = await Color.findAll()
-    return res.json(bodyType)
+    const colors = await Color.findAll()
+    return res.json(colors)
   }
 }
 

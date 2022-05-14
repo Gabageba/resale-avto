@@ -1,12 +1,14 @@
-.header {
-  text-transform: uppercase;
-  margin-bottom: 25px;
-}
 
 .addInput {
   width: 344px;
   margin-bottom: 25px;
   border: 2px solid #494949;
+}
+
+.addInputError {
+  width: 344px;
+  margin-bottom: 25px;
+  border: 2px solid #950740;
 }
 
 .addModelInput {
@@ -16,11 +18,30 @@
   border: 2px solid #494949;
 }
 
+.addModelInputError {
+  width: 344px;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  border: 2px solid #950740;
+}
+
 .addButton {
   height: 40px;
   width: 200px;
   font-family: akzidenzLightEx, serif;
   font-size: 15px;
   cursor: pointer;
-  margin-left: 70px;
+  margin-bottom: 40px;
+}
+
+.info {
+  text-align: center;
+}
+
+.infoDropDown{
+  margin-left: 78px;
+}
+
+.addButton:hover {
+  box-shadow:0 0 10px #c3073f;
 }

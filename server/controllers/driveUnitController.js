@@ -3,15 +3,20 @@ const ApiError = require('../error/ApiError')
 
 
 class DriveUnitController {
-  async create(req, res) {
-    const {name} = req.body
-    const driveUnit = await DriveUnit.create({name})
-    return res.json(driveUnit)
+  async create(req, res, next) {
+    try {
+      const {name} = req.body
+      await DriveUnit.create({name})
+      const driveUnits = await DriveUnit.findAll()
+      return res.json(driveUnits)
+    } catch (e) {
+      next(ApiError.badRequest(e.message))
+    }
   }
 
   async getAll(req, res) {
-    const driveUnit = await DriveUnit.findAll()
-    return res.json(driveUnit)
+    const driveUnits = await DriveUnit.findAll()
+    return res.json(driveUnits)
   }
 }
 

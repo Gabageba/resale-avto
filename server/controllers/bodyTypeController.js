@@ -3,15 +3,20 @@ const ApiError = require('../error/ApiError')
 
 
 class BodyTypeController {
-  async create(req, res) {
-    const {name} = req.body
-    const bodyType = await BodyType.create({name})
-    return res.json(bodyType)
+  async create(req, res, next) {
+    try {
+      const {name} = req.body
+      await BodyType.create({name})
+      const bodyTypes = await BodyType.findAll()
+      return res.json(bodyTypes)
+    } catch (e) {
+      next(ApiError.badRequest(e.message))
+    }
   }
 
   async getAll(req, res) {
-    const bodyType = await BodyType.findAll()
-    return res.json(bodyType)
+    const bodyTypes = await BodyType.findAll()
+    return res.json(bodyTypes)
   }
 }
 

@@ -3,15 +3,20 @@ const ApiError = require('../error/ApiError')
 
 
 class SteeringWheelController {
-  async create(req, res) {
-    const {name} = req.body
-    const steeringWheel = await SteeringWheel.create({name})
-    return res.json(steeringWheel)
+  async create(req, res, next) {
+    try {
+      const {name} = req.body
+      await SteeringWheel.create({name})
+      const steeringWheels = await SteeringWheel.findAll()
+      return res.json(steeringWheels)
+    } catch (e) {
+      next(ApiError.badRequest(e.message))
+    }
   }
 
   async getAll(req, res) {
-    const bodyType = await SteeringWheel.findAll()
-    return res.json(bodyType)
+    const steeringWheels = await SteeringWheel.findAll()
+    return res.json(steeringWheels)
   }
 }
 
