@@ -1,17 +1,51 @@
 import React, {useEffect, useState} from 'react';
-import {setSelectedFileAC} from '../../redux/carSpecReducer';
+import "react-image-crop/dist/ReactCrop.css";
+import style from './FileLoadInput.module.css';
+import CropModal from '../Modals/CropModal/CropModal';
 import {useDispatch, useSelector} from 'react-redux';
-import style from './FileLoadInput.module.css'
+import {setSelectedFileAC} from '../../redux/carSpecReducer';
 
 const FileLoadInput = () => {
+
+  const [src, selectFile] = useState(null);
   const [isLoad, setIsLoad] = useState(false)
   const [loadFile, setLoadFile] = useState('')
-  const dispatch = useDispatch()
-
+  const [image, setImage] = useState(null);
+  const [crop, setCrop] = useState({ aspect: 170 / 111 });
+  const [modalActive, setModalActive] = useState(false)
 
   const selectedFile = useSelector(state => state.specifications.selectedFile)
-
   const specErrorSearch = useSelector(state => state.specifications.specErrorSearch)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (selectedFile === '') {
+      setIsLoad(false)
+      setLoadFile('')
+    }
+  }, [selectedFile])
+
+  const handleFileChange = (e) => {
+    setIsLoad(false)
+    dispatch(setSelectedFileAC(''))
+    setLoadFile(e.target.files[0].name)
+    selectFile(URL.createObjectURL(e.target.files[0]));
+    setModalActive(true)
+  };
+
+  const dataURLtoFile = (dataUrl, filename) => {
+
+    let arr = dataUrl.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+
+    while(n--){
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, {type:mime});
+  }
 
   const labelCondition = () => {
     if (isLoad) {
@@ -23,28 +57,49 @@ const FileLoadInput = () => {
     }
   }
 
-  useEffect(() => {
-    if (selectedFile === '') {
-      setIsLoad(false)
-      setLoadFile('')
-    }
-  }, [selectedFile])
+  const getCroppedImg = () => {
+    const canvas = document.createElement("canvas");
+    const scaleX = image.naturalWidth / image.width;
+    const scaleY = image.naturalHeight / image.height;
+    canvas.width = crop.width;
+    canvas.height = crop.height;
+    const ctx = canvas.getContext("2d");
+
+    ctx.drawImage(
+      image,
+      crop.x * scaleX,
+      crop.y * scaleY,
+      crop.width * scaleX,
+      crop.height * scaleY,
+      0,
+      0,
+      crop.width,
+      crop.height
+    );
+
+    const base64Image = canvas.toDataURL("image/jpeg");
+    const fileImage = dataURLtoFile(base64Image)
+    console.log(fileImage)
+
+    dispatch(setSelectedFileAC(fileImage))
+    setIsLoad(true)
+    setModalActive(false)
+  }
 
   return (
-    <div className={style.fileLoadInput}>
-      <div className={style.formGroup}>
-        <label className={labelCondition()}>
-          <i className={"material-icons"} >{isLoad ? 'done' : 'attach_file'}</i>
-          <span className={style.title}>{isLoad ? loadFile : 'Добавить файлы'}</span>
-          <input type="file" onChange={(e) => {
-            dispatch(setSelectedFileAC(e.target.files[0]))
-            setLoadFile(e.target.files[0].name)
-            setIsLoad(true)
-          }}/>
-        </label>
+    <div>
+      <CropModal active={modalActive} setActive={setModalActive} crop={crop} setCrop={setCrop} setImage={setImage} src={src} getCroppedImg={getCroppedImg}/>
+      <div className={style.fileLoadInput}>
+        <div className={style.formGroup}>
+          <label className={labelCondition()}>
+            <i className={"material-icons"} >{isLoad ? 'done' : 'attach_file'}</i>
+            <span className={style.title}>{isLoad ? loadFile : 'Загрузить картинку'}</span>
+            <input type="file" accept="image/" onChange={handleFileChange} />
+          </label>
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default FileLoadInput;

@@ -1,0 +1,20 @@
+.cropWindow {
+  margin-right: 40px;
+  margin-left: 40px;
+  text-align: center;
+}
+
+.addButton {
+  height: 40px;
+  width: 200px;
+  font-family: akzidenzLightEx, serif;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 25px;
+  margin-bottom: 40px;
+  margin-left: 350px;
+}
+
+.addButton:hover {
+  box-shadow:0 0 10px #c3073f;
+}

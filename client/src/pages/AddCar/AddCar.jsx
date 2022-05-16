@@ -66,6 +66,8 @@ const AddCar = () => {
   const selectedDriveUnit = useSelector(state => state.specifications.selectedDriveUnit)
   const selectedBodyType = useSelector(state => state.specifications.selectedBodyType)
 
+  console.log(selectedFile)
+
 
   useEffect(() => {
     fetchBrands().then(data => dispatch(setBrandsAC(data)))
@@ -183,7 +185,7 @@ const AddCar = () => {
          <textarea placeholder="Описание" className={specErrorSearch && selectedDescription === '' ? style.descriptionInputError : style.descriptionInput}
                    value={selectedDescription}
                    onChange={e => dispatch(setSelectedDescriptionAC(e.target.value))}/>
-        <FileLoadInput classname={style.fileInput}/>
+        <FileLoadInput classname={style.fileInput} />
       </div>
       <div>
         <button className={style.addButton} onClick={addCar}>Добавить</button>
