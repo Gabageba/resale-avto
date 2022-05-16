@@ -1,6 +1,5 @@
 const uuid = require('uuid')
 const path = require('path')
-const {static} = require('express');
 const {Car} = require('../models/models')
 const ApiError = require('../error/ApiError')
 

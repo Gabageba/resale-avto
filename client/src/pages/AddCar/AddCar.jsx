@@ -93,7 +93,6 @@ const AddCar = () => {
 
     if (selectedPrice && selectedYear && selectedMillage && selectedPower && selectedOwners && selectedFile && selectedBrand && selectedTransmission &&
       selectedModel && selectedSteeringWheel && selectedColor && selectedDriveUnit && selectedBodyType && selectedDescription) {
-      console.log('все заполнено')
       const formData = new FormData()
       formData.append('price', `${selectedPrice}`)
       formData.append('year', `${selectedYear}`)
@@ -101,18 +100,18 @@ const AddCar = () => {
       formData.append('power', `${selectedPower}`)
       formData.append('owners', `${selectedOwners}`)
       formData.append('img', selectedFile)
-      formData.append('brandId', selectedBrand)
-      formData.append('transmissionId', selectedTransmission)
-      formData.append('modelId', selectedModel)
-      formData.append('steeringWheelId', selectedSteeringWheel)
-      formData.append('colorId', selectedColor)
-      formData.append('driveUnitId', selectedDriveUnit)
-      formData.append('bodyTypeId', selectedBodyType)
-      formData.append('description', selectedDescription)
+      formData.append('brandId', selectedBrand.id)
+      formData.append('transmissionId', selectedTransmission.id)
+      formData.append('modelId', selectedModel.id)
+      formData.append('steeringWheelId', selectedSteeringWheel.id)
+      formData.append('colorId', selectedColor.id)
+      formData.append('driveUnitId', selectedDriveUnit.id)
+      formData.append('bodyTypeId', selectedBodyType.id)
+      formData.append('description', selectedDescription.id)
       createCar(formData).then(data => {
-        console.log(data)
+        clear()
       })
-      clear()
+
     } else {
       dispatch(setSpecErrorSearch(true))
     }

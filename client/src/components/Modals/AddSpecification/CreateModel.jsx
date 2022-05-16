@@ -4,7 +4,6 @@ import {createModel} from '../../../http/carAPI';
 import AutoCompleteDropDown from '../../AutoCompleteDropDown/AutoCompleteDropDown';
 import {useDispatch, useSelector} from 'react-redux';
 import {setModelsAC, setSelectedBrandAC, setSpecAddErrorSearch} from '../../../redux/carSpecReducer';
-import {login} from '../../../http/userAPI';
 
 const CreateModel = ({setActive}) => {
 
@@ -24,9 +23,9 @@ const CreateModel = ({setActive}) => {
         dispatch(setModelsAC(data))
         setActive(false)
         setValue('')
+        setSelectedBrandAC('')
       })
     } else {
-      console.log(selectedBrand)
       dispatch(setSpecAddErrorSearch(true))
     }
   }
