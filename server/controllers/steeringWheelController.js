@@ -18,6 +18,7 @@ class SteeringWheelController {
     const steeringWheels = await SteeringWheel.findAll()
     return res.json(steeringWheels)
   }
+
 }
 
 module.exports = new SteeringWheelController()

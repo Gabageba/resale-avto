@@ -1,6 +1,6 @@
 const uuid = require('uuid')
 const path = require('path')
-const {Car} = require('../models/models')
+const {Car, Image} = require('../models/models')
 const ApiError = require('../error/ApiError')
 
 class CarController {
@@ -38,10 +38,9 @@ class CarController {
         colorId,
         owners,
         description,
-        img: fileName,
-        transmissionId
+        transmissionId,
+        img: fileName
       })
-
       return res.json(car)
     } catch (e) {
       next(ApiError.badRequest(e.message))
@@ -88,8 +87,7 @@ class CarController {
 
   async getOne(req, res) {
     const {id} = req.params
-    const car = await Car.findOne({where: {id}}
-    )
+    const car = await Car.findOne({where: {id}})
     return res.json(car)
   }
 
@@ -100,10 +98,19 @@ class CarController {
     limit = limit || 9
     let offset = page * limit - limit
 
+
+    await Image.destroy({where: {carId: id}})
     await Car.destroy({where: {id}})
 
     const cars = await Car.findAndCountAll({limit, offset})
     return res.json(cars)
+  }
+
+  async getImages(req, res) {
+    let {carId} = req.query
+    // const carImg = await Image.findAll({where: {carId: carId}})
+    console.log(carId)
+    // return res.json(carImg)
   }
 }
 

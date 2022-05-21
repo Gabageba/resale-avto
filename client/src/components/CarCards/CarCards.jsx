@@ -4,6 +4,8 @@ import AdditionalSpec from './AdditionalSpec/AdditionalSpec';
 import {useDispatch, useSelector} from 'react-redux';
 import {setCarsAC, setTotalCountAC} from '../../redux/carsReducer';
 import {deleteCar} from '../../http/carAPI';
+import {useNavigate} from 'react-router-dom';
+import {CAR_PAGE_ROUTE} from '../../utils/const';
 
 const CarCards = ({carData}) => {
 
@@ -13,6 +15,7 @@ const CarCards = ({carData}) => {
   const limit = useSelector(state => state.cars.limit)
   const currentPage = useSelector(state => state.cars.currentPage)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   if (brand === []) {
     brand = [{name: ''}]
@@ -33,7 +36,11 @@ const CarCards = ({carData}) => {
   const fmtPrice =  new Intl.NumberFormat('ru-RU').format(carData.price);
 
   return (
-    <div className={isDel ? style.carCardsDelete :style.carCards} key={carData.id}>
+    <div className={isDel ? style.carCardsDelete :style.carCards} key={carData.id} onClick={() => {
+      if (!isDel) {
+        navigate(CAR_PAGE_ROUTE + '/' + carData.id)
+      }
+    }}>
       {
         isDel ?
           <div className={style.close}>
@@ -46,11 +53,12 @@ const CarCards = ({carData}) => {
           </div>
           : null
       }
+
       <img src={process.env.REACT_APP_API_URL + carData.img} alt={carData.name} className={style.image}/>
       <p className={style.carName}>{`${brand[0].name } ${model[0].name}`}</p>
       <p className={style.year}>{carData.year}</p>
       <div className={style.otherSpec}>
-        <AdditionalSpec nameSpec='Пробег' dataSpec={fmtMillage}/>
+        <AdditionalSpec nameSpec='Пробег' dataSpec={`${fmtMillage} км`}/>
         <AdditionalSpec nameSpec='Владельцев' dataSpec={carData.owners}/>
       </div>
       <p className={style.price}>{fmtPrice} ₽</p>

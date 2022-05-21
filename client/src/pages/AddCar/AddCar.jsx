@@ -66,8 +66,6 @@ const AddCar = () => {
   const selectedDriveUnit = useSelector(state => state.specifications.selectedDriveUnit)
   const selectedBodyType = useSelector(state => state.specifications.selectedBodyType)
 
-  console.log(selectedFile)
-
 
   useEffect(() => {
     fetchBrands().then(data => dispatch(setBrandsAC(data)))
@@ -109,14 +107,14 @@ const AddCar = () => {
       formData.append('colorId', selectedColor.id)
       formData.append('driveUnitId', selectedDriveUnit.id)
       formData.append('bodyTypeId', selectedBodyType.id)
-      formData.append('description', selectedDescription.id)
+      formData.append('description', selectedDescription)
       createCar(formData).then(data => {
         clear()
       })
-
     } else {
       dispatch(setSpecErrorSearch(true))
     }
+
   }
 
   const clear = () => {
@@ -182,7 +180,7 @@ const AddCar = () => {
                onChange={e => dispatch(setSelectedOwnersAC(e.target.value))}/>
       </div>
       <div className={style.spec}>
-         <textarea placeholder="Описание" className={specErrorSearch && selectedDescription === '' ? style.descriptionInputError : style.descriptionInput}
+         <textarea placeholder="Описание" className={specErrorSearch && selectedDescription === '' || selectedDescription.length > 255 ? style.descriptionInputError : style.descriptionInput}
                    value={selectedDescription}
                    onChange={e => dispatch(setSelectedDescriptionAC(e.target.value))}/>
         <FileLoadInput classname={style.fileInput} />

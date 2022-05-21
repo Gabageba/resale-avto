@@ -1,0 +1,92 @@
+
+.carName {
+  margin-top: 230px;
+  font-family: akzidenzMediumEx, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 46px;
+  letter-spacing: 0.035em;
+  text-transform: uppercase
+
+}
+
+.line {
+  width: 560px;
+  height: 0;
+  border-bottom: 2px solid #717171;
+  margin-top: 33px;
+}
+
+.spec {
+  display: flex;
+}
+
+.specHead {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  color: #717171;
+  width: 150px;
+}
+
+.info {
+  font-family: akzidenzRegular, serif;
+  font-weight: 300;
+  font-size: 20px;
+  font-variant: small-caps;
+  color: #FFFFFF;
+  margin-left: 80px;
+}
+
+.carInfo {
+  margin-top: 33px;
+}
+
+
+.specInfo {
+  font-family: akzidenzRegular, serif;
+  font-weight: 300;
+  font-size: 20px;
+  text-transform: capitalize;
+  color: #FFFFFF;
+  margin-left: 80px;
+}
+
+.priceInfo {
+  color: #fff;
+  /* margin-right: 26px; */
+  cursor: default;
+  font-size: 63px;
+}
+
+.ruble {
+  font-size: 60px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+.price {
+  margin-top: 33px;
+}
+
+.descriptionInfo {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 124.4%;
+  letter-spacing: 0.015em;
+  /*font-variant: small-caps;*/
+  margin-top: 8px;
+  margin-left: 5px;
+  color: #FFFFFF;
+}
+
+.description pre {
+  margin:0;
+}
+
+.description {
+  margin-top: 33px;
+}

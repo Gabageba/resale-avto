@@ -31,6 +31,7 @@ class ModelController {
     }
     return res.json(models)
   }
+
 }
 
 module.exports = new ModelController()

@@ -9,6 +9,7 @@ const colorRouter = require('./colorRouter')
 const driveUnitRouter = require('./driveUnitRouter')
 const steeringWheelRouter = require('./steeringWheelRouter')
 const transmissionRouter = require('./transmissionRouter')
+const imagesRouter = require('./imagesRouter')
 
 router.use('/user', userRouter)
 router.use('/brand', brandRouter)
@@ -19,5 +20,6 @@ router.use('/color', colorRouter)
 router.use('/driveUnit', driveUnitRouter)
 router.use('/steeringWheel', steeringWheelRouter)
 router.use('/transmission', transmissionRouter)
+router.use('/images', imagesRouter)
 
 module.exports = router

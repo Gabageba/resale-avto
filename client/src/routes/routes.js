@@ -1,5 +1,5 @@
 import {
-  ADD_CAR_ROUTE,
+  ADD_CAR_ROUTE, CAR_PAGE_ROUTE,
   CATALOG_ROUTE,
   COMMISSION_ROUTE,
   DETAILING_ROUTE,
@@ -16,6 +16,7 @@ import Detailing from "../pages/Detailing/Detailing";
 import Auth from '../pages/Auth/Auth';
 import MyProfile from '../pages/MyProfile/MyProfile';
 import AddCar from '../pages/AddCar/AddCar';
+import CarPage from '../pages/CarPage/CarPage';
 
 export const authRoutes = [
   {
@@ -57,4 +58,8 @@ export const publicRoutes = [
     path: REGISTRATION_ROUTE,
     element: <Auth/>
   },
+  {
+    path: CAR_PAGE_ROUTE + '/:id',
+    element: <CarPage/>
+  }
 ]

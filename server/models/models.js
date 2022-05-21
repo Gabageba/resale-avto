@@ -25,8 +25,8 @@ const Car = sequelize.define('car', {
   millage: {type: DataTypes.INTEGER, allowNull: false},
   power: {type: DataTypes.INTEGER, allowNull: false},
   owners: {type: DataTypes.INTEGER, defaultValue: 0},
-  img: {type: DataTypes.STRING, allowNull: false},
-  description: {type: DataTypes.STRING, defaultValue: 'Нет описания'}
+  description: {type: DataTypes.STRING, defaultValue: 'Нет описания'},
+  img: {type: DataTypes.STRING, allowNull: false}
 })
 
 const Brand = sequelize.define('brand', {
@@ -80,6 +80,19 @@ const Transmission = sequelize.define('transmission', {
   name: {type: DataTypes.STRING, unique: true, allowNull: false}
 })
 
+const Image = sequelize.define('image', {
+  id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+  img: {type: DataTypes.STRING, allowNull: false}
+})
+
+const History = sequelize.define('history', {
+  id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true}
+})
+
+const HistoryCar = sequelize.define('history_car', {
+  id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true}
+})
+
 
 User.hasOne(Favorites)
 Favorites.belongsTo(User)
@@ -126,12 +139,28 @@ Application.belongsTo(ApplicationType)
 Model.belongsToMany(Brand, {through: ModelBrand })
 Brand.belongsToMany(Model, {through: ModelBrand })
 
+Car.hasMany(Image)
+Image.belongsTo(Car)
+
+User.hasOne(History)
+History.belongsTo(User)
+
+History.hasMany(HistoryCar)
+HistoryCar.belongsTo(History)
+
+Car.hasMany(HistoryCar)
+HistoryCar.belongsTo(Car)
+
+
 module.exports = {
   User,
   Application,
   ApplicationType,
   Favorites,
   FavoritesCar,
+  History,
+  HistoryCar,
+  Image,
   Car,
   BodyType,
   DriveUnit,

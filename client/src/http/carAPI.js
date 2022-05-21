@@ -90,3 +90,13 @@ export const deleteCar = async (page, limit, id) => {
   })
   return data
 }
+
+export const fetchOneCar = async (id) => {
+    const {data} = await $host.get('api/car/' + id)
+    return data
+}
+
+export const fetchImages = async (carId) => {
+  const {data} = await $host.get('api/images/', carId)
+  return data
+}

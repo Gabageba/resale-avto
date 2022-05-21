@@ -34,7 +34,6 @@ const Profile = () => {
               {user.mainInfo.role === 'ADMIN' ? <div className={style.dropDownLink} onClick={() => navigate(ADD_CAR_ROUTE)} >Добавить автомобиль</div> : null}
               <NavLink to={''} className={style.dropDownLink}>Избранное</NavLink>
               <NavLink to={''} className={style.dropDownLink}>История автомобилей</NavLink>
-              <NavLink to={''} className={style.dropDownLink}>История поиска</NavLink>
               <NavLink to={''} className={style.dropDownLink}>Справка</NavLink>
               <div className={style.dropDownLink} onClick={logOut}>Выход</div>
             </div>

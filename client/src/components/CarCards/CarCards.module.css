@@ -37,7 +37,7 @@
   text-transform: capitalize;
   font-weight: 400;
   letter-spacing: 0.015em;
-  cursor: default;
+  cursor: pointer;
 }
 
 .year {
@@ -50,13 +50,13 @@
   margin-left: 35px;
   font-weight: 400;
   letter-spacing: 0.015em;
-  cursor: default;
+  cursor: pointer;
 }
 
 .otherSpec {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  cursor: default;
+  cursor: pointer;
 }
 
 .price {
@@ -67,7 +67,7 @@
   text-align: right;
   /* margin-right: 26px; */
   width: 320px;
-  cursor: default;
+  cursor: pointer;
 }
 
 .close:hover {

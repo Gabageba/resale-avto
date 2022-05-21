@@ -79,8 +79,6 @@ const FileLoadInput = () => {
 
     const base64Image = canvas.toDataURL("image/jpeg");
     const fileImage = dataURLtoFile(base64Image)
-    console.log(fileImage)
-
     dispatch(setSelectedFileAC(fileImage))
     setIsLoad(true)
     setModalActive(false)
