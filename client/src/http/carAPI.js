@@ -96,7 +96,12 @@ export const fetchOneCar = async (id) => {
     return data
 }
 
-export const fetchImages = async (carId) => {
-  const {data} = await $host.get('api/images/', carId)
+export const fetchImages = async (id) => {
+  const {data} = await $host.get('api/images/', {params:{carId: id}})
+  return data
+}
+
+export const addImage = async (img) => {
+  const {data} = await $authHost.post('api/images', img)
   return data
 }

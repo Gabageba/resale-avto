@@ -10,12 +10,20 @@
     color: #fff;
     font-weight: 400;
     line-height: 17px;
+    transition: 0.5s;
 }
 
 .activeLink {
     text-transform: uppercase;
-    font-size: 14px;
+    text-decoration: none;
+    font-size: 20px;
     color: #C3073F;
     font-weight: 400;
     line-height: 17px;
+    transition: 0.5s;
+    cursor: default;
+}
+
+.navMenu:hover {
+  color: #717171;
 }

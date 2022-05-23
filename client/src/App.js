@@ -7,6 +7,7 @@ import {check} from './http/userAPI';
 import {useDispatch} from 'react-redux';
 import {setIsAuthAC, setUserAC} from './redux/userReducer';
 import Spinner from './components/Spinner/Spinner';
+import ErrorPopUp from './components/ErrorPopUp/ErrorPopUp';
 
 const App = () => {
 
@@ -29,7 +30,6 @@ const App = () => {
       <div className="app-wrapper">
         <Header/>
         <AppRouter />
-
       </div>
     </BrowserRouter>
   )

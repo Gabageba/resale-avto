@@ -97,3 +97,28 @@
 .labelError:hover .title {
   color: #c3073f
 }
+
+.imageLoadLabel {
+  width: 109px;
+  border: 3px dashed #494949;
+  display: block;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-align: center;
+  height: 73px;
+  color: #494949;
+}
+
+.imageLoadLabel span {
+  font-size: 42px;
+  margin-top: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.imageLoadLabel:hover {
+  border: 3px dashed #c3073f;
+  color: #c3073f;
+}
+
+

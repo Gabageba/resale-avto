@@ -8,33 +8,20 @@
   border: 3px solid #c3073f;
   box-sizing: border-box;
   cursor: pointer;
-}
-
-.addImg {
-  width: 109px;
-  height: 72px;
-  border: 3px dashed #494949;
-  box-sizing: border-box;
-  cursor: pointer;
-  color: #494949;
-  text-align: center;
-}
-
-.addImg:hover {
-  color: #c3073f;
-  border: 3px dashed #c3073f;
-}
-
-.addImg span {
-  font-size: 42px;
-  margin-top: 10px;
+  height: 71px;
 }
 
 .littleImg {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   width: 560px;
-  grid-gap: 4px;
+  grid-gap: 3px;
+}
+
+.mini {
+  width: 109px;
+  cursor: pointer;
+  height: 71px;
 }
 
 .carPage {

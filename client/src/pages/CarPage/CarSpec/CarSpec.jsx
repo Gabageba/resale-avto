@@ -1,31 +1,49 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import style from './CarSpec.module.css'
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  fetchBodyTypes,
+  fetchBrands,
+  fetchColors,
+  fetchDriveUnits,
+  fetchModels,
+  fetchSteeringWheels,
+  fetchTransmission
+} from '../../../http/carAPI';
+import {
+  setBodyTypeAC,
+  setBrandAC, setColorAC,
+  setDriveUnitAC,
+  setModelAC,
+  setSteeringWheelAC, setTransmissionAC
+} from '../../../redux/currentCarPageReducer';
 
 const CarSpec = ({car}) => {
 
-  let brand = useSelector(state => state.specifications.brands).filter((b) => b.id === car.brandId)
-  let model = useSelector(state => state.specifications.models).filter((m) => m.id === car.modelId)
-  let transmission = useSelector(state => state.specifications.transmissions).filter((t) => t.id === car.transmissionId)
-  let driveUnit = useSelector(state => state.specifications.driveUnits).filter((du) => du.id === car.driveUnitId)
-  let color = useSelector(state => state.specifications.colors).filter((c) => c.id === car.colorId)
-  let steeringWheel = useSelector(state => state.specifications.steeringWheels).filter((sw) => sw.id === car.steeringWheelId)
+  const brand = useSelector(state => state.currentCar.brand[0])
+  const model = useSelector(state => state.currentCar.model[0])
+  const steeringWheel = useSelector(state => state.currentCar.steeringWheel[0])
+  const driveUnit = useSelector(state => state.currentCar.driveUnit[0])
+  const bodyType = useSelector(state => state.currentCar.bodyType[0])
+  const color = useSelector(state => state.currentCar.color[0])
+  const transmission = useSelector(state => state.currentCar.transmission[0])
   const millage = new Intl.NumberFormat('ru-RU').format(car.millage);
   const price = new Intl.NumberFormat('ru-RU').format(car.price);
+  const dispatch = useDispatch()
 
-  if (brand === []) {
-    brand = [{name: ''}]
-  }
-
-  if (model === []) {
-    model = [{name: ''}]
-  }
-
-  console.log(car.description)
+  useEffect(() => {
+    fetchBrands().then(data => dispatch(setBrandAC(data.filter((b) => b.id === car.brandId))))
+    fetchSteeringWheels().then(data => dispatch(setSteeringWheelAC(data.filter((sw) => sw.id === car.steeringWheelId))))
+    fetchModels().then(data => dispatch(setModelAC(data.filter((m) => m.id === car.modelId))))
+    fetchDriveUnits().then(data => dispatch(setDriveUnitAC(data.filter((du) => du.id === car.driveUnitId))))
+    fetchBodyTypes().then(data => dispatch(setBodyTypeAC(data.filter((bt) => bt.id === car.bodyTypeId))))
+    fetchColors().then(data => dispatch(setColorAC(data.filter((c) => c.id === car.colorId))))
+    fetchTransmission().then(data => dispatch(setTransmissionAC(data.filter((t) => t.id === car.transmissionId))))
+  }, [])
 
   return (
     <div>
-      <div className={style.carName}>{`${brand[0].name} ${model[0].name}`}</div>
+      <div className={style.carName}>{`${brand.name} ${model.name}`}</div>
       <div className={style.line}/>
       <div className={style.carInfo}>
         <div className={style.spec}>
@@ -37,20 +55,24 @@ const CarSpec = ({car}) => {
           <div className={style.info}>{car.power} л.с.</div>
         </div>
         <div className={style.spec}>
+          <div className={style.specHead}>Тип кузова</div>
+          <div className={style.specInfo}>{bodyType.name}</div>
+        </div>
+        <div className={style.spec}>
           <div className={style.specHead}>Трансмиссия</div>
-          <div className={style.specInfo}>{transmission[0].name}</div>
+          <div className={style.specInfo}>{transmission.name}</div>
         </div>
         <div className={style.spec}>
           <div className={style.specHead}>Привод</div>
-          <div className={style.specInfo}>{driveUnit[0].name}</div>
+          <div className={style.specInfo}>{driveUnit.name}</div>
         </div>
         <div className={style.spec}>
           <div className={style.specHead}>Цвет</div>
-          <div className={style.specInfo}>{color[0].name}</div>
+          <div className={style.specInfo}>{color.name}</div>
         </div>
         <div className={style.spec}>
           <div className={style.specHead}>Руль</div>
-          <div className={style.specInfo}>{steeringWheel[0].name}</div>
+          <div className={style.specInfo}>{steeringWheel.name}</div>
         </div>
         <div className={style.spec}>
           <div className={style.specHead}>Год</div>

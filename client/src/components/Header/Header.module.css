@@ -7,11 +7,13 @@
     align-items: center;
     height: 100px;
     z-index: 20;
+    margin-left: -1px;
 }
 
 .logo {
     width: 100px;
     margin-right: 100px;
+  cursor: pointer;
 }
 
 .nav {

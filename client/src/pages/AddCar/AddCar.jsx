@@ -28,6 +28,7 @@ import {
 import Spinner from '../../components/Spinner/Spinner';
 import AddSpecificationModal from '../../components/Modals/AddSpecification/AddSpecificationModal';
 import FileLoadInput from '../../components/FileLoadInput/FileLoadInput';
+import ErrorPopUp from '../../components/ErrorPopUp/ErrorPopUp';
 
 const AddCar = () => {
 
@@ -35,6 +36,7 @@ const AddCar = () => {
   const [loading, setLoading] = useState(true)
   const [addSpecActive, setAddSpecActive] = useState(false)
   const [chosenSpec, setChosenSpec] = useState('')
+  const [errorPopUpActive, setErrorPopUpActive] = useState(false)
   const specErrorSearch = useSelector(state => state.specifications.specErrorSearch)
 
   const choseSpecAdd = (name) => {
@@ -113,6 +115,8 @@ const AddCar = () => {
       })
     } else {
       dispatch(setSpecErrorSearch(true))
+      setErrorPopUpActive(true)
+
     }
 
   }
@@ -138,6 +142,7 @@ const AddCar = () => {
   return (
     <div className={style.addCar}>
       <AddSpecificationModal active={addSpecActive} setActive={setAddSpecActive} chosenSpec={chosenSpec}/>
+      <ErrorPopUp active={errorPopUpActive} setActive={setErrorPopUpActive} errorText={'Пожалуйста, заполните все поля отмеченные красным'}/>
       <h1>Добавить автомобиль</h1>
       <div className={style.filter}>
         <AutoCompleteDropDown optionsData={brands} dropDownName={'Марка'} isAdd={true} setChosen={setSelectedBrandAC}

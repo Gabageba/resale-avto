@@ -19,6 +19,12 @@ const Profile = () => {
     navigate(MAIN_ROUTE)
   }
 
+  const SelectedLink = () => {
+    return (
+      select => select.isActive ? style.dropDownLinkActive : style.dropDownLink
+    )
+  }
+
 
   return (
     <span>
@@ -30,11 +36,11 @@ const Profile = () => {
               <p className={style.name}>{user.additionalInfo.name}</p>
             </div>
             <div className={style.dropDownContent}>
-              <NavLink to={PROFILE_ROUTE} className={style.dropDownLink}>Мой профиль</NavLink>
-              {user.mainInfo.role === 'ADMIN' ? <div className={style.dropDownLink} onClick={() => navigate(ADD_CAR_ROUTE)} >Добавить автомобиль</div> : null}
-              <NavLink to={''} className={style.dropDownLink}>Избранное</NavLink>
-              <NavLink to={''} className={style.dropDownLink}>История автомобилей</NavLink>
-              <NavLink to={''} className={style.dropDownLink}>Справка</NavLink>
+              <NavLink to={PROFILE_ROUTE} className={SelectedLink()}>Мой профиль</NavLink>
+              {user.mainInfo.role === 'ADMIN' ? <NavLink to={ADD_CAR_ROUTE} className={SelectedLink()}>Добавить автомобиль</NavLink> : null}
+              <NavLink to={'favorites'} className={SelectedLink()}>Избранное</NavLink>
+              <NavLink to={'history'} className={SelectedLink()}>История автомобилей</NavLink>
+              <NavLink to={'about'} className={SelectedLink()}>Справка</NavLink>
               <div className={style.dropDownLink} onClick={logOut}>Выход</div>
             </div>
           </div>

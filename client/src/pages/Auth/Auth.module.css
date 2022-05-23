@@ -27,6 +27,12 @@
   margin-top: 26px;
   margin-bottom: 0;
 }
+.authInputError {
+  width: 360px;
+  border: 2px solid #950740;
+  margin-top: 26px;
+  margin-bottom: 0;
+}
 
 .header {
   font-size: 36px;
@@ -54,3 +60,24 @@
   margin-left: 100px;
   color: #950740
 }
+
+.password {
+  display: flex;
+  margin-left: 100px;
+}
+
+.eye:hover {
+  color: #c3073f;
+}
+
+.eye span {
+  font-size: 30px;
+}
+.eye {
+  margin-top: 35px;
+  margin-left: 10px;
+  cursor: pointer;
+  color: #494949;
+  /*font-size: 30px;*/
+}
+

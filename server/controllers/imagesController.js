@@ -11,7 +11,8 @@ class ImagesController {
       let fileName = uuid.v4() + '.jpg'
       img.mv(path.resolve(__dirname, '..', 'static', fileName))
 
-      const image = await Image.create({carId, img})
+      await Image.create({carId, img: fileName})
+      const image = await Image.findAll({where: {carId}})
       return res.json(image)
     } catch (e) {
       next(ApiError.badRequest(e.message))
@@ -20,7 +21,7 @@ class ImagesController {
 
   async getAll(req, res) {
     let {carId} = req.query
-    const images = await Image.findAll({where: carId})
+    const images = await Image.findAll({where: {carId}})
     return res.json(images)
   }
 
