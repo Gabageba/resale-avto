@@ -7,7 +7,7 @@ const ErrorPopUp = ({active, setActive, errorText}) => {
       <div className={active ? style.errorPopUpActive : style.errorPopUp}>
         <div>
           <div>
-            <pre>{errorText}</pre>
+            <pre className={style.errorText}>{errorText}</pre>
           </div>
         </div>
         <div className={style.close}>

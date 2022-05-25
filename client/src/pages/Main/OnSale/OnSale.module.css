@@ -22,3 +22,7 @@
     color: #C3073F;
     text-decoration: none;
 }
+
+.more:hover {
+  color: #FFFFFF;
+}

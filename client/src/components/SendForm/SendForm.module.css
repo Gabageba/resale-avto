@@ -37,4 +37,9 @@
   outline: 0;
   border: 2px solid #C3073F;
   margin-left: 200px;
+  cursor: pointer;
+}
+
+.sendButton:hover {
+  box-shadow:0 0 10px #c3073f;
 }

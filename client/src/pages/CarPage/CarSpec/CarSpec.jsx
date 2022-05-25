@@ -43,7 +43,11 @@ const CarSpec = ({car}) => {
 
   return (
     <div>
-      <div className={style.carName}>{`${brand.name} ${model.name}`}</div>
+      <div className={style.header}>
+        <div className={style.carName}>{`${brand.name} ${model.name}`}</div>
+        <span className="material-icons-outlined">favorite_border</span>
+      </div>
+
       <div className={style.line}/>
       <div className={style.carInfo}>
         <div className={style.spec}>

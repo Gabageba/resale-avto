@@ -7,7 +7,9 @@ const User = sequelize.define('user', {
   email: {type: DataTypes.STRING, unique: true},
   password: {type: DataTypes.STRING},
   role: {type: DataTypes.STRING, defaultValue: "USER"},
-  avatar: {type: DataTypes.STRING}
+  avatar: {type: DataTypes.STRING},
+  isActivate: {type: DataTypes.BOOLEAN, defaultValue: false},
+  activationLink: {type: DataTypes.STRING},
 })
 
 const Favorites = sequelize.define('favorites', {

@@ -1,0 +1,39 @@
+.block {
+  /*display: flex;*/
+  margin-bottom: 25px;
+  text-align: right;
+}
+
+.profileSetting {
+  margin-right: 43px;
+  margin-bottom: 40px;
+}
+
+.header {
+  /*width: 50px;*/
+  padding-top: 14px;
+  /*margin-right: 20px;*/
+  color: #717171;
+  font-family: akzidenzMediumEx, serif;
+  font-size: 17px;
+  margin-right: 10px;
+}
+
+.input {
+  border: 2px solid #494949;
+  width: 344px;
+  margin-bottom: 0;
+}
+
+.saveButton {
+  height: 40px;
+  width: 200px;
+  font-family: akzidenzLightEx, serif;
+  margin-left: 150px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.saveButton:hover {
+  box-shadow:0 0 10px #c3073f;
+}

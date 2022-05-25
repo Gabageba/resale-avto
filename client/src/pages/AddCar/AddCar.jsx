@@ -137,6 +137,7 @@ const AddCar = () => {
     dispatch(setSelectedDescriptionAC(''))
     dispatch(setSelectedSteeringWheelAC(''))
     dispatch(setSpecErrorSearch(false))
+    setErrorPopUpActive(false)
   }
 
   return (

@@ -75,6 +75,10 @@
   cursor: pointer;
 }
 
+.addButton:hover {
+  box-shadow:0 0 10px #c3073f;
+}
+
 .spec {
   display: flex;
   margin-top: 25px;
@@ -88,4 +92,8 @@
   cursor: pointer;
   color: #494949;
   border: 2px solid #494949;
+}
+
+.clearButton:hover {
+  box-shadow:0 0 10px #494949;
 }

@@ -10,6 +10,10 @@
   cursor: pointer;
 }
 
+.searchButton:hover {
+  box-shadow:0 0 10px #c3073f;
+}
+
 .clearButton {
   width: 172px;
   height: 46px;
@@ -18,4 +22,8 @@
   cursor: pointer;
   color: #494949;
   border: 2px solid #494949;
+}
+
+.clearButton:hover {
+  box-shadow:0 0 10px #494949;
 }

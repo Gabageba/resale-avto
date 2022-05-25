@@ -26,7 +26,7 @@ const OnSale = () => {
     <div className={style.onSale}>
       <div className={style.head}>
         <h1 className="header-info">В продаже</h1>
-        <NavLink to="/catalog" className={style.more}>Больше автомобилей →</NavLink>
+        <NavLink to="/catalog" className={style.more}>Больше автомобилей...</NavLink>
       </div>
       <OnSaleCarList/>
     </div>

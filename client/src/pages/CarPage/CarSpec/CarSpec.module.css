@@ -90,3 +90,15 @@
 .description {
   margin-top: 33px;
 }
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 35px;
+}
+
+.header span {
+  margin-top: 233px;
+  font-size: 35px;
+  cursor: pointer;
+  text-align: right;
+}

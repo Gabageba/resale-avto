@@ -10,6 +10,7 @@ const driveUnitRouter = require('./driveUnitRouter')
 const steeringWheelRouter = require('./steeringWheelRouter')
 const transmissionRouter = require('./transmissionRouter')
 const imagesRouter = require('./imagesRouter')
+const favouriteRouter = require('./favouriteRouter')
 
 router.use('/user', userRouter)
 router.use('/brand', brandRouter)
@@ -21,5 +22,6 @@ router.use('/driveUnit', driveUnitRouter)
 router.use('/steeringWheel', steeringWheelRouter)
 router.use('/transmission', transmissionRouter)
 router.use('/images', imagesRouter)
+router.use('/favourite', favouriteRouter)
 
 module.exports = router

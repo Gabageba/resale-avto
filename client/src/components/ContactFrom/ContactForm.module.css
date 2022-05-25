@@ -35,4 +35,9 @@
   box-sizing: border-box;
   outline: 0;
   border: 2px solid #C3073F;
+  cursor: pointer;
+}
+
+.sendButton:hover {
+  box-shadow:0 0 10px #c3073f;
 }

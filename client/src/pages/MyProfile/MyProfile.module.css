@@ -54,6 +54,11 @@ display: flex;
   margin-top: 35px;
   width: 360px;
   height: 46px;
+  cursor: pointer;
+}
+
+.settingButton:hover {
+  box-shadow:0 0 10px #c3073f;
 }
 
 .historyHeader {
