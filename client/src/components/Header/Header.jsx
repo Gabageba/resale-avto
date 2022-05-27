@@ -11,17 +11,21 @@ const Header = () => {
   const navigate = useNavigate()
 
   return (
-    <header className={style.header}>
-      <img src={logo} alt="Resale Avto" className={style.logo} onClick={() => navigate(MAIN_ROUTE)}/>
-      <ul className={style.nav}>
-        <Navigation name={'Главная'} link={MAIN_ROUTE}/>
-        <Navigation name={'Каталог'} link={CATALOG_ROUTE}/>
-        <DropDown />
-        <Navigation name={'Контакты'} link={CONTACTS_ROUTE}/>
-      </ul>
-      <Profile/>
-      <div className={style.line}/>
-    </header>
+    <div>
+      <div className={style.background}></div>
+      <header className={style.header}>
+        <img src={logo} alt="Resale Avto" className={style.logo} onClick={() => navigate(MAIN_ROUTE)}/>
+        <ul className={style.nav}>
+          <Navigation name={'Главная'} link={MAIN_ROUTE}/>
+          <Navigation name={'Каталог'} link={CATALOG_ROUTE}/>
+          <DropDown />
+          <Navigation name={'Контакты'} link={CONTACTS_ROUTE}/>
+        </ul>
+        <Profile/>
+        <div className={style.line}/>
+      </header>
+    </div>
+
   )
 }
 

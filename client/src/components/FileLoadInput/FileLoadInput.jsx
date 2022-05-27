@@ -4,7 +4,7 @@ import style from './FileLoadInput.module.css';
 import CropModal from '../Modals/CropModal/CropModal';
 import {useDispatch, useSelector} from 'react-redux';
 import {setSelectedFileAC} from '../../redux/carSpecReducer';
-import {addImage, createImages} from '../../http/carAPI';
+import {addImage} from '../../http/carAPI';
 
 const FileLoadInput = ({inputType, carId, setImg}) => {
 
@@ -33,6 +33,7 @@ const FileLoadInput = ({inputType, carId, setImg}) => {
     selectFile(URL.createObjectURL(e.target.files[0]));
     setModalActive(true)
   };
+
 
   const dataURLtoFile = (dataUrl, filename) => {
 

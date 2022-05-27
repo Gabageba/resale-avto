@@ -1,36 +1,51 @@
 import React, {useState} from 'react';
 import Modal from '../Modal/Modal';
 import style from './ProfileSettingModal.module.css'
-import ErrorPopUp from '../../ErrorPopUp/ErrorPopUp';
+import {useDispatch, useSelector} from 'react-redux';
+import {setUserAC} from '../../../redux/userReducer';
+import {updateUser} from '../../../http/userAPI';
 
 
-const ProfileSettingModal = ({active, setActive}) => {
+const ProfileSettingModal = ({active, setActive, setErrorText, setErrorActive}) => {
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [errorActive, setErrorActive] = useState(false)
-  const [errorText, setErrorText] = useState('')
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.userData.user)
 
   const saveChanges = () => {
-    console.log(name)
-    console.log(email)
+    if (email) {
+      if (validate(email)) {
+        updateUser(user.mainInfo.id, email, name).then(data => {
+          dispatch(setUserAC(data))
+          setActive(false)
+          clear()
+        })
+      } else {
+        setErrorText('Такой почты не существует')
+        setErrorActive(true)
+      }
+    } else {
+      updateUser(user.mainInfo.id, email, name).then(data => {
+        dispatch(setUserAC(data))
+        setActive(false)
+        clear()
+      })
+    }
+  }
+
+  const clear = () => {
+    setName('')
+    setEmail('')
   }
 
   const validate = (text) => {
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
-    if (reg.test(text) === false) {
-      console.log("Email is Not Correct");
-      return false;
-    }
-    else {
-      console.log("Email is Correct");
-      return true
-    }
+    return reg.test(text) !== false;
   }
 
   return (
     <Modal active={active} setActive={setActive} modalName={'Редактирование профиля'} size={'small'}>
-      <ErrorPopUp active={errorActive} setActive={setErrorActive} errorText={errorText  }/>
       <div className={style.profileSetting}>
         <div className={style.block}>
           <span className={style.header}>Имя:</span>

@@ -62,8 +62,7 @@
 }
 
 .password {
-  display: flex;
-  margin-left: 100px;
+  position: relative;
 }
 
 .eye:hover {
@@ -74,10 +73,11 @@
   font-size: 30px;
 }
 .eye {
-  margin-top: 35px;
-  margin-left: 10px;
+  margin-top: -37px;
+  margin-left: 474px;
   cursor: pointer;
   color: #494949;
+  position: absolute;
   /*font-size: 30px;*/
 }
 

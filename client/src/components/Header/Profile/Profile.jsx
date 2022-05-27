@@ -32,12 +32,12 @@ const Profile = () => {
         <span>
           <div className={style.dropDown}>
             <div className={style.profile}>
-              <img className={style.icon} src={user.additionalInfo.avatar || userPhoto} alt=""/>
+              <img className={style.icon} src={user.additionalInfo.avatar ? process.env.REACT_APP_API_URL + user.additionalInfo.avatar : userPhoto} alt=""/>
               <p className={style.name}>{user.additionalInfo.name}</p>
             </div>
             <div className={style.dropDownContent}>
               <NavLink to={PROFILE_ROUTE} className={SelectedLink()}>Мой профиль</NavLink>
-              {user.mainInfo.role === 'ADMIN' ? <NavLink to={ADD_CAR_ROUTE} className={SelectedLink()}>Добавить автомобиль</NavLink> : null}
+              {user.mainInfo.role === 'ADMIN' && user.additionalInfo.isActivate ? <NavLink to={ADD_CAR_ROUTE} className={SelectedLink()}>Добавить автомобиль</NavLink> : null}
               <NavLink to={'favorites'} className={SelectedLink()}>Избранное</NavLink>
               <NavLink to={'history'} className={SelectedLink()}>История автомобилей</NavLink>
               <NavLink to={'about'} className={SelectedLink()}>Справка</NavLink>

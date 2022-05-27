@@ -15,7 +15,7 @@ const ShowSetting = () => {
       <button className={style.sort}>Сортировать по</button>
       <button className={style.view}>Вид</button>
       {isAuth ?
-        user.mainInfo.role === 'ADMIN' ?
+        user.mainInfo.role === 'ADMIN' && user.additionalInfo.isActivate?
           <div className={style.edit} onClick={() => dispatch(setIsDel(!isDel))}>
             <svg
               width="46"

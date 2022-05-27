@@ -30,6 +30,7 @@ const CarSpec = ({car}) => {
   const millage = new Intl.NumberFormat('ru-RU').format(car.millage);
   const price = new Intl.NumberFormat('ru-RU').format(car.price);
   const dispatch = useDispatch()
+  const isAuth = useSelector(state => state.userData.isAuth)
 
   useEffect(() => {
     fetchBrands().then(data => dispatch(setBrandAC(data.filter((b) => b.id === car.brandId))))
@@ -43,9 +44,13 @@ const CarSpec = ({car}) => {
 
   return (
     <div>
+
       <div className={style.header}>
         <div className={style.carName}>{`${brand.name} ${model.name}`}</div>
-        <span className="material-icons-outlined">favorite_border</span>
+        {isAuth ?
+          <span className="material-icons-outlined">favorite_border</span> : null
+        }
+
       </div>
 
       <div className={style.line}/>

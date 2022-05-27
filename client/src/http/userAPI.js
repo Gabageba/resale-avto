@@ -28,3 +28,30 @@ export const check = async () => {
     additionalInfo: data.userInfo
   }
 }
+
+export const updateUser = async (id, email, name) => {
+  const {data} = await $authHost.put('api/user/updateInfo', {email, name, id})
+  localStorage.setItem('token', data.token)
+  return {
+    mainInfo: jwt_decode(data.token),
+    additionalInfo: data.userInfo
+  }
+}
+
+export const updateAvatar = async (img) => {
+  const {data} = await $authHost.put('api/user/updateImg', img)
+  localStorage.setItem('token', data.token)
+  return {
+    mainInfo: jwt_decode(data.token),
+    additionalInfo: data.userInfo
+  }
+}
+
+export const deleteAvatar = async (id) => {
+  const {data} = await $authHost.put('api/user/deleteImg', {id})
+  localStorage.setItem('token', data.token)
+  return {
+    mainInfo: jwt_decode(data.token),
+    additionalInfo: data.userInfo
+  }
+}

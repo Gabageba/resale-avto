@@ -1,5 +1,14 @@
 .profileImg {
+  width: 260px;
+  border: 7px solid #c3073f;
+  box-sizing: border-box;
+}
+
+.img {
   margin-top: 206px;
+  position: relative;
+  width: 260px;
+  height: 260px;
 }
 
 .name {
@@ -32,12 +41,13 @@ display: flex;
   margin-left: 140px;
   margin-top: 15px;
   margin-bottom: 0;
+  width: 70px;
 }
 
 .contentInfo {
   font-family: akzidenzLightEx, serif;
   font-size: 20px;
-  margin-left: 69px;
+  margin-left: 50px;
   margin-top: 15px;
   margin-bottom: 0;
 }
