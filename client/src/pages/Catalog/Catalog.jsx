@@ -38,7 +38,6 @@ const Catalog = () => {
   const currentPage = useSelector(state => state.cars.currentPage)
   const limit = useSelector(state => state.cars.limit)
   const dispatch = useDispatch()
-
   const selectedBrand = useSelector(state => state.specifications.selectedBrand)
   const selectedBodyType = useSelector(state => state.specifications.selectedBodyType)
   const selectedModel = useSelector(state => state.specifications.selectedModel)

@@ -1,6 +1,6 @@
 const uuid = require('uuid')
 const path = require('path')
-const {Car, Image} = require('../models/models')
+const {Car, Image, FavoritesCar} = require('../models/models')
 const ApiError = require('../error/ApiError')
 
 class CarController {
@@ -100,17 +100,11 @@ class CarController {
 
 
     await Image.destroy({where: {carId: id}})
+    await FavoritesCar.destroy({where: {carId: id}})
     await Car.destroy({where: {id}})
 
     const cars = await Car.findAndCountAll({limit, offset})
     return res.json(cars)
-  }
-
-  async getImages(req, res) {
-    let {carId} = req.query
-    // const carImg = await Image.findAll({where: {carId: carId}})
-    console.log(carId)
-    // return res.json(carImg)
   }
 }
 

@@ -9,4 +9,5 @@ export const REGISTRATION_ROUTE = '/registration'
 export const PROFILE_ROUTE = '/profile'
 export const ADD_CAR_ROUTE = '/add-car'
 export const CAR_PAGE_ROUTE = '/car'
+export const FAVORITE_CAR_ROUTE = '/favorites'
 

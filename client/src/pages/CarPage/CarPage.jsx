@@ -17,11 +17,10 @@ const CarPage = () => {
   const [img, setImg] = useState([])
   const [loading, setLoading] = useState(true)
   const user = useSelector(state => state.userData.user)
-
+  const isAuth = useSelector(state => state.userData.isAuth)
 
   useEffect(() => {
     fetchImages(id).then(data => {
-      console.log(data)
       setImg(data)
     })
     fetchOneCar(id).then(data => {
@@ -35,26 +34,28 @@ const CarPage = () => {
   }
 
   return (
-    <div className={style.carPage}>
-      <div>
-        <img className={style.fullImg} src={selectedImage ? process.env.REACT_APP_API_URL + selectedImage : null}
-             alt={car.model}/>
-        <div className={style.littleImg}>
-          <img src={process.env.REACT_APP_API_URL + car.img} alt="" onClick={() => setSelectedImage(car.img)}
-               className={car.img === selectedImage ? style.selectedMini : style.mini}/>
-          {img.length === 0 ? null
-            : img.map(img => (
-              <img src={process.env.REACT_APP_API_URL + img.img} key={img.id} alt={img.img} onClick={() => setSelectedImage(img.img)}
-                   className={img.img === selectedImage ? style.selectedMini : style.mini}/>
-            ))
-          }
-          {user.mainInfo.role === 'ADMIN' ?
-            <FileLoadInput inputType={'imageLoad'} carId={car.id} setImg={setImg}/> : null
-          }
-
+    <div>
+      <div className={style.carPage}>
+        <div>
+          <img className={style.fullImg} src={selectedImage ? process.env.REACT_APP_API_URL + selectedImage : null}
+               alt={car.model}/>
+          <div className={style.littleImg}>
+            <img src={process.env.REACT_APP_API_URL + car.img} alt="" onClick={() => setSelectedImage(car.img)}
+                 className={car.img === selectedImage ? style.selectedMini : style.mini}/>
+            {img.length === 0 ? null
+              : img.map(img => (
+                <img src={process.env.REACT_APP_API_URL + img.img} key={img.id} alt={img.img} onClick={() => setSelectedImage(img.img)}
+                     className={img.img === selectedImage ? style.selectedMini : style.mini}/>
+              ))
+            }
+            {
+             isAuth ? user.mainInfo.role === 'ADMIN' ?
+                <FileLoadInput inputType={'imageLoad'} carId={car.id} setImg={setImg}/> : null : null
+            }
+          </div>
         </div>
+        <CarSpec car={car} user={user} carId={id}/>
       </div>
-      <CarSpec car={car}/>
       <Footer/>
     </div>
   );

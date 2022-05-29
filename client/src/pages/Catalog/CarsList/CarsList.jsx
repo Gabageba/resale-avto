@@ -8,6 +8,9 @@ import {useSelector} from 'react-redux';
 const CarsList = () => {
 
   const carsData = useSelector(state => state.cars.carsData)
+  const isDel = useSelector(state => state.cars.isDel)
+
+
 
   return (
     <div className={style.carList}>
@@ -20,7 +23,7 @@ const CarsList = () => {
           <div className={style.cars}>
             {
               carsData.map(car=>(
-                <CarCards key={car.id} carData={car}/>
+                <CarCards key={car.id} carData={car} isDel={isDel}/>
               ))}
           </div>
       }

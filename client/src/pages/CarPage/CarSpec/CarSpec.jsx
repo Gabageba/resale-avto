@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import style from './CarSpec.module.css'
 import {useDispatch, useSelector} from 'react-redux';
 import {
@@ -17,8 +17,11 @@ import {
   setModelAC,
   setSteeringWheelAC, setTransmissionAC
 } from '../../../redux/currentCarPageReducer';
+import {addFavourite, checkFavorite, deleteFavorite} from '../../../http/favouriteAPI';
+import Spinner from '../../../components/Spinner/Spinner';
+import {setCurrentFavoriteAC} from '../../../redux/favoritesReducer';
 
-const CarSpec = ({car}) => {
+const CarSpec = ({car, user, carId}) => {
 
   const brand = useSelector(state => state.currentCar.brand[0])
   const model = useSelector(state => state.currentCar.model[0])
@@ -31,6 +34,8 @@ const CarSpec = ({car}) => {
   const price = new Intl.NumberFormat('ru-RU').format(car.price);
   const dispatch = useDispatch()
   const isAuth = useSelector(state => state.userData.isAuth)
+  const currentFavorite = useSelector(state => state.favorite.currentFavorite)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetchBrands().then(data => dispatch(setBrandAC(data.filter((b) => b.id === car.brandId))))
@@ -39,20 +44,49 @@ const CarSpec = ({car}) => {
     fetchDriveUnits().then(data => dispatch(setDriveUnitAC(data.filter((du) => du.id === car.driveUnitId))))
     fetchBodyTypes().then(data => dispatch(setBodyTypeAC(data.filter((bt) => bt.id === car.bodyTypeId))))
     fetchColors().then(data => dispatch(setColorAC(data.filter((c) => c.id === car.colorId))))
-    fetchTransmission().then(data => dispatch(setTransmissionAC(data.filter((t) => t.id === car.transmissionId))))
+    if (isAuth) {
+      checkFavorite(user.mainInfo.id, carId).then(data => {
+        dispatch(setCurrentFavoriteAC(data))
+      })
+    }
+    fetchTransmission().then(data => dispatch(setTransmissionAC(data.filter((t) => t.id === car.transmissionId)))).finally(() => setLoading(false))
   }, [])
+
+  if (loading) {
+    return <Spinner/>
+  }
+
+
+
+  const favorite = () => {
+    addFavourite(carId, user.mainInfo.id).then(data => {
+      dispatch(setCurrentFavoriteAC(data))
+    })
+  }
+
+  const unFavorite = () => {
+    deleteFavorite(user.mainInfo.id, carId).then(data => {
+      dispatch(setCurrentFavoriteAC(data))
+    })
+  }
+
 
   return (
     <div>
-
       <div className={style.header}>
         <div className={style.carName}>{`${brand.name} ${model.name}`}</div>
         {isAuth ?
-          <span className="material-icons-outlined">favorite_border</span> : null
+          currentFavorite !== null ?
+            <div className={style.fav} onClick={unFavorite}>
+              <span className="material-icons-outlined">favorite</span>
+            </div>
+            :
+            <div className={style.unFav} onClick={favorite}>
+              <span className="material-icons-outlined">favorite_border</span>
+            </div>
+          : null
         }
-
       </div>
-
       <div className={style.line}/>
       <div className={style.carInfo}>
         <div className={style.spec}>

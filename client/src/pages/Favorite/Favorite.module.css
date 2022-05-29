@@ -1,0 +1,17 @@
+.favorite {
+  margin-top: 200px;
+}
+.cars {
+  margin-top: 84px;
+}
+.error {
+  margin-top: 40px;
+  width: 1160px;
+  color: #c3073f;
+}
+
+.errorText {
+  font-family: Montserrat, serif;
+  font-size: 20px;
+  font-weight: 400;
+}

@@ -1,3 +1,18 @@
+.fav {
+  color: #c3073f;
+}
+
+.fav:hover {
+  color: #717171;
+}
+
+.unFav {
+  color: #717171;
+}
+
+.unFav:hover {
+  color: #c3073f;
+}
 
 .carName {
   margin-top: 230px;

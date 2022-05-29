@@ -7,11 +7,10 @@ import {deleteCar} from '../../http/carAPI';
 import {useNavigate} from 'react-router-dom';
 import {CAR_PAGE_ROUTE} from '../../utils/const';
 
-const CarCards = ({carData}) => {
+const CarCards = ({carData, isDel}) => {
 
   let brand = useSelector(state => state.specifications.brands).filter((b) => b.id === carData.brandId)
   let model = useSelector(state => state.specifications.models).filter((m) => m.id === carData.modelId)
-  const isDel = useSelector(state => state.cars.isDel)
   const limit = useSelector(state => state.cars.limit)
   const currentPage = useSelector(state => state.cars.currentPage)
   const dispatch = useDispatch()

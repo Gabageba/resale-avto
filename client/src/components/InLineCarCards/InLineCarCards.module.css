@@ -1,0 +1,85 @@
+.inLineCards {
+  width: 1160px;
+  margin-top: 20px;
+  border: 2px solid #494949;
+  box-sizing: border-box;
+  height: 204px;
+  cursor: pointer;
+}
+
+.info {
+  display: flex;
+}
+
+.main {
+  display: flex;
+  margin-top: 10px;
+}
+
+.inLineCards:hover {
+  border: 2px solid #c3073f;
+  box-shadow:0 0 20px #c3073f;
+}
+.image {
+  /*width: 260px;*/
+  height: 200px;
+}
+
+.car {
+  display: grid;
+  grid-template-columns: 1fr 35px;
+}
+
+.carName {
+  color: #fff;
+  font-family: akzidenzLightEx, serif;
+  font-size: 26px;
+  margin-bottom: 0;
+  margin-left: 20px;
+  text-transform: capitalize;
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  max-width: 800px;
+  margin-top: 0;
+}
+
+.additional {
+  color: #717171;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.year {
+  margin-left: 10px;
+  font-size: 16px;
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.close {
+  margin-top: 5px;
+  color: #717171;
+}
+
+.close span {
+  font-size: 30px;
+}
+.close:hover {
+  color: #c3073f;
+}
+
+.price {
+  color: #fff;
+  font-size: 24px;
+  text-align: right;
+  /* margin-right: 26px; */
+  width: 320px;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-left: auto;
+}
+
+.infoBlock {
+  width: 814px;
+}
