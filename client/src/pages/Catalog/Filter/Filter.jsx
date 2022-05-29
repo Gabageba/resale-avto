@@ -10,7 +10,7 @@ import {
 } from '../../../redux/carSpecReducer';
 import {useSelector} from 'react-redux';
 
-const Filter = () => {
+const Filter = ({setMinPrice, setMaxPrice, setMinYear, setMaxYear, setMinMillage, setMaxMillage}) => {
 
   const selectedBrand = useSelector(state => state.specifications.selectedBrand)
   const selectedModel = useSelector(state => state.specifications.selectedModel)
@@ -26,7 +26,6 @@ const Filter = () => {
   const steeringWheels = useSelector(state => state.specifications.steeringWheels)
   const bodyTypes = useSelector(state => state.specifications.bodyTypes)
 
-
   return (
     <div className={style.filter}>
 
@@ -37,9 +36,9 @@ const Filter = () => {
       <AutoCompleteDropDown optionsData={transmissions} dropDownName={'КПП'} setChosen={setSelectedTransmissionAC} chosen={selectedTransmission}/>
       <AutoCompleteDropDown optionsData={steeringWheels} dropDownName={'Руль'} setChosen={setSelectedSteeringWheelAC} chosen={selectedSteeringWheel}/>
 
-      <SelectorSplit selectorName='Цена'/>
-      <SelectorSplit selectorName='Год'/>
-      <SelectorSplit selectorName='Пробег'/>
+      <SelectorSplit selectorName='Цена' setMin={setMinPrice} setMax={setMaxPrice}/>
+      <SelectorSplit selectorName='Год' setMin={setMinYear} setMax={setMaxYear}/>
+      <SelectorSplit selectorName='Пробег' setMin={setMinMillage} setMax={setMaxMillage}/>
     </div>)
 }
 

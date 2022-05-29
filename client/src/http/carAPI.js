@@ -74,11 +74,10 @@ export const fetchTransmission = async () => {
   return data
 }
 
-export const fetchCars = async (page, limit, brandId, modelId, bodyTypeId, driveUnitId, transmissionId, steeringWheelId
-) => {
+export const fetchCars = async (page, limit, sortName, brandId, modelId, bodyTypeId, driveUnitId, transmissionId, steeringWheelId, minPrice, maxPrice, minYear, maxYear, minMillage, maxMillage) => {
   const {data} = await $host.get('api/car', {
     params: {
-      brandId, modelId, bodyTypeId, driveUnitId, transmissionId, steeringWheelId, limit, page
+      brandId, modelId, bodyTypeId, driveUnitId, transmissionId, steeringWheelId, limit, page, minPrice, maxPrice, minYear, maxYear, minMillage, maxMillage, sortName
     }
   })
   return data

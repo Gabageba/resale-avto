@@ -74,7 +74,15 @@ const CarSpec = ({car, user, carId}) => {
   return (
     <div>
       <div className={style.header}>
-        <div className={style.carName}>{`${brand.name} ${model.name}`}</div>
+        { brand.name.length +  model.name.length >= 20 ?
+          <div className={style.carName}>
+            <div >{`${brand.name}`}</div>
+            <div >{`${model.name}`}</div>
+          </div>
+          : <div className={style.carName}>{`${brand.name} ${model.name}`}</div>
+
+        }
+
         {isAuth ?
           currentFavorite !== null ?
             <div className={style.fav} onClick={unFavorite}>

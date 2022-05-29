@@ -2,6 +2,7 @@ const uuid = require('uuid')
 const path = require('path')
 const {Car, Image, FavoritesCar} = require('../models/models')
 const ApiError = require('../error/ApiError')
+const {Op} = require('sequelize');
 
 class CarController {
   async create(req, res, next) {
@@ -48,8 +49,47 @@ class CarController {
   }
 
   async getAll(req, res) {
-    let {brandId, modelId, bodyTypeId, driveUnitId, transmissionId, steeringWheelId, limit, page} = req.query
+    let {
+      brandId,
+      modelId,
+      bodyTypeId,
+      driveUnitId,
+      transmissionId,
+      steeringWheelId,
+      minPrice,
+      maxPrice,
+      minYear,
+      maxYear,
+      minMillage,
+      maxMillage,
+      limit,
+      page,
+      sortName
+    } = req.query
+
     let findFilter
+
+    console.log(sortName)
+
+    let carSort = [['createdAt', 'DESC']]
+    if (sortName === 'PriceDown') {
+      carSort = [['price', 'DESC']]
+    }
+    if (sortName === 'PriceUp') {
+      carSort = [['price', 'ASC']]
+    }
+    if (sortName === 'TimeDown') {
+      carSort = [['createdAt', 'DESC']]
+    }
+    if (sortName === 'TimeUp') {
+      carSort = [['createdAt', 'ASC']]
+    }
+    if (sortName === 'YearDown') {
+      carSort = [['year', 'DESC']]
+    }
+    if (sortName === 'YearUp') {
+      carSort = [['year', 'ASC']]
+    }
 
     if (brandId) {
       findFilter = {...findFilter, brandId}
@@ -70,6 +110,48 @@ class CarController {
       findFilter = {...findFilter, steeringWheelId}
     }
 
+    if (minPrice && maxPrice) {
+      findFilter = {
+        ...findFilter, price: {[Op.between]: [minPrice, maxPrice]}
+      }
+    } else if (!minPrice && maxPrice) {
+      findFilter = {
+        ...findFilter, price: {[Op.lte]: maxPrice}
+      }
+    } else if (minPrice && !maxPrice) {
+      findFilter = {
+        ...findFilter, price: {[Op.gte]: minPrice}
+      }
+    }
+
+    if (minYear && maxYear) {
+      findFilter = {
+        ...findFilter, year: {[Op.between]: [minYear, maxYear]}
+      }
+    } else if (!minYear && maxYear) {
+      findFilter = {
+        ...findFilter, year: {[Op.lte]: maxYear}
+      }
+    } else if (minYear && !maxYear) {
+      findFilter = {
+        ...findFilter, year: {[Op.gte]: minYear}
+      }
+    }
+
+    if (minMillage && maxMillage) {
+      findFilter = {
+        ...findFilter, millage: {[Op.between]: [minMillage, maxMillage]}
+      }
+    } else if (!minMillage && maxMillage) {
+      findFilter = {
+        ...findFilter, millage: {[Op.lte]: maxMillage}
+      }
+    } else if (minMillage && !maxMillage) {
+      findFilter = {
+        ...findFilter, millage: {[Op.gte]: minMillage}
+      }
+    }
+
     page = page || 1
     limit = limit || 9
     let offset = page * limit - limit
@@ -77,9 +159,9 @@ class CarController {
 
     let cars
     if (findFilter === {}) {
-      cars = await Car.findAndCountAll({limit, offset})
+      cars = await Car.findAndCountAll({order: carSort, limit, offset})
     } else {
-      cars = await Car.findAndCountAll({where: findFilter, limit, offset})
+      cars = await Car.findAndCountAll({order: carSort, where: findFilter, limit, offset})
     }
 
     return res.json(cars)
@@ -103,7 +185,7 @@ class CarController {
     await FavoritesCar.destroy({where: {carId: id}})
     await Car.destroy({where: {id}})
 
-    const cars = await Car.findAndCountAll({limit, offset})
+    const cars = await Car.findAndCountAll({order: [['createdAt', 'DESC']], limit, offset})
     return res.json(cars)
   }
 }

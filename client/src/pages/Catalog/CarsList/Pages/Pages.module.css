@@ -9,6 +9,11 @@
   border: 1px solid #494949;
 }
 
+.unActive:hover {
+  color: #717171;
+  border: 1px solid #717171;
+}
+
 .pages button {
   font-family: Montserrat, serif;
   font-size: 15px;

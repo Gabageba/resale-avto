@@ -16,14 +16,6 @@ const CarCards = ({carData, isDel}) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  if (brand === []) {
-    brand = [{name: ''}]
-  }
-
-  if (model === []) {
-    model = [{name: ''}]
-  }
-
   const onDeleteClick = () => {
     deleteCar(currentPage, limit, carData.id).then(data => {
       dispatch(setTotalCountAC(data.count))
@@ -53,14 +45,18 @@ const CarCards = ({carData, isDel}) => {
           : null
       }
 
-      <img src={process.env.REACT_APP_API_URL + carData.img} alt={carData.name} className={style.image}/>
-      <p className={style.carName}>{`${brand[0].name } ${model[0].name}`}</p>
-      <p className={style.year}>{carData.year}</p>
-      <div className={style.otherSpec}>
-        <AdditionalSpec nameSpec='Пробег' dataSpec={`${fmtMillage} км`}/>
-        <AdditionalSpec nameSpec='Владельцев' dataSpec={carData.owners}/>
+      { brand && model ?
+      <div>
+        <img src={process.env.REACT_APP_API_URL + carData.img} alt={carData.name} className={style.image}/>
+        <p className={brand[0].name.length + model[0].name.length >= 20 ? style.bigCarName : style.carName}>{`${brand[0].name } ${model[0].name}`}</p>
+        <p className={style.year}>{carData.year}</p>
+        <div className={style.otherSpec}>
+          <AdditionalSpec nameSpec='Пробег' dataSpec={`${fmtMillage} км`}/>
+          <AdditionalSpec nameSpec='Владельцев' dataSpec={carData.owners}/>
+        </div>
+        <p className={style.price}>{fmtPrice} ₽</p>
       </div>
-      <p className={style.price}>{fmtPrice} ₽</p>
+      : null}
     </div>
   )
 }

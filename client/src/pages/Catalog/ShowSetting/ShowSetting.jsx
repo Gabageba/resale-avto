@@ -2,6 +2,8 @@ import React from 'react';
 import style from './ShowSetting.module.css'
 import {useDispatch, useSelector} from 'react-redux';
 import {setIsDel} from '../../../redux/carsReducer';
+import Sort from '../../../components/Sort/Sort';
+import {setSelectedSortAC} from '../../../redux/showSettingsReducer';
 
 const ShowSetting = () => {
 
@@ -9,10 +11,12 @@ const ShowSetting = () => {
   const isAuth = useSelector(state => state.userData.isAuth)
   const isDel = useSelector(state => state.cars.isDel)
   const dispatch = useDispatch()
+  const sortOptions = useSelector(state => state.showSetting.sortOptions)
+  const selectedSort = useSelector(state => state.showSetting.selectedSort)
 
   return (
     <div className={style.showSetting}>
-      <button className={style.sort}>Сортировать по</button>
+      <Sort optionsData={sortOptions} selectedSort={selectedSort} setSelectedSort={e => dispatch(setSelectedSortAC(e))}/>
       <button className={style.view}>Вид</button>
       {isAuth ?
         user.mainInfo.role === 'ADMIN' && user.additionalInfo.isActivate?

@@ -44,7 +44,14 @@ const Catalog = () => {
   const selectedDriveUnit = useSelector(state => state.specifications.selectedDriveUnit)
   const selectedSteeringWheel = useSelector(state => state.specifications.selectedSteeringWheel)
   const selectedTransmission = useSelector(state => state.specifications.selectedTransmission)
+  const selectedSort = useSelector(state => state.showSetting.selectedSort)
 
+  const [minPrice, setMinPrice] = useState('')
+  const [maxPrice, setMaxPrice] = useState('')
+  const [minYear, setMinYear] = useState('')
+  const [maxYear, setMaxYear] = useState('')
+  const [minMillage, setMinMillage] = useState('')
+  const [maxMillage, setMaxMillage] = useState('')
 
   useEffect(() => {
     fetchBrands().then(data => dispatch(setBrandsAC(data)))
@@ -56,15 +63,27 @@ const Catalog = () => {
     fetchTransmission().then(data => dispatch(setTransmissionsAC(data)))
     fetchSteeringWheels().then(data => dispatch(setSteeringWheelsAC(data)))
     fetchBodyTypes().then(data => dispatch(setBodyTypesAC(data)))
-    fetchCars(currentPage, limit).then(data => {
+    fetchCars(currentPage, limit, selectedSort.name).then(data => {
       dispatch(setTotalCountAC(data.count))
       dispatch(setCarsAC(data.rows))
     })
       .finally(() => setLoading(false))
   }, [])
 
+
   useEffect(() => {
-    fetchCars(currentPage, limit).then(data => {
+    dispatch(setCurrentPageAC(1))
+    fetchCars(currentPage, limit, selectedSort.name, selectedBrand.id, selectedModel.id,
+      selectedBodyType.id, selectedDriveUnit.id, selectedTransmission.id,
+      selectedSteeringWheel.id, minPrice, maxPrice, minYear, maxYear, minMillage, maxMillage)
+      .then(data => {
+        dispatch(setTotalCountAC(data.count))
+        dispatch(setCarsAC(data.rows))
+      })
+  }, [selectedSort])
+
+  useEffect(() => {
+    fetchCars(currentPage, limit, selectedSort.name).then(data => {
       dispatch(setTotalCountAC(data.count))
       dispatch(setCarsAC(data.rows))
     })
@@ -82,8 +101,11 @@ const Catalog = () => {
   }
 
   const onSearchClick = () => {
-    setCurrentPageAC(1)
-    fetchCars(currentPage, limit, selectedBrand.id, selectedModel.id, selectedBodyType.id, selectedDriveUnit.id,  selectedTransmission.id, selectedSteeringWheel.id,).then(data => {
+    dispatch(setCurrentPageAC(1))
+    fetchCars(currentPage, limit,selectedSort.name, selectedBrand.id, selectedModel.id,
+      selectedBodyType.id, selectedDriveUnit.id, selectedTransmission.id,
+      selectedSteeringWheel.id, minPrice, maxPrice, minYear, maxYear, minMillage, maxMillage)
+      .then(data => {
       dispatch(setTotalCountAC(data.count))
       dispatch(setCarsAC(data.rows))
     })
@@ -91,7 +113,7 @@ const Catalog = () => {
 
   const onClearClick = () => {
     dispatch(setCurrentPageAC(1))
-    fetchCars(currentPage, limit).then(data => {
+    fetchCars(currentPage, limit, selectedSort.name).then(data => {
       dispatch(setTotalCountAC(data.count))
       dispatch(setCarsAC(data.rows))
     })
@@ -108,13 +130,14 @@ const Catalog = () => {
   return (
     <div className={style.catalog}>
       <h1 className="header-info">Авто в продаже</h1>
-      <Filter/>
+      <Filter setMaxMillage={setMaxMillage} setMinPrice={setMinPrice} setMaxPrice={setMaxPrice}
+              setMinMillage={setMinMillage} setMaxYear={setMaxYear} setMinYear={setMinYear}/>
       <div>
         <button className={style.searchButton} onClick={onSearchClick}>Искать</button>
         <button className={style.clearButton} onClick={onClearClick}>Сбросить</button>
       </div>
       <ShowSetting/>
-      <CarsList />
+      <CarsList/>
       <Pages/>
       <Footer/>
     </div>

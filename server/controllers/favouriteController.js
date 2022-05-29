@@ -32,7 +32,7 @@ class favouriteController {
       let rows = []
 
       const favoritesId = await Favorites.findOne({where: {userId}})
-      const favoritesCar = await FavoritesCar.findAndCountAll({where: {favoriteId: favoritesId.id}, limit, offset})
+      const favoritesCar = await FavoritesCar.findAndCountAll({ order: [["createdAt", "DESC"]], where: {favoriteId: favoritesId.id}, limit, offset})
       const count = favoritesCar.count
       for (let i = 0; i < favoritesCar.rows.length; i++) {
         const f = await Car.findOne({where: {id: favoritesCar.rows[i].carId}})
