@@ -18,6 +18,10 @@
   color: #c3073f;
 }
 
+.carsLine {
+  margin-top: 25px;
+}
+
 .errorText {
   font-family: Montserrat, serif;
   font-size: 20px;

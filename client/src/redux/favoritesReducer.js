@@ -9,7 +9,7 @@ let initialState = {
   favoritesData: [],
   totalCount: 0,
   currentPage: 1,
-  limit: 9,
+  limit: 6,
   isDel: false
 }
 

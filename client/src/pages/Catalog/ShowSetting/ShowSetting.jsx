@@ -3,7 +3,8 @@ import style from './ShowSetting.module.css'
 import {useDispatch, useSelector} from 'react-redux';
 import {setIsDel} from '../../../redux/carsReducer';
 import Sort from '../../../components/Sort/Sort';
-import {setSelectedSortAC} from '../../../redux/showSettingsReducer';
+import {setSelectedSortAC, setSelectedViewAC} from '../../../redux/showSettingsReducer';
+import View from '../../../components/View/View';
 
 const ShowSetting = () => {
 
@@ -13,11 +14,13 @@ const ShowSetting = () => {
   const dispatch = useDispatch()
   const sortOptions = useSelector(state => state.showSetting.sortOptions)
   const selectedSort = useSelector(state => state.showSetting.selectedSort)
+  const viewOptions = useSelector(state => state.showSetting.viewOptions)
+  const selectedView = useSelector(state => state.showSetting.selectedView)
 
   return (
     <div className={style.showSetting}>
       <Sort optionsData={sortOptions} selectedSort={selectedSort} setSelectedSort={e => dispatch(setSelectedSortAC(e))}/>
-      <button className={style.view}>Вид</button>
+      <View optionsData={viewOptions} selectedView={selectedView} setSelectedView={e => dispatch(setSelectedViewAC(e))}/>
       {isAuth ?
         user.mainInfo.role === 'ADMIN' && user.additionalInfo.isActivate?
           <div className={style.edit} onClick={() => dispatch(setIsDel(!isDel))}>

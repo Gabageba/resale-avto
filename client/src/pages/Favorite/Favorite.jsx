@@ -3,7 +3,7 @@ import style from './Favorite.module.css'
 import InLineCarCards from '../../components/InLineCarCards/InLineCarCards';
 import {fetchFavourite} from '../../http/favouriteAPI';
 import {useDispatch, useSelector} from 'react-redux';
-import {setFavoritesAC, setTotalCountFavAC} from '../../redux/favoritesReducer';
+import {setCurrentPageFavAC, setFavoritesAC, setTotalCountFavAC} from '../../redux/favoritesReducer';
 import CarCards from '../../components/CarCards/CarCards';
 import Spinner from '../../components/Spinner/Spinner';
 import {fetchBrands, fetchDriveUnits, fetchModels, fetchTransmission} from '../../http/carAPI';
@@ -14,12 +14,15 @@ import {
   setModelsAC,
   setTransmissionsAC
 } from '../../redux/carSpecReducer';
+import Pages from '../../components/Pages/Pages';
+import Footer from '../../components/Footer/Footer';
 
 const Favorite = () => {
 
   const user = useSelector(state => state.userData.user)
   const page = useSelector(state => state.favorite.currentPage)
   const limit = useSelector(state => state.favorite.limit)
+  const totalCount = useSelector(state => state.favorite.totalCount)
   const favorites = useSelector(state => state.favorite.favoritesData)
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
@@ -39,9 +42,18 @@ const Favorite = () => {
     }).finally(() => setLoading(false))
   }, [])
 
+  useEffect(() => {
+    fetchFavourite(user.mainInfo.id,page,limit).then(data => {
+      dispatch(setFavoritesAC(data.rows))
+      dispatch(setTotalCountFavAC(data.count))
+    })
+  }, [page])
+
   if (loading) {
     return <Spinner/>
   }
+
+
 
     return (
     <div className={style.favorite}>
@@ -59,7 +71,8 @@ const Favorite = () => {
               ))}
           </div>
       }
-
+      <Pages currentPage={page} totalCount={totalCount} limit={limit} setPage={setCurrentPageFavAC}/>
+      <Footer/>
     </div>
   );
 };

@@ -21,20 +21,26 @@ import {
   setModelsAC,
   setSelectedBodyTypeAC,
   setSelectedBrandAC,
-  setSelectedDriveUnitAC,
+  setSelectedDriveUnitAC, setSelectedMaxMillageAC,
+  setSelectedMaxPriceAC,
+  setSelectedMaxYearAC,
+  setSelectedMinMillageAC,
+  setSelectedMinPriceAC,
+  setSelectedMinYearAC,
   setSelectedModelsAC,
   setSelectedTransmissionAC,
   setSteeringWheelsAC,
   setTransmissionsAC
 } from '../../redux/carSpecReducer';
 import {useDispatch, useSelector} from 'react-redux';
-import {setCarsAC, setCurrentPageAC, setTotalCountAC} from '../../redux/carsReducer';
-import Pages from './CarsList/Pages/Pages';
+import {setCarsAC, setCurrentPageAC, setLimitAC, setTotalCountAC} from '../../redux/carsReducer';
+import Pages from '../../components/Pages/Pages';
 
 const Catalog = () => {
 
   const [loading, setLoading] = useState(true)
 
+  const totalCount = useSelector(state => state.cars.totalCount)
   const currentPage = useSelector(state => state.cars.currentPage)
   const limit = useSelector(state => state.cars.limit)
   const dispatch = useDispatch()
@@ -44,14 +50,15 @@ const Catalog = () => {
   const selectedDriveUnit = useSelector(state => state.specifications.selectedDriveUnit)
   const selectedSteeringWheel = useSelector(state => state.specifications.selectedSteeringWheel)
   const selectedTransmission = useSelector(state => state.specifications.selectedTransmission)
-  const selectedSort = useSelector(state => state.showSetting.selectedSort)
+  const minPrice = useSelector(state => state.specifications.selectedMinPrice)
+  const maxPrice = useSelector(state => state.specifications.selectedMaxPrice)
+  const minYear = useSelector(state => state.specifications.selectedMinYear)
+  const maxYear = useSelector(state => state.specifications.selectedMaxYear)
+  const minMillage = useSelector(state => state.specifications.selectedMinMillage)
+  const maxMillage = useSelector(state => state.specifications.selectedMaxMillage)
 
-  const [minPrice, setMinPrice] = useState('')
-  const [maxPrice, setMaxPrice] = useState('')
-  const [minYear, setMinYear] = useState('')
-  const [maxYear, setMaxYear] = useState('')
-  const [minMillage, setMinMillage] = useState('')
-  const [maxMillage, setMaxMillage] = useState('')
+  const selectedSort = useSelector(state => state.showSetting.selectedSort)
+  const selectedView = useSelector(state => state.showSetting.selectedView)
 
   useEffect(() => {
     fetchBrands().then(data => dispatch(setBrandsAC(data)))
@@ -81,6 +88,30 @@ const Catalog = () => {
         dispatch(setCarsAC(data.rows))
       })
   }, [selectedSort])
+
+  useEffect(() => {
+    if (selectedView.name === 'Grid') {
+      dispatch(setLimitAC(9))
+      dispatch(setCurrentPageAC(1))
+      fetchCars(1, 9,selectedSort.name, selectedBrand.id, selectedModel.id,
+        selectedBodyType.id, selectedDriveUnit.id, selectedTransmission.id,
+        selectedSteeringWheel.id, minPrice, maxPrice, minYear, maxYear, minMillage, maxMillage)
+        .then(data => {
+          dispatch(setTotalCountAC(data.count))
+          dispatch(setCarsAC(data.rows))
+        })
+    } else if (selectedView.name === 'List') {
+      dispatch(setLimitAC(6))
+      dispatch(setCurrentPageAC(1))
+      fetchCars(1, 6,selectedSort.name, selectedBrand.id, selectedModel.id,
+        selectedBodyType.id, selectedDriveUnit.id, selectedTransmission.id,
+        selectedSteeringWheel.id, minPrice, maxPrice, minYear, maxYear, minMillage, maxMillage)
+        .then(data => {
+          dispatch(setTotalCountAC(data.count))
+          dispatch(setCarsAC(data.rows))
+        })
+    }
+  }, [selectedView])
 
   useEffect(() => {
     fetchCars(currentPage, limit, selectedSort.name).then(data => {
@@ -123,6 +154,12 @@ const Catalog = () => {
     dispatch(setSelectedDriveUnitAC(''))
     dispatch(setSelectedTransmissionAC(''))
     dispatch(setSelectedDriveUnitAC(''))
+    dispatch(setSelectedMinPriceAC(''))
+    dispatch(setSelectedMaxPriceAC(''))
+    dispatch(setSelectedMinYearAC(''))
+    dispatch(setSelectedMaxYearAC(''))
+    dispatch(setSelectedMinMillageAC(''))
+    dispatch(setSelectedMaxMillageAC(''))
 
   }
 
@@ -130,15 +167,14 @@ const Catalog = () => {
   return (
     <div className={style.catalog}>
       <h1 className="header-info">Авто в продаже</h1>
-      <Filter setMaxMillage={setMaxMillage} setMinPrice={setMinPrice} setMaxPrice={setMaxPrice}
-              setMinMillage={setMinMillage} setMaxYear={setMaxYear} setMinYear={setMinYear}/>
+      <Filter/>
       <div>
         <button className={style.searchButton} onClick={onSearchClick}>Искать</button>
         <button className={style.clearButton} onClick={onClearClick}>Сбросить</button>
       </div>
       <ShowSetting/>
       <CarsList/>
-      <Pages/>
+      <Pages currentPage={currentPage} limit={limit} totalCount={totalCount} setPage={setCurrentPageAC}/>
       <Footer/>
     </div>
   )

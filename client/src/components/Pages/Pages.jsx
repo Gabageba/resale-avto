@@ -1,12 +1,8 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import style from './Pages.module.css'
-import {setCurrentPageAC} from '../../../../redux/carsReducer';
 
-const Pages = () => {
-  const limit = useSelector(state => state.cars.limit)
-  const totalCount = useSelector(state => state.cars.totalCount)
-  const currentPage = useSelector(state => state.cars.currentPage)
+const Pages = ({limit, currentPage, totalCount, setPage}) => {
   const dispatch = useDispatch()
   const pageCount = Math.ceil(totalCount / limit)
   const pages = []
@@ -19,7 +15,7 @@ const Pages = () => {
         return (
           <button key={page}
                 className={page === currentPage ? style.active : style.unActive}
-                onClick={() => dispatch(setCurrentPageAC(page))}>
+                onClick={() => dispatch(setPage(page))}>
             {page}
           </button>
         )

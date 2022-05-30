@@ -70,6 +70,7 @@ const CarSpec = ({car, user, carId}) => {
     })
   }
 
+  console.log(car.description)
 
   return (
     <div>
@@ -145,7 +146,7 @@ const CarSpec = ({car, user, carId}) => {
       <div className={style.line}/>
       <div className={style.description}>
         <div className={style.specHead}>Описание</div>
-        <pre><p className={style.descriptionInfo}>{car.description}</p></pre>
+        <pre  ><p className={style.descriptionInfo}>{car.description}</p></pre>
       </div>
     </div>
   );

@@ -24,6 +24,12 @@ const SET_SELECTED_PRICE = 'SET_SELECTED_PRICE'
 const SET_SELECTED_OWNERS = 'SET_SELECTED_OWNERS'
 const SET_SELECTED_FILE = 'SET_SELECTED_FILE'
 const SET_SELECTED_DESCRIPTION = 'SET_SELECTED_DESCRIPTION'
+const SET_SELECTED_MIN_PRICE = 'SET_SELECTED_MIN_PRICE'
+const SET_SELECTED_MAX_PRICE = 'SET_SELECTED_MAX_PRICE'
+const SET_SELECTED_MIN_YEAR = 'SET_SELECTED_MIN_YEAR'
+const SET_SELECTED_MAX_YEAR = 'SET_SELECTED_MAX_YEAR'
+const SET_SELECTED_MIN_MILLAGE = 'SET_SELECTED_MIN_PRICE'
+const SET_SELECTED_MAX_MILLAGE = 'SET_SELECTED_MIN_PRICE'
 
 let initialState = {
   bodyTypes: [],
@@ -59,6 +65,14 @@ let initialState = {
   selectedOwners: '',
   selectedFile: '',
   selectedDescription: '',
+  selectedMinPrice: '',
+  selectedMaxPrice: '',
+  selectedMinYear: '',
+  selectedMaxYear: '',
+  selectedMinMillage: '',
+  selectedMaxMillage: '',
+
+
 
   specErrorSearch: false,
   specAddErrorSearch: false
@@ -115,6 +129,18 @@ const carsReducer = (state = initialState, action) => {
       return {...state, specErrorSearch: action.bool}
     case SET_ADD_SPEC_ERROR_SEARCH:
       return {...state, specAddErrorSearch: action.bool}
+    case SET_SELECTED_MIN_PRICE:
+      return {...state, selectedMinPrice: action.minPrice}
+    case SET_SELECTED_MAX_PRICE:
+      return {...state, selectedMaxPrice: action.maxPrice}
+    case SET_SELECTED_MIN_YEAR:
+      return {...state, selectedMinYear: action.minYear}
+    case SET_SELECTED_MAX_YEAR:
+      return {...state, selectedMaxYear: action.maxYear}
+    case SET_SELECTED_MIN_MILLAGE:
+      return {...state, selectedMinMillage: action.minMillage}
+    case SET_SELECTED_MAX_MILLAGE:
+      return {...state, selectedMaxMillage: action.maxMillage}
     default:
       return state
   }
@@ -145,6 +171,12 @@ export const setSelectedFileAC = (selectedFile) => ({type: SET_SELECTED_FILE, se
 export const setSelectedDescriptionAC = (selectedDescription) => ({type: SET_SELECTED_DESCRIPTION, selectedDescription})
 export const setSpecErrorSearch = (bool) => ({type: SET_SPEC_ERROR_SEARCH, bool})
 export const setSpecAddErrorSearch = (bool) => ({type: SET_ADD_SPEC_ERROR_SEARCH, bool})
+export const setSelectedMinPriceAC = (minPrice) => ({type: SET_SELECTED_MIN_PRICE, minPrice})
+export const setSelectedMaxPriceAC = (maxPrice) => ({type: SET_SELECTED_MAX_PRICE, maxPrice})
+export const setSelectedMinYearAC = (minYear) => ({type: SET_SELECTED_MIN_YEAR, minYear})
+export const setSelectedMaxYearAC = (maxYear) => ({type: SET_SELECTED_MAX_YEAR, maxYear})
+export const setSelectedMinMillageAC = (minMillage) => ({type: SET_SELECTED_MIN_MILLAGE, minMillage})
+export const setSelectedMaxMillageAC = (maxMillage) => ({type: SET_SELECTED_MAX_MILLAGE, maxMillage})
 
 
 export default carsReducer
