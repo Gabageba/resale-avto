@@ -1,6 +1,6 @@
 const uuid = require('uuid')
 const path = require('path')
-const {Car, Image, FavoritesCar} = require('../models/models')
+const {Car, Image, FavoritesCar, HistoryCar} = require('../models/models')
 const ApiError = require('../error/ApiError')
 const {Op} = require('sequelize');
 
@@ -183,6 +183,7 @@ class CarController {
 
     await Image.destroy({where: {carId: id}})
     await FavoritesCar.destroy({where: {carId: id}})
+    await HistoryCar.destroy({where: {carId: id}})
     await Car.destroy({where: {id}})
 
     const cars = await Car.findAndCountAll({order: [['createdAt', 'DESC']], limit, offset})

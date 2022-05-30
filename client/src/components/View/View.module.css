@@ -1,7 +1,6 @@
 .sort {
   width: 189px;
   height: 46px;
-  margin-right: 40px;
   cursor: pointer;
   transition: 0.5s;
 }

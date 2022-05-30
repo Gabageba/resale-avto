@@ -6,12 +6,14 @@ import {setCarsAC, setTotalCountAC} from '../../redux/carsReducer';
 import {deleteCar} from '../../http/carAPI';
 import {useNavigate} from 'react-router-dom';
 import {CAR_PAGE_ROUTE} from '../../utils/const';
+import {addInHistory} from '../../http/historyAPI';
 
 const CarCards = ({carData, isDel}) => {
 
   let brand = useSelector(state => state.specifications.brands).filter((b) => b.id === carData.brandId)
   let model = useSelector(state => state.specifications.models).filter((m) => m.id === carData.modelId)
   const limit = useSelector(state => state.cars.limit)
+  const user = useSelector(state => state.userData.user)
   const currentPage = useSelector(state => state.cars.currentPage)
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -29,6 +31,7 @@ const CarCards = ({carData, isDel}) => {
   return (
     <div className={isDel ? style.carCardsDelete :style.carCards} key={carData.id} onClick={() => {
       if (!isDel) {
+        addInHistory(carData.id, user.mainInfo.id).then()
         navigate(CAR_PAGE_ROUTE + '/' + carData.id)
       }
     }}>

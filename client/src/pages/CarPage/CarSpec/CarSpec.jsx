@@ -56,21 +56,16 @@ const CarSpec = ({car, user, carId}) => {
     return <Spinner/>
   }
 
-
-
   const favorite = () => {
     addFavourite(carId, user.mainInfo.id).then(data => {
       dispatch(setCurrentFavoriteAC(data))
     })
   }
-
   const unFavorite = () => {
     deleteFavorite(user.mainInfo.id, carId).then(data => {
       dispatch(setCurrentFavoriteAC(data))
     })
   }
-
-  console.log(car.description)
 
   return (
     <div>

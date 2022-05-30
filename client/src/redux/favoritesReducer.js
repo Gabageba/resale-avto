@@ -13,7 +13,7 @@ let initialState = {
   isDel: false
 }
 
-const favoritesData = (state = initialState, action) => {
+const favoritesReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_CURRENT_PAGE:
       return {...state, currentPage: action.page}
@@ -36,4 +36,4 @@ export const setTotalCountFavAC = (totalCount) => ({type: SET_TOTAL_COUNT, total
 export const setCurrentPageFavAC = (page) => ({type: SET_CURRENT_PAGE, page})
 export const setCurrentFavoriteAC = (currentFav) => ({type: SET_CURRENT_FAVORITE, currentFav})
 
-export default favoritesData
+export default favoritesReducer

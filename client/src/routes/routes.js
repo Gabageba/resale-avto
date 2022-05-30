@@ -2,7 +2,7 @@ import {
   ADD_CAR_ROUTE, CAR_PAGE_ROUTE,
   CATALOG_ROUTE,
   COMMISSION_ROUTE,
-  DETAILING_ROUTE, FAVORITE_CAR_ROUTE,
+  DETAILING_ROUTE, FAVORITE_CAR_ROUTE, HISTORY_CAR_ROUTE,
   LOGIN_ROUTE,
   MAIN_ROUTE, PROFILE_ROUTE,
   REGISTRATION_ROUTE,
@@ -18,6 +18,7 @@ import MyProfile from '../pages/MyProfile/MyProfile';
 import AddCar from '../pages/AddCar/AddCar';
 import CarPage from '../pages/CarPage/CarPage';
 import Favorite from '../pages/Favorite/Favorite';
+import History from '../pages/History/History';
 
 export const authRoutes = [
   {
@@ -31,6 +32,10 @@ export const authRoutes = [
   {
     path: FAVORITE_CAR_ROUTE,
     element: <Favorite/>
+  },
+  {
+    path: HISTORY_CAR_ROUTE,
+    element: <History/>
   },
   ]
 

@@ -5,6 +5,7 @@ import carSpecReducer from './carSpecReducer';
 import currentCarPageReducer from './currentCarPageReducer';
 import favoritesReducer from './favoritesReducer';
 import showSettingReducer from './showSettingsReducer';
+import historyReducer from './historyReducer';
 
 let reducers = combineReducers({
   cars: carsReducer,
@@ -12,7 +13,8 @@ let reducers = combineReducers({
   currentCar: currentCarPageReducer,
   specifications: carSpecReducer,
   favorite: favoritesReducer,
-  showSetting: showSettingReducer
+  showSetting: showSettingReducer,
+  history: historyReducer
 })
 
 let store = createStore(reducers)

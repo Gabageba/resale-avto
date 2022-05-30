@@ -59,6 +59,11 @@ const Auth = () => {
     setPasswordVisible('visibility_off')
   }
 
+  const validateEmail = (text) => {
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+    return reg.test(text) !== false;
+  }
+
   const loginClick = async () => {
     try {
       let data
@@ -73,6 +78,7 @@ const Auth = () => {
           setErrorText('Пожалуйста, заполните все поля выделенные красным')
           setLoginError(true)
         } else {
+
           data = await login(email, password)
           dispatch(setUserAC(data))
           dispatch(setIsAuthAC(true))
@@ -100,19 +106,25 @@ const Auth = () => {
            setLoginError(true)
          } else {
            if (validatePassword(password)){
-             data = await registration(email, password, name)
-             dispatch(setUserAC(data))
-             dispatch(setIsAuthAC(true))
-             navigate(MAIN_ROUTE)
+             if (validateEmail(email)) {
+               data = await registration(email, password, name)
+               dispatch(setUserAC(data))
+               dispatch(setIsAuthAC(true))
+               navigate(MAIN_ROUTE)
+             } else {
+               setErrorText('Такой почты не существует')
+               setLoginError(true)
+             }
            } else {
              setErrorText('Ваш пароль не соответствует минимальным требованиям безопасности.\n Требования:\n Минимальная длина - 8 символов,\n Минимум 1 строчная и 1 заглавная буква,\n Минимум 1 цифра')
-             console.log(errorText)
              setLoginError(true)
            }
          }
           // data = await registration(email, password, name)
         }
       }
+
+
 
     } catch (e) {
       setErrorText(e.response.data.message)

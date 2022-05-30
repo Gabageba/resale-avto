@@ -1,7 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import style from './ErrorPopUp.module.css'
 
 const ErrorPopUp = ({active, setActive, errorText}) => {
+
+  useEffect(() => {
+    if (active) {
+      setTimeout(() => {
+        setActive(false)
+      }, 7000)
+    }
+  }, [active])
+
   return (
     <div>
       <div className={active ? style.errorPopUpActive : style.errorPopUp}>

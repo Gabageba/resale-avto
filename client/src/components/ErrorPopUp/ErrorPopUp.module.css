@@ -10,7 +10,7 @@
   /*opacity: 97%;*/
   display: grid;
   grid-template-columns: 1fr 24px;
-  transition: 0.5s;
+  transition: 0.8s;
   opacity: 0;
   pointer-events: none;
   z-index: 30;
@@ -28,7 +28,7 @@
   opacity: 97%;
   display: grid;
   grid-template-columns: 1fr 24px;
-  transition: 0.5s;
+  transition: 0.8s;
   pointer-events: all;
   z-index: 30;
 }

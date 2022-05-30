@@ -1,0 +1,32 @@
+.favorite {
+  margin-top: 200px;
+}
+.header {
+  display: flex;
+}
+
+.header div {
+  font-size: 62px;
+}
+
+.header span {
+  font-size: 52px;
+  margin-top: 12px;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.cars {
+  margin-top: 84px;
+}
+.error {
+  margin-top: 40px;
+  width: 1160px;
+  color: #c3073f;
+}
+
+.errorText {
+  font-family: Montserrat, serif;
+  font-size: 20px;
+  font-weight: 400;
+}
