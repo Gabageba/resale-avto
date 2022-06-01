@@ -2,7 +2,11 @@ import React, {useEffect, useState} from 'react';
 import style from './ApplicationCard.module.css'
 import {useDispatch, useSelector} from 'react-redux';
 import {deleteApplication} from '../../http/applicationAPI';
-import {setApplicationsAC, setCurrentPageApplicationAC} from '../../redux/applicationsReducer';
+import {
+  setApplicationsAC,
+  setCurrentPageApplicationAC,
+  setTotalCountApplicationAC
+} from '../../redux/applicationsReducer';
 
 const ApplicationCard = ({applicationData}) => {
 
@@ -20,7 +24,7 @@ const ApplicationCard = ({applicationData}) => {
   const onDeleteClick = () => {
     deleteApplication(applicationData.id, limit, 1).then(data => {
       dispatch(setApplicationsAC(data.rows))
-      dispatch(setCurrentPageApplicationAC(data.count))
+      dispatch(setTotalCountApplicationAC(data.count))
       dispatch(setCurrentPageApplicationAC(1))
     })
   }
