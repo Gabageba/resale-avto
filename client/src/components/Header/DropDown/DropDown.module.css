@@ -5,10 +5,25 @@
     border: none;
     outline: none;
     background-color: #1a1a1d;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 17px;
     text-transform: uppercase;
-    margin-right: 45px;
+    margin-right: -8px;
+
+}
+.btn {
+  margin-right: 45px;
+  display: flex;
+}
+
+.dropDown:hover span {
+  /*transform: rotate(180deg);*/
+  transform: scale(-1);
+  transition: 0.5s;
+}
+
+.btn span {
+  transition: 0.5s;
 }
 
 .selectedDropDownBtn {
@@ -18,7 +33,7 @@
   border: none;
   outline: none;
   background-color: #1a1a1d;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 30px;
   text-transform: uppercase;
   margin-right: 45px;
@@ -29,7 +44,7 @@
   text-decoration: none;
   font-size: 14px;
   color: #fff;
-  font-weight: 300;
+  font-weight: 500;
   line-height: 17px;
   display: block;
   text-align: left;
@@ -56,7 +71,7 @@
 }
 
 .dropDownLink:hover {
-  color: #717171;
+  color: #950740;
 }
 
 .dropDownLinkActive {
@@ -64,7 +79,7 @@
   text-decoration: none;
   font-size: 14px;
   color: #c3073f;
-  font-weight: 300;
+  font-weight: 500;
   line-height: 17px;
   display: block;
   text-align: left;

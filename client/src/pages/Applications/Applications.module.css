@@ -1,0 +1,13 @@
+.header {
+
+}
+
+.applications {
+  margin-top: 200px;
+}
+.application {
+  display: grid;
+  margin-top: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px  ;
+}

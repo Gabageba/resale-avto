@@ -1,0 +1,71 @@
+.applicationCard {
+  width: 565px;
+  /*height: 204px;*/
+  border: 2px solid #494949;
+  /*border-left: 2px solid #494949;*/
+  /*border-right: 2px solid #494949;*/
+  /*border-top: 2px solid #494949;*/
+  position: relative;
+}
+.spec {
+  display: flex;
+  margin-top: 10px;
+}
+
+.title {
+  color: #717171;
+  font-size: 18px;
+}
+
+.text {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 0;
+  margin-top: 1px;
+  line-height: 20px;
+  font-weight: 300;
+  text-transform: capitalize;
+  margin-left: 10px;
+}
+
+.carInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.userInfo {
+  margin-left: 32px;
+}
+.info {
+  margin-top: 13px;
+}
+
+.delete {
+  border: none;
+  height: 40px;
+  width: 569px;
+  margin-left: -2px;
+  font-family: akzidenzLightEx, serif;
+  font-size: 17px;
+  cursor: pointer;
+  margin-top: 25px;
+  color: #717171;
+}
+
+.delete:hover {
+  color: #c3073f;
+  /*box-shadow:0 0 10px #c3073f;*/
+}
+
+.type {
+  text-transform: uppercase;
+  font-family: akzidenzBoldEx, serif;
+  color: #717171;
+  position: absolute;
+  top: -11px;
+  left: 4px;
+  background-color: #1a1a1d;
+}

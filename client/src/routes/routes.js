@@ -1,5 +1,5 @@
 import {
-  ADD_CAR_ROUTE, CAR_PAGE_ROUTE,
+  ADD_CAR_ROUTE, APPLICATIONS_ROUTE, CAR_PAGE_ROUTE,
   CATALOG_ROUTE,
   COMMISSION_ROUTE,
   DETAILING_ROUTE, FAVORITE_CAR_ROUTE, HISTORY_CAR_ROUTE,
@@ -19,6 +19,7 @@ import AddCar from '../pages/AddCar/AddCar';
 import CarPage from '../pages/CarPage/CarPage';
 import Favorite from '../pages/Favorite/Favorite';
 import History from '../pages/History/History';
+import Applications from '../pages/Applications/Applications';
 
 export const authRoutes = [
   {
@@ -36,6 +37,10 @@ export const authRoutes = [
   {
     path: HISTORY_CAR_ROUTE,
     element: <History/>
+  },
+  {
+    path: APPLICATIONS_ROUTE,
+    element: <Applications/>
   },
   ]
 

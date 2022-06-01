@@ -25,7 +25,7 @@
   text-decoration: none;
   font-size: 14px;
   color: #fff;
-  font-weight: 300;
+  font-weight: 500;
   line-height: 17px;
   display: block;
   text-align: left;
@@ -41,7 +41,7 @@
   text-decoration: none;
   font-size: 14px;
   color: #c3073f;
-  font-weight: 300;
+  font-weight: 500;
   line-height: 17px;
   display: block;
   text-align: left;
@@ -69,8 +69,9 @@
 }
 
 .dropDownLink:hover {
-  color: #c3073f;
+  color: #950740;
 }
+
 
 .profile {
   display: flex;

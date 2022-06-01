@@ -65,7 +65,10 @@ const Application = sequelize.define('application', {
   id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
   year: {type: DataTypes.INTEGER, allowNull: false},
   millage: {type: DataTypes.INTEGER, allowNull: false},
-  phone_number: {type: DataTypes.STRING, allowNull: false}
+  phone_number: {type: DataTypes.STRING, allowNull: false},
+  brand: {type: DataTypes.STRING, allowNull: false},
+  model: {type: DataTypes.STRING, allowNull: false},
+  price: {type: DataTypes.INTEGER, allowNull: false},
 })
 
 const ApplicationType = sequelize.define('application_type', {
@@ -125,15 +128,6 @@ Car.belongsTo(BodyType)
 
 Car.hasMany(FavoritesCar)
 FavoritesCar.belongsTo(Car)
-
-User.hasMany(Application)
-Application.belongsTo(User)
-
-Brand.hasMany(Application)
-Application.belongsTo(Brand)
-
-Model.hasMany(Application)
-Application.belongsTo(Model)
 
 ApplicationType.hasMany(Application)
 Application.belongsTo(ApplicationType)

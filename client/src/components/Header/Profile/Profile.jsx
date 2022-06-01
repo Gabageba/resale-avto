@@ -2,7 +2,14 @@ import React from 'react';
 import style from './Profile.module.css'
 import userPhoto from '../../../assets/user.png'
 import {NavLink, useNavigate} from 'react-router-dom'
-import {ADD_CAR_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, PROFILE_ROUTE} from '../../../utils/const';
+import {
+  ADD_CAR_ROUTE,
+  APPLICATIONS_ROUTE,
+  FAVORITE_CAR_ROUTE, HISTORY_CAR_ROUTE,
+  LOGIN_ROUTE,
+  MAIN_ROUTE,
+  PROFILE_ROUTE
+} from '../../../utils/const';
 import {useDispatch, useSelector} from 'react-redux';
 import {setIsAuthAC, setUserAC} from '../../../redux/userReducer';
 
@@ -37,9 +44,14 @@ const Profile = () => {
             </div>
             <div className={style.dropDownContent}>
               <NavLink to={PROFILE_ROUTE} className={SelectedLink()}>Мой профиль</NavLink>
-              {user.mainInfo.role === 'ADMIN' && user.additionalInfo.isActivate ? <NavLink to={ADD_CAR_ROUTE} className={SelectedLink()}>Добавить автомобиль</NavLink> : null}
-              <NavLink to={'favorites'} className={SelectedLink()}>Избранное</NavLink>
-              <NavLink to={'history'} className={SelectedLink()}>История автомобилей</NavLink>
+              {user.mainInfo.role === 'ADMIN' && user.additionalInfo.isActivate ?
+                <div>
+                  <NavLink to={ADD_CAR_ROUTE} className={SelectedLink()}>Добавить автомобиль</NavLink>
+                  <NavLink to={APPLICATIONS_ROUTE} className={SelectedLink()}>Заявки</NavLink>
+                </div>
+                : null}
+              <NavLink to={FAVORITE_CAR_ROUTE} className={SelectedLink()}>Избранное</NavLink>
+              <NavLink to={HISTORY_CAR_ROUTE} className={SelectedLink()}>История автомобилей</NavLink>
               <NavLink to={'about'} className={SelectedLink()}>Справка</NavLink>
               <div className={style.dropDownLink} onClick={logOut}>Выход</div>
             </div>

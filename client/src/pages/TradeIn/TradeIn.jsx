@@ -9,7 +9,7 @@ const TradeIn = () => {
   return (
     <div>
       <h1 className='header-info'>Трейд-ин</h1>
-      <SendForm/>
+      <SendForm type={'trade-in'}/>
       <h1 className='header-info'>Обменяйте ваше авто</h1>
       <ChangeCar/>
       <h1 className='header-info'>Остались вопросы?</h1>
