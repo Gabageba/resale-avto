@@ -1,10 +1,13 @@
 import React, {useEffect, useRef, useState} from 'react';
 import style from './Sort.module.css'
+import {setCurrentPageAC} from '../../redux/carsReducer';
+import {useDispatch} from 'react-redux';
 
 const Sort = ({optionsData, selectedSort, setSelectedSort}) => {
 
   const [display, setDisplay] = useState(false);
   const wrapperRef = useRef(null);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     window.addEventListener('mousedown', handleClickOutside);
@@ -35,6 +38,7 @@ const Sort = ({optionsData, selectedSort, setSelectedSort}) => {
               return (
                 <div
                   onClick={() => {
+                    dispatch(setCurrentPageAC(1))
                     setSelectedSort(value)
                     setDisplay(false);
                   }}

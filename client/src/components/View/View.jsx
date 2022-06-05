@@ -1,10 +1,13 @@
 import React, {useEffect, useRef, useState} from 'react';
 import style from './View.module.css'
+import {useDispatch} from 'react-redux';
+import {setCurrentPageAC} from '../../redux/carsReducer';
 
 const View = ({optionsData, selectedView, setSelectedView}) => {
 
   const [display, setDisplay] = useState(false);
   const wrapperRef = useRef(null);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     window.addEventListener('mousedown', handleClickOutside);
@@ -35,6 +38,7 @@ const View = ({optionsData, selectedView, setSelectedView}) => {
               return (
                 <div
                   onClick={() => {
+                    dispatch(setCurrentPageAC(1))
                     setSelectedView(value)
                     setDisplay(false);
                   }}

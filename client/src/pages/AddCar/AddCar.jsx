@@ -148,8 +148,11 @@ const AddCar = () => {
       <div className={style.filter}>
         <AutoCompleteDropDown optionsData={brands} dropDownName={'Марка'} isAdd={true} setChosen={setSelectedBrandAC}
                               choseSpecAdd={choseSpecAdd} chosen={selectedBrand}/>
-        <AutoCompleteDropDown optionsData={filterModels} dropDownName={'Модель'} isAdd={true} setChosen={setSelectedModelsAC}
-                              choseSpecAdd={choseSpecAdd} chosen={selectedModel}/>
+        {selectedBrand ?
+          <AutoCompleteDropDown optionsData={filterModels} dropDownName={'Модель'} isAdd={true} setChosen={setSelectedModelsAC}
+                                choseSpecAdd={choseSpecAdd} chosen={selectedModel}/>
+          : <input placeholder="Модель" className={style.textInput} readOnly/>
+        }
         <AutoCompleteDropDown optionsData={bodyTypes} dropDownName={'Тип кузова'} isAdd={true}
                               setChosen={setSelectedBodyTypeAC} choseSpecAdd={choseSpecAdd} chosen={selectedBodyType}/>
         <AutoCompleteDropDown optionsData={driveUnits} dropDownName={'Привод'} isAdd={true}

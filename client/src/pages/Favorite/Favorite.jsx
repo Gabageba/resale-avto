@@ -16,6 +16,7 @@ import {
 } from '../../redux/carSpecReducer';
 import Pages from '../../components/Pages/Pages';
 import Footer from '../../components/Footer/Footer';
+import Lock from '../../components/Lock/Lock';
 
 const Favorite = () => {
 
@@ -63,6 +64,7 @@ const Favorite = () => {
 
     return (
     <div className={style.favorite}>
+      {user.additionalInfo.isActivate ? null : <Lock/>}
       <h1>избранное</h1>
       {
         favorites.length === 0 ?

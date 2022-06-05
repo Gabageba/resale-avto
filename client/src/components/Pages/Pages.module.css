@@ -1,7 +1,6 @@
 .active {
   color: #c3073f;
   border: 1px solid #c3073f;
-
 }
 
 .unActive {
@@ -25,6 +24,10 @@
 }
 
 .pages {
+  height: 30px;
   margin-top: 25px;
   text-align: center;
+  /*display: flex;*/
 }
+
+

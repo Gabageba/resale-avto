@@ -51,7 +51,7 @@ const Profile = () => {
                 </div>
                 : null}
               <NavLink to={FAVORITE_CAR_ROUTE} className={SelectedLink()}>Избранное</NavLink>
-              <NavLink to={HISTORY_CAR_ROUTE} className={SelectedLink()}>История автомобилей</NavLink>
+              <NavLink to={HISTORY_CAR_ROUTE} className={SelectedLink()}>История просмотра</NavLink>
               <NavLink to={REFERENCE_ROUTER} className={SelectedLink()}>О нас</NavLink>
               <div className={style.dropDownLink} onClick={logOut}>Выход</div>
             </div>

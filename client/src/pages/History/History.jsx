@@ -16,6 +16,7 @@ import Footer from '../../components/Footer/Footer';
 import {deleteOneInHistory, fetchHistory} from '../../http/historyAPI';
 import {setCurrentPageHistAC, setHistoryAC, setTotalCountHistAC} from '../../redux/historyReducer';
 import View from '../../components/View/View';
+import Lock from '../../components/Lock/Lock';
 
 
 const History = () => {
@@ -65,6 +66,7 @@ const History = () => {
 
   return (
     <div className={style.favorite}>
+      {user.additionalInfo.isActivate ? null : <Lock/>}
       <h1 >История просмотров</h1>
       {
         history.length === 0 ?

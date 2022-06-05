@@ -50,6 +50,19 @@ const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, s
     setDisplay(false);
   };
 
+  const inputChange = (event) => {
+    setSearch(event.target.value)
+    for (let i = 0; i < options.length; i++) {
+      if (event.target.value === options[i].name){
+        dispatch(setChosen(options[i].id))
+        // updateInput(options[i].name)
+      } else {
+        dispatch(setChosen(''))
+      }
+      // console.log(options[i].name)
+    }
+  }
+
 
   return (
     <div ref={wrapperRef} className={style.dropDown}>
@@ -58,7 +71,7 @@ const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, s
         onClick={() => setDisplay(!display)}
         placeholder={dropDownName}
         value={search}
-        onChange={event => setSearch(event.target.value)}
+        onChange={event => inputChange(event)}
       />
 
       {display && (

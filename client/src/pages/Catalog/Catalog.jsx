@@ -80,7 +80,7 @@ const Catalog = () => {
 
 
   useEffect(() => {
-    dispatch(setCurrentPageAC(1))
+    // dispatch(setCurrentPageAC(1))
     fetchCars(currentPage, limit, selectedSort.name, selectedBrand.id, selectedModel.id,
       selectedBodyType.id, selectedDriveUnit.id, selectedTransmission.id,
       selectedSteeringWheel.id, minPrice, maxPrice, minYear, maxYear, minMillage, maxMillage)
@@ -93,7 +93,7 @@ const Catalog = () => {
   useEffect(() => {
     if (selectedView.name === 'Grid') {
       dispatch(setLimitAC(9))
-      dispatch(setCurrentPageAC(1))
+      // dispatch(setCurrentPageAC(1))
       fetchCars(1, 9,selectedSort.name, selectedBrand.id, selectedModel.id,
         selectedBodyType.id, selectedDriveUnit.id, selectedTransmission.id,
         selectedSteeringWheel.id, minPrice, maxPrice, minYear, maxYear, minMillage, maxMillage)
@@ -103,7 +103,7 @@ const Catalog = () => {
         })
     } else if (selectedView.name === 'List') {
       dispatch(setLimitAC(6))
-      dispatch(setCurrentPageAC(1))
+      // dispatch(setCurrentPageAC(1))
       fetchCars(1, 6,selectedSort.name, selectedBrand.id, selectedModel.id,
         selectedBodyType.id, selectedDriveUnit.id, selectedTransmission.id,
         selectedSteeringWheel.id, minPrice, maxPrice, minYear, maxYear, minMillage, maxMillage)
@@ -115,7 +115,9 @@ const Catalog = () => {
   }, [selectedView])
 
   useEffect(() => {
-    fetchCars(currentPage, limit, selectedSort.name).then(data => {
+    fetchCars(currentPage, limit, selectedSort.name, selectedBrand.id, selectedModel.id,
+      selectedBodyType.id, selectedDriveUnit.id, selectedTransmission.id,
+      selectedSteeringWheel.id, minPrice, maxPrice, minYear, maxYear, minMillage, maxMillage).then(data => {
       dispatch(setTotalCountAC(data.count))
       dispatch(setCarsAC(data.rows))
     })

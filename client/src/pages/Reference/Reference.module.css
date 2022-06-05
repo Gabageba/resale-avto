@@ -1,0 +1,22 @@
+.companyInfo {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.015em;
+  color: #fff;
+  font-weight: 300;
+  font-size: 18px;
+  font-feature-settings: "smcp";
+  font-variant: small-caps;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.company {
+  margin-top: 300px;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  grid-gap: 100px;
+}
+
+.logo {
+  width: 400px;
+}

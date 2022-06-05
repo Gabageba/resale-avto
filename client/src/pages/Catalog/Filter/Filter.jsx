@@ -13,7 +13,7 @@ import {
   setSelectedMinYearAC,
   setSelectedModelsAC,
   setSelectedSteeringWheelAC,
-  setSelectedTransmissionAC
+  setSelectedTransmissionAC, setSelectedYearAC
 } from '../../../redux/carSpecReducer';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -44,7 +44,10 @@ const Filter = () => {
     <div className={style.filter}>
 
       <AutoCompleteDropDown optionsData={brands} dropDownName={'Марка'} setChosen={setSelectedBrandAC} chosen={selectedBrand}/>
-      <AutoCompleteDropDown optionsData={filterModels} dropDownName={'Модель'} setChosen={setSelectedModelsAC} chosen={selectedModel}/>
+      {selectedBrand ?
+        <AutoCompleteDropDown optionsData={filterModels} dropDownName={'Модель'} setChosen={setSelectedModelsAC} chosen={selectedModel}/>
+        :   <input placeholder="Модель" className={style.notSelected} readOnly/>
+      }
       <AutoCompleteDropDown optionsData={bodyTypes} dropDownName={'Тип кузова'} setChosen={setSelectedBodyTypeAC} chosen={selectedBodyType}/>
       <AutoCompleteDropDown optionsData={driveUnits} dropDownName={'Привод'} setChosen={setSelectedDriveUnitAC} chosen={selectedDriveUnit}/>
       <AutoCompleteDropDown optionsData={transmissions} dropDownName={'КПП'} setChosen={setSelectedTransmissionAC} chosen={selectedTransmission}/>
