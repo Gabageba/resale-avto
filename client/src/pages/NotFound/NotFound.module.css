@@ -1,0 +1,19 @@
+.errorCode {
+  margin-top: 100px;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 5px #c3073f;
+  font-size: 300px;
+  /*margin-left: -150px;*/
+}
+
+.notFound {
+  text-align: center;
+  margin-top: 250px;
+}
+
+.errorText {
+  font-family: akzidenzRegularEx, serif;
+  font-size: 30px;
+  margin-top: 300px;
+  color: #c3073f;
+}

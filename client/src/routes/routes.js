@@ -1,10 +1,10 @@
 import {
   ADD_CAR_ROUTE, APPLICATIONS_ROUTE, CAR_PAGE_ROUTE,
   CATALOG_ROUTE,
-  COMMISSION_ROUTE,
+  COMMISSION_ROUTE, CONTACTS_ROUTE,
   DETAILING_ROUTE, FAVORITE_CAR_ROUTE, HISTORY_CAR_ROUTE,
   LOGIN_ROUTE,
-  MAIN_ROUTE, PROFILE_ROUTE,
+  MAIN_ROUTE, PROFILE_ROUTE, REFERENCE_ROUTER,
   REGISTRATION_ROUTE,
   TRADEIN_ROUTE
 } from '../utils/const';
@@ -20,6 +20,8 @@ import CarPage from '../pages/CarPage/CarPage';
 import Favorite from '../pages/Favorite/Favorite';
 import History from '../pages/History/History';
 import Applications from '../pages/Applications/Applications';
+import Contacts from '../pages/Contacts/Contacts';
+import Reference from '../pages/Reference/Reference';
 
 export const authRoutes = [
   {
@@ -76,5 +78,13 @@ export const publicRoutes = [
   {
     path: CAR_PAGE_ROUTE + '/:id',
     element: <CarPage/>
+  },
+  {
+    path: CONTACTS_ROUTE,
+    element: <Contacts/>
+  },
+  {
+    path: REFERENCE_ROUTER,
+    element: <Reference/>
   }
 ]

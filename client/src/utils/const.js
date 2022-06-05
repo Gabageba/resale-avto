@@ -12,4 +12,5 @@ export const CAR_PAGE_ROUTE = '/car'
 export const FAVORITE_CAR_ROUTE = '/favorites'
 export const HISTORY_CAR_ROUTE = '/history'
 export const APPLICATIONS_ROUTE = '/applications'
+export const REFERENCE_ROUTER = '/about'
 

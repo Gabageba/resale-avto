@@ -1,0 +1,36 @@
+.title {
+  font-family: akzidenzLightEx;
+  font-size: 20px;
+
+}
+.contacts {
+  display: flex;
+  /*grid-template-columns: repeat(3, 1fr);*/
+}
+
+.block {
+  margin-left: 100px;
+}
+
+.contact {
+  display: flex;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.contact img {
+  width: 20px;
+  height: 20px;
+  font-family: Montserrat, serif;
+}
+
+.contact div {
+  font-weight: 400;
+  font-size: 18px;
+  color: #c3073f;
+  margin-left: 10px;
+}
+
+.map {
+  margin-top: 50px;
+}

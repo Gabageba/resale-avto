@@ -2,6 +2,7 @@ import React from 'react';
 import {Route, Routes} from 'react-router-dom'
 import {authRoutes, publicRoutes} from '../routes/routes';
 import {useSelector} from 'react-redux';
+import NotFound from '../pages/NotFound/NotFound';
 
 const AppRouter = () => {
   const isAuth = useSelector(state => state.userData.isAuth)
@@ -14,6 +15,7 @@ const AppRouter = () => {
       {publicRoutes.map(({path, element}) =>
         <Route key={path} path={path} element={element}/>
       )}
+      <Route path="*" element={<NotFound/>}/>
     </Routes>
   )
 }

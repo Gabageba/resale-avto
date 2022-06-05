@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import style from './SendForm.module.css'
 import {createApplication} from '../../http/applicationAPI';
 import ErrorPopUp from '../ErrorPopUp/ErrorPopUp';
@@ -12,6 +12,13 @@ const SendForm = ({type}) => {
   const [number, setNumber] = useState('')
   const [errorActive, setErrorActive] = useState(false)
 
+  useEffect(() => {
+    if (type === 'detailing') {
+      setPrice(0)
+      setMillage(0)
+    }
+  }, [])
+
   const onSendClick = () => {
     if (brand && model && millage && year && price && number) {
       if (type === 'trade-in') {
@@ -22,10 +29,14 @@ const SendForm = ({type}) => {
         createApplication(year, millage, number, brand, model, price, 2).then(() => {
           clear()
         })
-      } else if (type === 'detailing') {
+      }
+    } else if (brand && model && year && number) {
+      if (type === 'detailing') {
         createApplication(year, millage, number, brand, model, price, 3).then(() => {
           clear()
         })
+      } else {
+        setErrorActive(true)
       }
     } else {
       setErrorActive(true)
@@ -47,9 +58,17 @@ const SendForm = ({type}) => {
       <div className={style.sendForm}>
         <input type="text" className={style.selectorLong} placeholder='Марка' onChange={e => setBrand(e.target.value)} value={brand}/>
         <input type="text" className={style.selectorLong} placeholder='Модель' onChange={e => setModel(e.target.value)} value={model}/>
-        <input type="number" className={style.selectorLong} placeholder='Пробег' onChange={e => setMillage(e.target.value)} value={millage}/>
+        {type === 'trade-in' || type === 'commission' ?
+          <input type="number" className={style.selectorLong} placeholder='Пробег' onChange={e => setMillage(e.target.value)} value={millage}/>
+          : null
+        }
+
         <input type="number" className={style.selectorLong} placeholder='Год выпуска' onChange={e => setYear(e.target.value)} value={year}/>
-        <input type="number" className={style.selectorLong} placeholder='Желаемая цена' onChange={e => setPrice(e.target.value)} value={price}/>
+        {type === 'trade-in' || type === 'commission' ?
+          <input type="number" className={style.selectorLong} placeholder='Желаемая цена' onChange={e => setPrice(e.target.value)} value={price}/>
+          : null
+        }
+
         <input type="number" className={style.selectorLong} placeholder='Номер телефона' onChange={e => setNumber(e.target.value)} value={number}/>
         <button className={style.sendButton} onClick={onSendClick}>Отправить</button>
       </div>

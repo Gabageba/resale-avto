@@ -1,5 +1,6 @@
 .applicationCard {
   width: 565px;
+  height: 206px;
   /*height: 204px;*/
   border: 2px solid #494949;
   /*border-left: 2px solid #494949;*/
@@ -51,8 +52,10 @@
   font-family: akzidenzLightEx, serif;
   font-size: 17px;
   cursor: pointer;
-  margin-top: 25px;
+  /*margin-top: 25px;*/
   color: #717171;
+  position: absolute;
+  bottom: 2px;
 }
 
 .delete:hover {

@@ -69,8 +69,6 @@ class CarController {
 
     let findFilter
 
-    console.log(sortName)
-
     let carSort = [['createdAt', 'DESC']]
     if (sortName === 'PriceDown') {
       carSort = [['price', 'DESC']]

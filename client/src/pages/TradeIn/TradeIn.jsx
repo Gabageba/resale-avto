@@ -12,8 +12,8 @@ const TradeIn = () => {
       <SendForm type={'trade-in'}/>
       <h1 className='header-info'>Обменяйте ваше авто</h1>
       <ChangeCar/>
-      <h1 className='header-info'>Остались вопросы?</h1>
-      <ContactForm/>
+      {/*<h1 className='header-info'>Остались вопросы?</h1>*/}
+      {/*<ContactForm/>*/}
       <Footer/>
     </div>
   )

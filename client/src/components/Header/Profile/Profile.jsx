@@ -8,7 +8,7 @@ import {
   FAVORITE_CAR_ROUTE, HISTORY_CAR_ROUTE,
   LOGIN_ROUTE,
   MAIN_ROUTE,
-  PROFILE_ROUTE
+  PROFILE_ROUTE, REFERENCE_ROUTER
 } from '../../../utils/const';
 import {useDispatch, useSelector} from 'react-redux';
 import {setIsAuthAC, setUserAC} from '../../../redux/userReducer';
@@ -52,7 +52,7 @@ const Profile = () => {
                 : null}
               <NavLink to={FAVORITE_CAR_ROUTE} className={SelectedLink()}>Избранное</NavLink>
               <NavLink to={HISTORY_CAR_ROUTE} className={SelectedLink()}>История автомобилей</NavLink>
-              <NavLink to={'about'} className={SelectedLink()}>Справка</NavLink>
+              <NavLink to={REFERENCE_ROUTER} className={SelectedLink()}>О нас</NavLink>
               <div className={style.dropDownLink} onClick={logOut}>Выход</div>
             </div>
           </div>

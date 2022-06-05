@@ -12,8 +12,8 @@ const Commission = () => {
       <SendForm type={'commission'}/>
       <h1 className='header-info'>Продайте ваше авто</h1>
       <CommissionCar/>
-      <h1 className='header-info'>Остались вопросы?</h1>
-      <ContactForm/>
+      {/*<h1 className='header-info'>Остались вопросы?</h1>*/}
+      {/*<ContactForm/>*/}
       <Footer/>
     </div>
   )

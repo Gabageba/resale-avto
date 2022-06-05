@@ -1,0 +1,37 @@
+.table {
+  width: 1160px;
+  border: 2px solid #494949;
+  border-collapse: collapse;
+}
+
+.table th {
+  border: 2px solid #494949;
+  height: 50px;
+  width: 470px;
+  font-family: Montserrat, serif;
+  font-weight: 300;
+  font-size: 15px;
+  text-align: left;
+  left: 10px;
+  padding-left: 30px;
+}
+
+table td {
+  border: 2px solid #494949;
+  /*height: 50px;*/
+  text-align: center;
+  width: 132px;
+  font-family: akzidenzMediumEx, serif;
+}
+
+.additionalInfo {
+  font-size: 13px;
+  color: #717171;
+  font-weight: 400;
+}
+
+.title {
+  font-size: 20px;
+  height: 50px;
+  text-transform: uppercase;
+}

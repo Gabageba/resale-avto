@@ -17,12 +17,12 @@ const Footer = () => {
           <p className={style.header}>Информация</p>
           <p className={style.info}>О нас</p>
           <p className={style.info}>Контакты</p>
-          <p className={style.info}>Телефон</p>
+          {/*<p className={style.info}>Телефон</p>*/}
           <p className={style.header}>Политика конфидециальности</p>
         </div>
         <div className={style.columns}>
           <p className={style.header}>Услуги</p>
-          <NavLink to='/catalog' className={style.info}>Авто с пробегом</NavLink>
+          {/*<NavLink to='/catalog' className={style.info}>Авто с пробегом</NavLink>*/}
           <NavLink to='/commission' className={style.info}>Выкуп/Комиссия</NavLink>
           <NavLink to='/trade-in' className={style.info}>TRADE-IN</NavLink>
           <NavLink to='/detailing' className={style.info}>Детейлинг</NavLink>

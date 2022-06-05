@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import style from './Main.module.css'
 import Banner from './Banner/Banner';
 import AboutUs from './AboutUs/AboutUs';

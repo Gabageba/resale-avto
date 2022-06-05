@@ -43,19 +43,27 @@ const ApplicationCard = ({applicationData}) => {
             <div className={style.text}>{applicationData.model}</div>
           </div>
           <div className={style.spec}>
-            <div  className={style.title}>Пробег: </div>
-            <div className={style.text}>{fmtMillage}</div>
-          </div >
-          <div className={style.spec}>
             <div  className={style.title}>Год: </div>
             <div className={style.text}>{applicationData.year}</div>
           </div>
+          {
+            currentType !== 'детейлинг' ?
+              <div className={style.spec}>
+                <div  className={style.title}>Пробег: </div>
+                <div className={style.text}>{fmtMillage}</div>
+              </div >
+              : null
+          }
         </div>
+
         <div className={style.userInfo}>
-          <div className={style.spec}>
-            <div className={style.title} >Желаемая цена: </div>
-            <div className={style.text}>{fmtPrice} ₽</div>
-          </div>
+          {
+            currentType !== 'детейлинг' ?
+              <div className={style.spec}>
+                <div className={style.title} >Желаемая цена: </div>
+                <div className={style.text}>{fmtPrice} ₽</div>
+              </div> : null
+          }
           <div className={style.spec}>
             <div className={style.title} >Номер телефона: </div>
             <div className={style.text}>{applicationData.phone_number}</div>

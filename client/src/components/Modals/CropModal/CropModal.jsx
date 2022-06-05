@@ -26,7 +26,7 @@ const CropModal = ({active, setActive, src, setImage, crop, setCrop, getCroppedI
     <Modal modalName={modalName} setActive={setActive} active={active}>
       <div className={style.cropWindow}>
         <ReactCrop
-          maxHeight={800}
+          className={style.crop}
           src={src}
           onImageLoaded={setImage}
           crop={crop}

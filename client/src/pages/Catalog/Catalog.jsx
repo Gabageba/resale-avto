@@ -33,7 +33,7 @@ import {
   setTransmissionsAC
 } from '../../redux/carSpecReducer';
 import {useDispatch, useSelector} from 'react-redux';
-import {setCarsAC, setCurrentPageAC, setLimitAC, setTotalCountAC} from '../../redux/carsReducer';
+import {setCarsAC, setCurrentPageAC, setIsDel, setLimitAC, setTotalCountAC} from '../../redux/carsReducer';
 import Pages from '../../components/Pages/Pages';
 
 const Catalog = () => {
@@ -66,6 +66,7 @@ const Catalog = () => {
       dispatch(setModelsAC(data))
       dispatch(setFilterModels(data))
     })
+    dispatch(setIsDel(false))
     fetchDriveUnits().then(data => dispatch(setDriveUnitsAC(data)))
     fetchTransmission().then(data => dispatch(setTransmissionsAC(data)))
     fetchSteeringWheels().then(data => dispatch(setSteeringWheelsAC(data)))

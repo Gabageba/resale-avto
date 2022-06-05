@@ -1,0 +1,34 @@
+.reasons h2 {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #c3073f;
+  /*margin: 30px 48px 30px 20px;*/
+  font-size: 30px;
+}
+
+.reasons p {
+  font-family: akzidenzMediumEx, serif;
+  color: #fff;
+  letter-spacing: 0.05em;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 15px;
+  text-transform: uppercase;
+}
+
+.reasons {
+  display: flex;
+  margin-top: 25px;
+}
+
+.text {
+  width: 450px;
+  margin-left: 65px;
+  margin-bottom: 25px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.015em;
+  color: #fff;
+  font-weight: 300;
+  font-size: 15px;
+  font-feature-settings: "smcp";
+  font-variant: small-caps;
+}

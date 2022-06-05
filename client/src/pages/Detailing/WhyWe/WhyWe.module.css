@@ -1,0 +1,18 @@
+.line {
+  width: 560px;
+  height: 0;
+  border-bottom: 2px solid #717171;
+}
+
+.info {
+  display: flex;
+}
+
+.img {
+  width: 500px;
+}
+
+.textInfo {
+  margin-left: 70px;
+  margin-top: 10px;
+}
