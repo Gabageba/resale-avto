@@ -15,8 +15,8 @@ import Pages from '../../components/Pages/Pages';
 import Footer from '../../components/Footer/Footer';
 import {deleteOneInHistory, fetchHistory} from '../../http/historyAPI';
 import {setCurrentPageHistAC, setHistoryAC, setTotalCountHistAC} from '../../redux/historyReducer';
-import View from '../../components/View/View';
 import Lock from '../../components/Lock/Lock';
+import {FormattedMessage} from 'react-intl';
 
 
 const History = () => {
@@ -67,11 +67,11 @@ const History = () => {
   return (
     <div className={style.favorite}>
       {user.additionalInfo.isActivate ? null : <Lock/>}
-      <h1 >История просмотров</h1>
+      <h1 ><FormattedMessage id='history_head' /></h1>
       {
         history.length === 0 ?
           <div className={style.error}>
-            <div className={style.errorText}>Ваша история пуста...</div>
+            <div className={style.errorText}><FormattedMessage id='history_error' /></div>
           </div>
           :
           <div className={style.cars}>

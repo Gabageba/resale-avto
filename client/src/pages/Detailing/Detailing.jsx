@@ -7,11 +7,12 @@ import Types from './Types/Types';
 import WhyWe from './WhyWe/WhyWe';
 import PriceList from './PriceList/PriceList';
 import SendForm from '../../components/SendForm/SendForm';
+import {FormattedMessage} from 'react-intl';
 
 const Detailing = () => {
   return (
     <div>
-      <h1 className={style.header}>Детейлинг</h1>
+      <h1 className={style.header}><FormattedMessage id='detailing_header' /></h1>
       <div className={style.head}>
         <img className={style.img} src={detailing} alt=""/>
         <div className={style.icon}>
@@ -20,7 +21,7 @@ const Detailing = () => {
         <Types/>
         <WhyWe/>
         <PriceList/>
-        <h1 className={'header-info'}>Оставить заявку</h1>
+        <h1 className={'header-info'}><FormattedMessage id='detailing_application' /></h1>
         <SendForm type={'detailing'}/>
       </div>
       <Footer/>

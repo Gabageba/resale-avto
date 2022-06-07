@@ -29,6 +29,7 @@ import Spinner from '../../components/Spinner/Spinner';
 import AddSpecificationModal from '../../components/Modals/AddSpecification/AddSpecificationModal';
 import FileLoadInput from '../../components/FileLoadInput/FileLoadInput';
 import ErrorPopUp from '../../components/ErrorPopUp/ErrorPopUp';
+import {FormattedMessage, useIntl} from 'react-intl';
 
 const AddCar = () => {
 
@@ -67,7 +68,7 @@ const AddCar = () => {
   const selectedColor = useSelector(state => state.specifications.selectedColor)
   const selectedDriveUnit = useSelector(state => state.specifications.selectedDriveUnit)
   const selectedBodyType = useSelector(state => state.specifications.selectedBodyType)
-
+  const intl = useIntl()
 
   useEffect(() => {
     fetchBrands().then(data => dispatch(setBrandsAC(data)))
@@ -140,63 +141,64 @@ const AddCar = () => {
     setErrorPopUpActive(false)
   }
 
+
   return (
     <div className={style.addCar}>
       <AddSpecificationModal active={addSpecActive} setActive={setAddSpecActive} chosenSpec={chosenSpec}/>
-      <ErrorPopUp active={errorPopUpActive} setActive={setErrorPopUpActive} errorText={'Пожалуйста, заполните все поля отмеченные красным'}/>
-      <h1>Добавить автомобиль</h1>
+      <ErrorPopUp active={errorPopUpActive} setActive={setErrorPopUpActive} errorText={intl.formatMessage({id: 'add_error'})}/>
+      <h1><FormattedMessage id='add_head' /></h1>
       <div className={style.filter}>
-        <AutoCompleteDropDown optionsData={brands} dropDownName={'Марка'} isAdd={true} setChosen={setSelectedBrandAC}
+        <AutoCompleteDropDown optionsData={brands} dropDownName={intl.formatMessage({id: 'filter_brand'})} isAdd={true} setChosen={setSelectedBrandAC}
                               choseSpecAdd={choseSpecAdd} chosen={selectedBrand}/>
         {selectedBrand ?
-          <AutoCompleteDropDown optionsData={filterModels} dropDownName={'Модель'} isAdd={true} setChosen={setSelectedModelsAC}
+          <AutoCompleteDropDown optionsData={filterModels} dropDownName={intl.formatMessage({id: 'filter_model'})} isAdd={true} setChosen={setSelectedModelsAC}
                                 choseSpecAdd={choseSpecAdd} chosen={selectedModel}/>
-          : <input placeholder="Модель" className={style.textInput} readOnly/>
+          : <input placeholder={intl.formatMessage({id: 'filter_model'})} className={style.textInput} readOnly/>
         }
-        <AutoCompleteDropDown optionsData={bodyTypes} dropDownName={'Тип кузова'} isAdd={true}
+        <AutoCompleteDropDown optionsData={bodyTypes} dropDownName={intl.formatMessage({id: 'filter_body_type'})} isAdd={true}
                               setChosen={setSelectedBodyTypeAC} choseSpecAdd={choseSpecAdd} chosen={selectedBodyType}/>
-        <AutoCompleteDropDown optionsData={driveUnits} dropDownName={'Привод'} isAdd={true}
+        <AutoCompleteDropDown optionsData={driveUnits} dropDownName={intl.formatMessage({id: 'filter_drive_unit'})} isAdd={true}
                               setChosen={setSelectedDriveUnitAC} choseSpecAdd={choseSpecAdd}
                               chosen={selectedDriveUnit}/>
-        <AutoCompleteDropDown optionsData={transmissions} dropDownName={'КПП'} isAdd={true}
+        <AutoCompleteDropDown optionsData={transmissions} dropDownName={intl.formatMessage({id: 'filter_transmission'})} isAdd={true}
                               setChosen={setSelectedTransmissionAC} choseSpecAdd={choseSpecAdd}
                               chosen={selectedTransmission}/>
-        <AutoCompleteDropDown optionsData={steeringWheels} dropDownName={'Руль'} isAdd={true}
+        <AutoCompleteDropDown optionsData={steeringWheels} dropDownName={intl.formatMessage({id: 'filter_steering_wheel'})} isAdd={true}
                               setChosen={setSelectedSteeringWheelAC} choseSpecAdd={choseSpecAdd}
                               chosen={selectedSteeringWheel}/>
-        <AutoCompleteDropDown optionsData={colors} dropDownName={'Цвет'} isAdd={true} setChosen={setSelectedColorAC}
+        <AutoCompleteDropDown optionsData={colors} dropDownName={intl.formatMessage({id: 'add_color'})} isAdd={true} setChosen={setSelectedColorAC}
                               choseSpecAdd={choseSpecAdd} chosen={selectedColor}/>
 
-        <input type="number" placeholder="Год выпуска"
+        <input type="number" placeholder={intl.formatMessage({id: 'filter_year'})}
                className={specErrorSearch && selectedYear === '' ? style.textInputError : style.textInput}
                value={selectedYear}
                onChange={e => dispatch(setSelectedYearAC(e.target.value))}/>
-        <input type="number" placeholder="Пробег"
+        <input type="number" placeholder={intl.formatMessage({id: 'filter_millage'})}
                className={specErrorSearch && selectedMillage === '' ? style.textInputError : style.textInput}
                value={selectedMillage}
                onChange={e => dispatch(setSelectedMillageAC(e.target.value))}/>
-        <input type="number" placeholder="Мощность"
+        <input type="number" placeholder={intl.formatMessage({id: 'add_power'})}
                className={specErrorSearch && selectedPower === '' ? style.textInputError : style.textInput}
                value={selectedPower}
                onChange={e => dispatch(setSelectedPowerAC(e.target.value))}/>
-        <input type="number" placeholder="Цена"
+        <input type="number" placeholder={intl.formatMessage({id: 'add_price'})}
                className={specErrorSearch && selectedPrice === '' ? style.textInputError : style.textInput}
                value={selectedPrice}
                onChange={e => dispatch(setSelectedPriceAC(e.target.value))}/>
-        <input type="number" placeholder="Владельцев"
+        <input type="number" placeholder={intl.formatMessage({id: 'add_owners'})}
                className={specErrorSearch && selectedOwners === '' ? style.textInputError : style.textInput}
                value={selectedOwners}
                onChange={e => dispatch(setSelectedOwnersAC(e.target.value))}/>
       </div>
       <div className={style.spec}>
-         <textarea placeholder="Описание" className={specErrorSearch && selectedDescription === '' || selectedDescription.length > 255 ? style.descriptionInputError : style.descriptionInput}
+         <textarea placeholder={intl.formatMessage({id: 'add_description'})} className={(specErrorSearch && selectedDescription === '') || selectedDescription.length > 255 ? style.descriptionInputError : style.descriptionInput}
                    value={selectedDescription}
                    onChange={e => dispatch(setSelectedDescriptionAC(e.target.value))}/>
         <FileLoadInput classname={style.fileInput} />
       </div>
       <div>
-        <button className={style.addButton} onClick={addCar}>Добавить</button>
-        <button className={style.clearButton} onClick={clear}>Сбросить</button>
+        <button className={style.addButton} onClick={addCar}><FormattedMessage id='add_add_button' /></button>
+        <button className={style.clearButton} onClick={clear}><FormattedMessage id='add_clear_button' /></button>
       </div>
 
     </div>

@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import style from './Sort.module.css'
 import {setCurrentPageAC} from '../../redux/carsReducer';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 const Sort = ({optionsData, selectedSort, setSelectedSort}) => {
 

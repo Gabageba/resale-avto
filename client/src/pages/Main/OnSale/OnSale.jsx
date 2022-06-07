@@ -6,6 +6,7 @@ import {useDispatch} from 'react-redux';
 import {setBrandsAC, setModelsAC} from '../../../redux/carSpecReducer';
 import Spinner from '../../../components/Spinner/Spinner';
 import OnSaleCarList from './OnSaleCarList/OnSaleCarList';
+import {FormattedMessage} from 'react-intl';
 
 const OnSale = () => {
 
@@ -25,8 +26,8 @@ const OnSale = () => {
   return (
     <div className={style.onSale}>
       <div className={style.head}>
-        <h1 className="header-info">В продаже</h1>
-        <NavLink to="/catalog" className={style.more}>Больше автомобилей...</NavLink>
+        <h1 className="header-info"><FormattedMessage id='main_for_sale_title' /></h1>
+        <NavLink to="/catalog" className={style.more}><FormattedMessage id='main_for_sale_more' /></NavLink>
       </div>
       <OnSaleCarList/>
     </div>

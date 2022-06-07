@@ -3,6 +3,7 @@ import style from './CarsList.module.css'
 import CarCards from "../../../components/CarCards/CarCards";
 import {useSelector} from 'react-redux';
 import InLineCarCards from '../../../components/InLineCarCards/InLineCarCards';
+import {FormattedMessage} from 'react-intl';
 
 
 
@@ -17,7 +18,7 @@ const CarsList = () => {
       {
         carsData.length === 0 ?
           <div className={style.error}>
-            <div className={style.errorText}>Извините, но по вашим критериям ничего не нашлось...</div>
+            <div className={style.errorText}><FormattedMessage id='catalog_error' /></div>
           </div>
           : selectedView.name === 'Grid' ?
           <div className={style.cars}>

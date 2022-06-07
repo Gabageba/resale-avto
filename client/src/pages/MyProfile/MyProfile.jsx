@@ -6,6 +6,7 @@ import ProfileSettingModal from '../../components/Modals/ProfileSettingModal/Pro
 import Lock from '../../components/Lock/Lock';
 import ErrorPopUp from '../../components/ErrorPopUp/ErrorPopUp';
 import AvatarLoadInput from '../../components/AvatarLoadInput/AvatarLoadInput';
+import {FormattedMessage} from 'react-intl';
 
 const MyProfile = () => {
   const user = useSelector(state => state.userData.user)
@@ -33,14 +34,14 @@ const MyProfile = () => {
             <p className={style.contentInfo}>{user.mainInfo.email}</p>
           </div>
           <div className={style.info}>
-            <p className={style.headerInfo}>Роль:</p>
-            <p className={style.contentInfo}>{user.mainInfo.role === 'ADMIN' ? 'Администратор' : 'Пользователь'}</p>
+            <p className={style.headerInfo}><FormattedMessage id='profile_role' /></p>
+            <p className={style.contentInfo}>{user.mainInfo.role === 'ADMIN' ? <FormattedMessage id='profile_admin' /> : <FormattedMessage id='profile_user' />}</p>
           </div>
-          <button className={style.settingButton} onClick={() => setProfileSettingActive(true)}>настроить профиль</button>
+          <button className={style.settingButton} onClick={() => setProfileSettingActive(true)}><FormattedMessage id='profile_setting' /></button>
         </div>
       </div>
       <div className={style.carHistory}>
-        <h2 className={style.historyHeader}>История автомобилей: </h2>
+        <h2 className={style.historyHeader}><FormattedMessage id='profile_recommend' /></h2>
       </div>
     </div>
   )

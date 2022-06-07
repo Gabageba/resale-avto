@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import style from './Contacts.module.css'
 import phone from '../../assets/phone.png'
 import email from '../../assets/email.png'
 import whatsApp from '../../assets/whatsapp.png'
 import telegram from '../../assets/telegram.png'
+import {FormattedMessage} from 'react-intl';
 
 const Contacts = () => {
 
@@ -15,10 +16,10 @@ const Contacts = () => {
 
   return (
     <div>
-      <h1 className={'header-info'}>Контакты</h1>
+      <h1 className={'header-info'}><FormattedMessage id='contacts_header' /></h1>
       <div className={style.contacts}>
         <div>
-          <div className={style.title}>Единый контактный центр:</div>
+          <div className={style.title}><FormattedMessage id='contacts_center' /></div>
           <div className={style.contact}>
             <img src={phone} alt=""/>
             <div>+7 (995) 892-56-21</div>
@@ -29,14 +30,14 @@ const Contacts = () => {
           </div>
         </div>
         <div className={style.block}>
-          <div className={style.title}>Горячая линия:</div>
+          <div className={style.title}><FormattedMessage id='contacts_hotline' /></div>
           <div className={style.contact}>
             <img src={phone} alt=""/>
             <div>+7 (913) 955-62-12</div>
           </div>
         </div>
         <div className={style.block}>
-          <div className={style.title}>Социальные сети:</div>
+          <div className={style.title}><FormattedMessage id='contacts_social' /></div>
           <div className={style.contact}>
             <img src={whatsApp} alt=""/>
             <div>+7 (913) 955-62-12</div>

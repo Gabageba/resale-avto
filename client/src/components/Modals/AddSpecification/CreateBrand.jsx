@@ -4,6 +4,7 @@ import {createBrand} from '../../../http/carAPI';
 import {setBrandsAC, setSpecAddErrorSearch} from '../../../redux/carSpecReducer';
 import {useDispatch, useSelector} from 'react-redux';
 import ErrorPopUp from '../../ErrorPopUp/ErrorPopUp';
+import {FormattedMessage, useIntl} from 'react-intl';
 
 const CreateBrand = ({setActive}) => {
 
@@ -12,6 +13,7 @@ const CreateBrand = ({setActive}) => {
   const dispatch = useDispatch()
   const specAddErrorSearch = useSelector(state => state.specifications.specAddErrorSearch)
   const brands = useSelector(state => state.specifications.brands)
+  const intl = useIntl()
 
 
   const addBrand = () => {
@@ -35,11 +37,11 @@ const CreateBrand = ({setActive}) => {
     <div>
       <div className={style.info}>
         <input type="text"
-               placeholder={'Новая марка'}
+               placeholder={intl.formatMessage({id: 'new_brand'})}
                className={specAddErrorSearch && value === '' ? style.addInputError : style.addInput}
                value={value}
                onChange={e => setValue(e.target.value)}/>
-        <button className={style.addButton} onClick={addBrand}>Добавить</button>
+        <button className={style.addButton} onClick={addBrand}><FormattedMessage id='add_spec_button' /></button>
       </div>
     </div>
   );

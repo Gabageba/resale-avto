@@ -1,26 +1,27 @@
 import React from 'react';
 import style from '../Detailing.module.css';
+import {FormattedMessage} from 'react-intl';
 
 const Types = () => {
   return (
     <div className={style.types}>
       <div className={style.typeBlock}>
-        <div className={style.typeName}>Полировка</div>
+        <div className={style.typeName}><FormattedMessage id='detailing_types_polishing' /></div>
       </div>
       <div className={style.typeBlock}>
-        <div className={style.typeName}>Химчистка</div>
+        <div className={style.typeName}><FormattedMessage id='detailing_types_dry_cleaning' /></div>
       </div>
       <div className={style.typeBlock}>
-        <div className={style.typeName}>Жидкое стекло</div>
+        <div className={style.typeName}><FormattedMessage id='detailing_types_glass' /></div>
       </div>
       <div className={style.typeBlock}>
-        <div className={style.typeName}>Керамика</div>
+        <div className={style.typeName}><FormattedMessage id='detailing_types_ceramics' /></div>
       </div>
       <div className={style.typeBlock}>
-        <div className={style.typeBigName}>Восстановление кожи</div>
+        <div className={style.typeBigName}><FormattedMessage id='detailing_types_skin' /></div>
       </div>
       <div className={style.typeBlock}>
-        <div className={style.typeBigName}>Восстановление оптики</div>
+        <div className={style.typeBigName}><FormattedMessage id='detailing_types_optics' /></div>
       </div>
     </div>
   );

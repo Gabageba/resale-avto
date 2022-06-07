@@ -7,6 +7,7 @@ import {useDispatch} from 'react-redux';
 import {setIsAuthAC, setUserAC} from '../../redux/userReducer';
 import ErrorPopUp from '../../components/ErrorPopUp/ErrorPopUp';
 import validator from 'validator'
+import {FormattedMessage, useIntl} from 'react-intl';
 
 const Auth = () => {
 
@@ -28,6 +29,7 @@ const Auth = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const intl = useIntl()
 
   const visibleChange = () => {
     if (passwordInputType === 'password') {
@@ -75,7 +77,7 @@ const Auth = () => {
           if (password === '') {
             setEmptyPassword(true)
           }
-          setErrorText('Пожалуйста, заполните все поля выделенные красным')
+          setErrorText(intl.formatMessage({id: 'auth_err_empty'}))
           setLoginError(true)
         } else {
 
@@ -98,11 +100,11 @@ const Auth = () => {
           if (passwordRepeat === '') {
             setEmptyRepeatPassword(true)
           }
-          setErrorText('Пожалуйста, заполните все поля выделенные красным')
+          setErrorText(intl.formatMessage({id: 'auth_err_empty'}))
           setLoginError(true)
         } else {
          if (password !== passwordRepeat) {
-           setErrorText('Пароли не совпадают')
+           setErrorText(intl.formatMessage({id: 'auth_err_repeat_password'}))
            setLoginError(true)
          } else {
            if (validatePassword(password)){
@@ -112,11 +114,11 @@ const Auth = () => {
                dispatch(setIsAuthAC(true))
                navigate(MAIN_ROUTE)
              } else {
-               setErrorText('Такой почты не существует')
+               setErrorText(intl.formatMessage({id: 'auth_err_no_email'}))
                setLoginError(true)
              }
            } else {
-             setErrorText('Ваш пароль не соответствует минимальным требованиям безопасности.\n Требования:\n Минимальная длина - 8 символов,\n Минимум 1 строчная и 1 заглавная буква,\n Минимум 1 цифра')
+             setErrorText(intl.formatMessage({id: 'auth_err_bad_password'}))
              setLoginError(true)
            }
          }
@@ -138,11 +140,11 @@ const Auth = () => {
     <div>
       <ErrorPopUp active={loginError} setActive={setLoginError} errorText={errorText}/>
       <div className={isLogin ? style.loginForm : style.registrationForm}>
-        <h1 className={style.header}>{isLogin ? 'Вход' : 'Регистрация'}</h1>
+        <h1 className={style.header}>{isLogin ? <FormattedMessage id='auth_login_head' /> : <FormattedMessage id='auth_reg_head' /> }</h1>
         {isLogin ?
           <span></span>
           : <input type="text"
-                   placeholder="Имя"
+                   placeholder={intl.formatMessage({id: 'auth_name'})}
                    value={name}
                    className={emptyName ? style.authInputError : style.authInput}
                    onChange={e => {
@@ -160,7 +162,7 @@ const Auth = () => {
                }}/>
         <div className={style.password}>
           <input type={passwordInputType}
-                 placeholder="Пароль"
+                 placeholder={intl.formatMessage({id: 'auth_password'})}
                  className={emptyPassword ? style.authInputError : style.authInput}
                  value={password}
                  onChange={e => {
@@ -173,7 +175,7 @@ const Auth = () => {
         </div>
         {isLogin ?
           <span></span>
-          : <input type={passwordInputType} placeholder="Повторите пароль"
+          : <input type={passwordInputType} placeholder={intl.formatMessage({id: 'auth_repeat_password'})}
                    className={emptyRepeatPassword ? style.authInputError : style.authInput}
                    value={passwordRepeat}
                    onChange={e => {
@@ -184,16 +186,16 @@ const Auth = () => {
 
         <div>
           {isLogin ?
-            <div className={style.link}>Нет аккаунта? <NavLink className={style.navigateLink}
+            <div className={style.link}><FormattedMessage id='auth_no_acc' /> <NavLink className={style.navigateLink}
                                                                to={REGISTRATION_ROUTE}
-                                                               onClick={clear}>Зарегистрируйся</NavLink></div>
-            : <div className={style.link}>Есть аккаунт? <NavLink className={style.navigateLink}
+                                                               onClick={clear}><FormattedMessage id='auth_reg' /></NavLink></div>
+            : <div className={style.link}><FormattedMessage id='auth_acc' /> <NavLink className={style.navigateLink}
                                                                  to={LOGIN_ROUTE}
-                                                                 onClick={clear}>Войди</NavLink></div>
+                                                                 onClick={clear}><FormattedMessage id='auth_login' /></NavLink></div>
           }
         </div>
         {/*<div className={style.error}>Неверное имя пользователя или пароль</div>*/}
-        <button className={style.sendButton} onClick={loginClick}>{isLogin ? 'Войти' : 'Зарегистрироваться'}</button>
+        <button className={style.sendButton} onClick={loginClick}>{isLogin ? <FormattedMessage id='auth_login_button' /> : <FormattedMessage id='auth_reg_button' />}</button>
       </div>
     </div>
 

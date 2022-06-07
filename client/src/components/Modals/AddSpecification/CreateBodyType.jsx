@@ -3,12 +3,14 @@ import style from './AddSpecificationModal.module.css';
 import {createBodyType} from '../../../http/carAPI';
 import {setBodyTypesAC, setSpecAddErrorSearch} from '../../../redux/carSpecReducer';
 import {useDispatch, useSelector} from 'react-redux';
+import {FormattedMessage, useIntl} from 'react-intl';
 
 const CreateBodyType = ({setActive}) => {
 
   const [value, setValue] = useState('')
   const dispatch = useDispatch()
   const specAddErrorSearch = useSelector(state => state.specifications.specAddErrorSearch)
+  const intl = useIntl()
 
   const addBodyType = () => {
     if (value) {
@@ -26,11 +28,11 @@ const CreateBodyType = ({setActive}) => {
     <div>
       <div className={style.info}>
         <input type="text"
-               placeholder={'Новый тип кузова'}
+               placeholder={intl.formatMessage({id: 'new_body_type'})}
                className={specAddErrorSearch && value === '' ? style.addInputError : style.addInput}
                value={value}
                onChange={e => setValue(e.target.value)}/>
-        <button className={style.addButton} onClick={addBodyType}>Добавить</button>
+        <button className={style.addButton} onClick={addBodyType}><FormattedMessage id='add_spec_button' /></button>
       </div>
     </div>
   );

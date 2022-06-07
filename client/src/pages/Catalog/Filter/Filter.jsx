@@ -13,9 +13,10 @@ import {
   setSelectedMinYearAC,
   setSelectedModelsAC,
   setSelectedSteeringWheelAC,
-  setSelectedTransmissionAC, setSelectedYearAC
+  setSelectedTransmissionAC,
 } from '../../../redux/carSpecReducer';
 import {useDispatch, useSelector} from 'react-redux';
+import {useIntl} from 'react-intl';
 
 const Filter = () => {
 
@@ -39,23 +40,23 @@ const Filter = () => {
   const maxMillage = useSelector(state => state.specifications.selectedMaxMillage)
 
   const dispatch = useDispatch()
+  const intl = useIntl()
 
   return (
     <div className={style.filter}>
-
-      <AutoCompleteDropDown optionsData={brands} dropDownName={'Марка'} setChosen={setSelectedBrandAC} chosen={selectedBrand}/>
+      <AutoCompleteDropDown optionsData={brands} dropDownName={intl.formatMessage({id: 'filter_brand'})} setChosen={setSelectedBrandAC} chosen={selectedBrand}/>
       {selectedBrand ?
-        <AutoCompleteDropDown optionsData={filterModels} dropDownName={'Модель'} setChosen={setSelectedModelsAC} chosen={selectedModel}/>
-        :   <input placeholder="Модель" className={style.notSelected} readOnly/>
+        <AutoCompleteDropDown optionsData={filterModels} dropDownName={intl.formatMessage({id: 'filter_model'})} setChosen={setSelectedModelsAC} chosen={selectedModel}/>
+        :   <input placeholder={intl.formatMessage({id: 'filter_model'})} className={style.notSelected} readOnly/>
       }
-      <AutoCompleteDropDown optionsData={bodyTypes} dropDownName={'Тип кузова'} setChosen={setSelectedBodyTypeAC} chosen={selectedBodyType}/>
-      <AutoCompleteDropDown optionsData={driveUnits} dropDownName={'Привод'} setChosen={setSelectedDriveUnitAC} chosen={selectedDriveUnit}/>
-      <AutoCompleteDropDown optionsData={transmissions} dropDownName={'КПП'} setChosen={setSelectedTransmissionAC} chosen={selectedTransmission}/>
-      <AutoCompleteDropDown optionsData={steeringWheels} dropDownName={'Руль'} setChosen={setSelectedSteeringWheelAC} chosen={selectedSteeringWheel}/>
+      <AutoCompleteDropDown optionsData={bodyTypes} dropDownName={intl.formatMessage({id: 'filter_body_type'})} setChosen={setSelectedBodyTypeAC} chosen={selectedBodyType}/>
+      <AutoCompleteDropDown optionsData={driveUnits} dropDownName={intl.formatMessage({id: 'filter_drive_unit'})} setChosen={setSelectedDriveUnitAC} chosen={selectedDriveUnit}/>
+      <AutoCompleteDropDown optionsData={transmissions} dropDownName={intl.formatMessage({id: 'filter_transmission'})} setChosen={setSelectedTransmissionAC} chosen={selectedTransmission}/>
+      <AutoCompleteDropDown optionsData={steeringWheels} dropDownName={intl.formatMessage({id: 'filter_steering_wheel'})} setChosen={setSelectedSteeringWheelAC} chosen={selectedSteeringWheel}/>
 
-      <SelectorSplit selectorName='Цена' setMin={e => dispatch(setSelectedMinPriceAC(e))} setMax={e => dispatch(setSelectedMaxPriceAC(e))} max={maxPrice} min={minPrice}/>
-      <SelectorSplit selectorName='Год' setMin={e => dispatch(setSelectedMinYearAC(e))} setMax={e => dispatch(setSelectedMaxYearAC(e))} max={maxYear} min={minYear}/>
-      <SelectorSplit selectorName='Пробег' setMin={e => dispatch(setSelectedMinMillageAC(e))} setMax={e => dispatch(setSelectedMaxMillageAC(e))} max={maxMillage} min={minMillage}/>
+      <SelectorSplit selectorName={intl.formatMessage({id: 'filter_price'})} setMin={e => dispatch(setSelectedMinPriceAC(e))} setMax={e => dispatch(setSelectedMaxPriceAC(e))} max={maxPrice} min={minPrice}/>
+      <SelectorSplit selectorName={intl.formatMessage({id: 'filter_year'})} setMin={e => dispatch(setSelectedMinYearAC(e))} setMax={e => dispatch(setSelectedMaxYearAC(e))} max={maxYear} min={minYear}/>
+      <SelectorSplit selectorName={intl.formatMessage({id: 'filter_millage'})} setMin={e => dispatch(setSelectedMinMillageAC(e))} setMax={e => dispatch(setSelectedMaxMillageAC(e))} max={maxMillage} min={minMillage}/>
     </div>)
 }
 

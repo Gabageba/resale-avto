@@ -4,6 +4,7 @@ import {createModel} from '../../../http/carAPI';
 import AutoCompleteDropDown from '../../AutoCompleteDropDown/AutoCompleteDropDown';
 import {useDispatch, useSelector} from 'react-redux';
 import {setModelsAC, setSelectedBrandAC, setSpecAddErrorSearch} from '../../../redux/carSpecReducer';
+import {FormattedMessage, useIntl} from 'react-intl';
 
 const CreateModel = ({setActive}) => {
 
@@ -13,6 +14,7 @@ const CreateModel = ({setActive}) => {
 
   const selectedBrand = useSelector(state => state.specifications.selectedBrand)
   const brands = useSelector(state => state.specifications.brands)
+  const intl = useIntl()
 
   const addModel = () => {
     if (value && selectedBrand) {
@@ -34,15 +36,15 @@ const CreateModel = ({setActive}) => {
   return (
     <div>
       <div className={style.infoDropDown}>
-        <AutoCompleteDropDown dropDownName={'Марка'} optionsData={brands} setChosen={setSelectedBrandAC}/>
+        <AutoCompleteDropDown dropDownName={intl.formatMessage({id: 'filter_brand'})} optionsData={brands} setChosen={setSelectedBrandAC}/>
       </div>
       <div className={style.info}>
         <input type="text"
-               placeholder={'Новая модель'}
+               placeholder={intl.formatMessage({id: 'new_model'})}
                className={specAddErrorSearch && value === '' ? style.addModelInputError : style.addModelInput}
                value={value}
                onChange={e => setValue(e.target.value)}/>
-        <button className={style.addButton} onClick={addModel}>Добавить</button>
+        <button className={style.addButton} onClick={addModel}><FormattedMessage id='add_spec_button' /></button>
       </div>
     </div>
   );

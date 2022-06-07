@@ -1,9 +1,13 @@
+import {LOCALES} from '../i18n/locales';
+
 const SET_IS_AUTH = 'SET_IS_AUTH'
 const SET_USER = 'SET_USER'
+const SET_LOCALE = 'SET_LOCALE'
 
 let initialState = {
   isAuth: false,
-  user: {}
+  user: {},
+  locale: LOCALES.RUSSIAN
 }
 
 const userReducer = (state = initialState, action) => {
@@ -12,6 +16,8 @@ const userReducer = (state = initialState, action) => {
       return {...state, isAuth: action.auth}
     case SET_USER:
       return {...state, user: action.user}
+    case SET_LOCALE:
+      return {...state, locale: action.loc}
     default:
       return state
   }
@@ -19,6 +25,7 @@ const userReducer = (state = initialState, action) => {
 
 export const setIsAuthAC = (auth) => ({type: SET_IS_AUTH, auth})
 export const setUserAC = (user) => ({type: SET_USER, user})
+export const setLocaleAC = (loc) => ({type: SET_LOCALE, loc})
 
 
 export default userReducer

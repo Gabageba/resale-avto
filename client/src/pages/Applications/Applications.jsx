@@ -10,6 +10,7 @@ import {
   setTotalCountApplicationAC
 } from '../../redux/applicationsReducer';
 import Pages from '../../components/Pages/Pages';
+import {FormattedMessage} from 'react-intl';
 
 const Applications = () => {
   const selectedApplicationType =  useSelector(state => state.application.selectedApplicationType)
@@ -40,11 +41,11 @@ const Applications = () => {
 
   return (
     <div className={style.applications}>
-      <h1 className={style.header}>Просмотр заявок</h1>
+      <h1 className={style.header}><FormattedMessage id='application_title' /></h1>
       {
         applications.length === 0 ?
           <div className={style.error}>
-            <div className={style.errorText}>Вы не добавили ни один автомобиль в избранное...</div>
+            <div className={style.errorText}><FormattedMessage id='application_error' /></div>
           </div>
           :
           <div className={style.application}>

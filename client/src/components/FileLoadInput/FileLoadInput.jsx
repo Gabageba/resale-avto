@@ -5,6 +5,7 @@ import CropModal from '../Modals/CropModal/CropModal';
 import {useDispatch, useSelector} from 'react-redux';
 import {setSelectedFileAC} from '../../redux/carSpecReducer';
 import {addImage} from '../../http/carAPI';
+import {useIntl} from 'react-intl';
 
 const FileLoadInput = ({inputType, carId, setImg}) => {
 
@@ -18,6 +19,7 @@ const FileLoadInput = ({inputType, carId, setImg}) => {
   const selectedFile = useSelector(state => state.specifications.selectedFile)
   const specErrorSearch = useSelector(state => state.specifications.specErrorSearch)
   const dispatch = useDispatch()
+  const intl = useIntl()
 
   useEffect(() => {
     if (selectedFile === '') {
@@ -107,7 +109,7 @@ const FileLoadInput = ({inputType, carId, setImg}) => {
             </label> :
             <label className={labelCondition()}>
               <i className={'material-icons'}>{isLoad ? 'done' : 'attach_file'}</i>
-              <span className={style.title}>{isLoad ? loadFile : 'Загрузить картинку'}</span>
+              <span className={style.title}>{isLoad ? loadFile : intl.formatMessage({id: 'img_load'})}</span>
               <input type="file" accept="image/" onChange={handleFileChange}/>
             </label>
           }

@@ -35,6 +35,7 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import {setCarsAC, setCurrentPageAC, setIsDel, setLimitAC, setTotalCountAC} from '../../redux/carsReducer';
 import Pages from '../../components/Pages/Pages';
+import {FormattedMessage} from 'react-intl';
 
 const Catalog = () => {
 
@@ -169,11 +170,11 @@ const Catalog = () => {
 
   return (
     <div className={style.catalog}>
-      <h1 className="header-info">Авто в продаже</h1>
+      <h1 className="header-info"><FormattedMessage id='catalog_title' /></h1>
       <Filter/>
       <div>
-        <button className={style.searchButton} onClick={onSearchClick}>Искать</button>
-        <button className={style.clearButton} onClick={onClearClick}>Сбросить</button>
+        <button className={style.searchButton} onClick={onSearchClick}><FormattedMessage id='catalog_search_button' /></button>
+        <button className={style.clearButton} onClick={onClearClick}><FormattedMessage id='catalog_reset_button' /></button>
       </div>
       <ShowSetting/>
       <CarsList/>

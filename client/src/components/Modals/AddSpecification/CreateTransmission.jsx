@@ -3,12 +3,14 @@ import style from './AddSpecificationModal.module.css';
 import {createTransmission} from '../../../http/carAPI';
 import {useDispatch, useSelector} from 'react-redux';
 import {setSpecAddErrorSearch, setTransmissionsAC} from '../../../redux/carSpecReducer';
+import {FormattedMessage, useIntl} from 'react-intl';
 
 const CreateTransmission = ({setActive}) => {
 
   const [value, setValue] = useState('')
   const dispatch = useDispatch()
   const specAddErrorSearch = useSelector(state => state.specifications.specAddErrorSearch)
+  const intl = useIntl()
 
   const addTransmission = () => {
     if (value) {
@@ -26,11 +28,11 @@ const CreateTransmission = ({setActive}) => {
     <div>
       <div className={style.info}>
         <input type="text"
-               placeholder={'Новая трансмиссия'}
+               placeholder={intl.formatMessage({id: 'new_transmission'})}
                className={specAddErrorSearch && value === '' ? style.addInputError : style.addInput}
                value={value}
                onChange={e => setValue(e.target.value)}/>
-        <button className={style.addButton} onClick={addTransmission}>Добавить</button>
+        <button className={style.addButton} onClick={addTransmission}><FormattedMessage id='add_spec_button' /></button>
       </div>
     </div>
   );

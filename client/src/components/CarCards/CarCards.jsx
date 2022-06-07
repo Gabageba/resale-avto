@@ -7,6 +7,7 @@ import {deleteCar} from '../../http/carAPI';
 import {useNavigate} from 'react-router-dom';
 import {CAR_PAGE_ROUTE} from '../../utils/const';
 import {addInHistory} from '../../http/historyAPI';
+import {useIntl} from 'react-intl';
 
 const CarCards = ({carData, isDel}) => {
 
@@ -17,6 +18,7 @@ const CarCards = ({carData, isDel}) => {
   const currentPage = useSelector(state => state.cars.currentPage)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const intl = useIntl()
 
   const onDeleteClick = () => {
     deleteCar(currentPage, limit, carData.id).then(data => {
@@ -54,8 +56,8 @@ const CarCards = ({carData, isDel}) => {
         <p className={brand[0].name.length + model[0].name.length >= 20 ? style.bigCarName : style.carName}>{`${brand[0].name } ${model[0].name}`}</p>
         <p className={style.year}>{carData.year}</p>
         <div className={style.otherSpec}>
-          <AdditionalSpec nameSpec='Пробег' dataSpec={`${fmtMillage} км`}/>
-          <AdditionalSpec nameSpec='Владельцев' dataSpec={carData.owners}/>
+          <AdditionalSpec nameSpec={intl.formatMessage({id: 'car_millage'})} dataSpec={`${fmtMillage} км`}/>
+          <AdditionalSpec nameSpec={intl.formatMessage({id: 'car_owners'})} dataSpec={carData.owners}/>
         </div>
         <p className={style.price}>{fmtPrice} ₽</p>
       </div>

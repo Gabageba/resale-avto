@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import style from './SendForm.module.css'
 import {createApplication} from '../../http/applicationAPI';
 import ErrorPopUp from '../ErrorPopUp/ErrorPopUp';
+import {FormattedMessage, useIntl} from 'react-intl';
 
 const SendForm = ({type}) => {
   const [brand, setBrand] = useState('')
@@ -11,6 +12,7 @@ const SendForm = ({type}) => {
   const [price, setPrice] = useState('')
   const [number, setNumber] = useState('')
   const [errorActive, setErrorActive] = useState(false)
+  const intl = useIntl()
 
   useEffect(() => {
     if (type === 'detailing') {
@@ -54,23 +56,23 @@ const SendForm = ({type}) => {
 
   return (
     <div>
-      <ErrorPopUp errorText={'Пожалуйста, заполните все поля'} setActive={setErrorActive} active={errorActive}/>
+      <ErrorPopUp errorText={intl.formatMessage({id: 'send_form_error'})} setActive={setErrorActive} active={errorActive}/>
       <div className={style.sendForm}>
-        <input type="text" className={style.selectorLong} placeholder='Марка' onChange={e => setBrand(e.target.value)} value={brand}/>
-        <input type="text" className={style.selectorLong} placeholder='Модель' onChange={e => setModel(e.target.value)} value={model}/>
+        <input type="text" className={style.selectorLong} placeholder={intl.formatMessage({id: 'send_form_brand'})} onChange={e => setBrand(e.target.value)} value={brand}/>
+        <input type="text" className={style.selectorLong} placeholder={intl.formatMessage({id: 'send_form_model'})} onChange={e => setModel(e.target.value)} value={model}/>
         {type === 'trade-in' || type === 'commission' ?
-          <input type="number" className={style.selectorLong} placeholder='Пробег' onChange={e => setMillage(e.target.value)} value={millage}/>
+          <input type="number" className={style.selectorLong} placeholder={intl.formatMessage({id: 'send_form_millage'})} onChange={e => setMillage(e.target.value)} value={millage}/>
           : null
         }
 
-        <input type="number" className={style.selectorLong} placeholder='Год выпуска' onChange={e => setYear(e.target.value)} value={year}/>
+        <input type="number" className={style.selectorLong} placeholder={intl.formatMessage({id: 'send_form_year'})} onChange={e => setYear(e.target.value)} value={year}/>
         {type === 'trade-in' || type === 'commission' ?
-          <input type="number" className={style.selectorLong} placeholder='Желаемая цена' onChange={e => setPrice(e.target.value)} value={price}/>
+          <input type="number" className={style.selectorLong} placeholder={intl.formatMessage({id: 'send_form_price'})} onChange={e => setPrice(e.target.value)} value={price}/>
           : null
         }
 
-        <input type="number" className={style.selectorLong} placeholder='Номер телефона' onChange={e => setNumber(e.target.value)} value={number}/>
-        <button className={style.sendButton} onClick={onSendClick}>Отправить</button>
+        <input type="number" className={style.selectorLong} placeholder={intl.formatMessage({id: 'send_form_phone'})} onChange={e => setNumber(e.target.value)} value={number}/>
+        <button className={style.sendButton} onClick={onSendClick}><FormattedMessage id='send_form_button' /></button>
       </div>
     </div>
   )

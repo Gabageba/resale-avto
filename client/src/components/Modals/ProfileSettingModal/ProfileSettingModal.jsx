@@ -4,6 +4,7 @@ import style from './ProfileSettingModal.module.css'
 import {useDispatch, useSelector} from 'react-redux';
 import {setUserAC} from '../../../redux/userReducer';
 import {updateUser} from '../../../http/userAPI';
+import {FormattedMessage, useIntl} from 'react-intl';
 
 
 const ProfileSettingModal = ({active, setActive, setErrorText, setErrorActive}) => {
@@ -12,6 +13,7 @@ const ProfileSettingModal = ({active, setActive, setErrorText, setErrorActive}) 
   const [email, setEmail] = useState('')
   const dispatch = useDispatch()
   const user = useSelector(state => state.userData.user)
+  const intl = useIntl()
 
   const saveChanges = () => {
     if (email) {
@@ -22,7 +24,7 @@ const ProfileSettingModal = ({active, setActive, setErrorText, setErrorActive}) 
           clear()
         })
       } else {
-        setErrorText('Такой почты не существует')
+        setErrorText(intl.formatMessage({id: 'prof_set_email_err'}))
         setErrorActive(true)
       }
     } else {
@@ -45,10 +47,10 @@ const ProfileSettingModal = ({active, setActive, setErrorText, setErrorActive}) 
   }
 
   return (
-    <Modal active={active} setActive={setActive} modalName={'Редактирование профиля'} size={'small'}>
+    <Modal active={active} setActive={setActive} modalName={intl.formatMessage({id: 'prof_set_head'})} size={'small'}>
       <div className={style.profileSetting}>
         <div className={style.block}>
-          <span className={style.header}>Имя:</span>
+          <span className={style.header}><FormattedMessage id='prof_set_name' /></span>
           <input value={name} type="text" className={style.input} onChange={e => setName(e.target.value)}/>
         </div>
         <div className={style.block}>
@@ -56,7 +58,7 @@ const ProfileSettingModal = ({active, setActive, setErrorText, setErrorActive}) 
           <input name={email} value={email} type="email" className={style.input} autoComplete={email} required onChange={text => setEmail(text.target.value)}/>
         </div>
         {/*<input type="submit" value="Отправить"/>*/}
-        <button className={style.saveButton} onClick={saveChanges}>Сохранить</button>
+        <button className={style.saveButton} onClick={saveChanges}><FormattedMessage id='prof_set_save' /></button>
       </div>
 
     </Modal>

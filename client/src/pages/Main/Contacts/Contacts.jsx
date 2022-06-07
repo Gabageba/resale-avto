@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import style from './Contacts.module.css'
 import Info from './Info/Info';
+import {FormattedMessage} from 'react-intl';
 
 const Contacts = () => {
 
@@ -12,14 +13,14 @@ const Contacts = () => {
 
   return (
     <div>
-      <h1 className="header-info">Контакты</h1>
+      <h1 className="header-info"><FormattedMessage id='main_contacts_title' /></h1>
       <div className={style.contacts}>
         <div className={style.map}>
           <div id="yamap"></div>
         </div>
         <div className={style.info}>
-          <Info nameInfo={'Телефон'} dataInfo={'+7 913 955 62-12'}/>
-          <Info nameInfo={'Адресс'} dataInfo={`Новосибирск, Северный проезд, 7`}/>
+          <Info nameInfo={<FormattedMessage id='main_contacts_phone' />} dataInfo={'+7 913 955 62-12'}/>
+          <Info nameInfo={<FormattedMessage id='main_contacts_address_title' />} dataInfo={<FormattedMessage id='main_contacts_address' />}/>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './CommissionCar.module.css'
+import {FormattedMessage} from 'react-intl';
 
 const CommissionCar = () => {
   return (
@@ -7,26 +8,24 @@ const CommissionCar = () => {
       <div className={style.line}/>
       <div className={style.header}>
         <h2>01</h2>
-        <p>Заполните заявку на сайте</p>
+        <p><FormattedMessage id='commission_sell_fill' /></p>
       </div>
-      <p className={style.content}>Форма заявки расположена выше, ее заполнение займет 1-2 мин. <br/>
-        После заполнения в течении 30 минут с вами свяжется наш менеджер</p>
+      <p className={style.content}><FormattedMessage id='commission_sell_fill_content_p1' /><br/>
+        <FormattedMessage id='commission_sell_fill_content_p2' /></p>
       <div className={style.line}/>
 
       <div className={style.header}>
         <h2>02</h2>
-        <p>Мы выставим ваше авто на продажу</p>
+        <p><FormattedMessage id='commission_sell_rate' /></p>
       </div>
-      <p className={style.content}>Мы выставим ваш автомобиль на продажу от лица нашего автосалона, за указанную цену,
-        20% от суммы продажи мы забираем себе</p>
+      <p className={style.content}><FormattedMessage id='commission_sell_rate_content' /></p>
       <div className={style.line}/>
 
       <div className={style.header}>
         <h2>03</h2>
-        <p>Делать ничего не прийдется </p>
+        <p><FormattedMessage id='commission_sell_change' /></p>
       </div>
-      <p className={style.content}>Мы сделаем всю работу за вас. Все что вам нужно, это привезти автомобиль в наш салон,
-        а дальше это станет заботой наших сотрудников</p>
+      <p className={style.content}><FormattedMessage id='commission_sell_change_content' /></p>
       <div className={style.line}/>
     </div>
   )

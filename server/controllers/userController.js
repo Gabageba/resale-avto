@@ -117,7 +117,7 @@ class UserController {
       }
       return res.json({token, userInfo})
     } catch (e) {
-      return next(ApiError.badRequest('Не получилось обновить информацию'))
+      return next(ApiError.badRequest(e.message))
     }
   }
 

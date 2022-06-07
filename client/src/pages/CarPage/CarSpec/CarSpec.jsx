@@ -20,6 +20,7 @@ import {
 import {addFavourite, checkFavorite, deleteFavorite} from '../../../http/favouriteAPI';
 import Spinner from '../../../components/Spinner/Spinner';
 import {setCurrentFavoriteAC} from '../../../redux/favoritesReducer';
+import {FormattedMessage} from 'react-intl';
 
 const CarSpec = ({car, user, carId}) => {
 
@@ -94,45 +95,45 @@ const CarSpec = ({car, user, carId}) => {
       <div className={style.line}/>
       <div className={style.carInfo}>
         <div className={style.spec}>
-          <div className={style.specHead}>Пробег</div>
+          <div className={style.specHead}><FormattedMessage id='car_millage' /></div>
           <div className={style.info}>{millage} км</div>
         </div>
         <div className={style.spec}>
-          <div className={style.specHead}>Мощность</div>
+          <div className={style.specHead}><FormattedMessage id='add_power' /></div>
           <div className={style.info}>{car.power} л.с.</div>
         </div>
         <div className={style.spec}>
-          <div className={style.specHead}>Тип кузова</div>
+          <div className={style.specHead}><FormattedMessage id='filter_body_type' /></div>
           <div className={style.specInfo}>{bodyType.name}</div>
         </div>
         <div className={style.spec}>
-          <div className={style.specHead}>Трансмиссия</div>
+          <div className={style.specHead}><FormattedMessage id='filter_transmission' /></div>
           <div className={style.specInfo}>{transmission.name}</div>
         </div>
         <div className={style.spec}>
-          <div className={style.specHead}>Привод</div>
+          <div className={style.specHead}><FormattedMessage id='filter_drive_unit' /></div>
           <div className={style.specInfo}>{driveUnit.name}</div>
         </div>
         <div className={style.spec}>
-          <div className={style.specHead}>Цвет</div>
+          <div className={style.specHead}><FormattedMessage id='add_color' /></div>
           <div className={style.specInfo}>{color.name}</div>
         </div>
         <div className={style.spec}>
-          <div className={style.specHead}>Руль</div>
+          <div className={style.specHead}><FormattedMessage id='filter_steering_wheel' /></div>
           <div className={style.specInfo}>{steeringWheel.name}</div>
         </div>
         <div className={style.spec}>
-          <div className={style.specHead}>Год</div>
+          <div className={style.specHead}><FormattedMessage id='filter_year' /></div>
           <div className={style.specInfo}>{car.year}</div>
         </div>
         <div className={style.spec}>
-          <div className={style.specHead}>Владельцев</div>
+          <div className={style.specHead}><FormattedMessage id='add_owners' /></div>
           <div className={style.specInfo}>{car.owners}</div>
         </div>
       </div>
       <div className={style.line}/>
       <div className={style.price}>
-        <div className={style.specHead}>Стоимость</div>
+        <div className={style.specHead}><FormattedMessage id='car_page_price' /></div>
         <h1 className={style.priceInfo}>
           {price}
           <span className={style.ruble}> ₽</span>
@@ -140,7 +141,7 @@ const CarSpec = ({car, user, carId}) => {
       </div>
       <div className={style.line}/>
       <div className={style.description}>
-        <div className={style.specHead}>Описание</div>
+        <div className={style.specHead}><FormattedMessage id='add_description' /></div>
         <pre ><p className={style.descriptionInfo}>{car.description}</p></pre>
       </div>
     </div>

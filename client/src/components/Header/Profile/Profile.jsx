@@ -12,6 +12,7 @@ import {
 } from '../../../utils/const';
 import {useDispatch, useSelector} from 'react-redux';
 import {setIsAuthAC, setUserAC} from '../../../redux/userReducer';
+import {FormattedMessage} from 'react-intl';
 
 const Profile = () => {
   const navigate = useNavigate()
@@ -32,7 +33,6 @@ const Profile = () => {
     )
   }
 
-
   return (
     <span>
       {isAuth ?
@@ -43,22 +43,24 @@ const Profile = () => {
               <p className={style.name}>{user.additionalInfo.name}</p>
             </div>
             <div className={style.dropDownContent}>
-              <NavLink to={PROFILE_ROUTE} className={SelectedLink()}>Мой профиль</NavLink>
+              <NavLink to={PROFILE_ROUTE} className={SelectedLink()}><FormattedMessage id='header_myProfile' /></NavLink>
               {user.mainInfo.role === 'ADMIN' && user.additionalInfo.isActivate ?
                 <div>
-                  <NavLink to={ADD_CAR_ROUTE} className={SelectedLink()}>Добавить автомобиль</NavLink>
-                  <NavLink to={APPLICATIONS_ROUTE} className={SelectedLink()}>Заявки</NavLink>
+                  <NavLink to={ADD_CAR_ROUTE} className={SelectedLink()}><FormattedMessage id='header_addCar' /></NavLink>
+                  <NavLink to={APPLICATIONS_ROUTE} className={SelectedLink()}><FormattedMessage id='header_applications' /></NavLink>
                 </div>
                 : null}
-              <NavLink to={FAVORITE_CAR_ROUTE} className={SelectedLink()}>Избранное</NavLink>
-              <NavLink to={HISTORY_CAR_ROUTE} className={SelectedLink()}>История просмотра</NavLink>
-              <NavLink to={REFERENCE_ROUTER} className={SelectedLink()}>О нас</NavLink>
-              <div className={style.dropDownLink} onClick={logOut}>Выход</div>
+              <NavLink to={FAVORITE_CAR_ROUTE} className={SelectedLink()}><FormattedMessage id='header_favorite' /></NavLink>
+              <NavLink to={HISTORY_CAR_ROUTE} className={SelectedLink()}><FormattedMessage id='header_history' /></NavLink>
+              <NavLink to={REFERENCE_ROUTER} className={SelectedLink()}><FormattedMessage id='header_about' /></NavLink>
+              {/*<div className={style.dropDownLink} onClick={() => changeLanguage('en')}>Язык: RU</div>*/}
+              {/*<div className={style.dropDownLink} onClick={() => changeLanguage('ru')}>Язык: ENG</div>*/}
+              <div className={style.dropDownLink} onClick={logOut}><FormattedMessage id='header_exit' /></div>
             </div>
           </div>
         </span> :
         <span>
-          <button className={style.authButton} onClick={() => navigate(LOGIN_ROUTE)}>Войти</button>
+          <button className={style.authButton} onClick={() => navigate(LOGIN_ROUTE)}><FormattedMessage id='header_login' /></button>
         </span>}
     </span>
   )

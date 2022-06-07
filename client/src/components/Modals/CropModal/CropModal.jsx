@@ -2,24 +2,28 @@ import React, {useEffect, useState} from 'react';
 import Modal from '../Modal/Modal';
 import ReactCrop from "react-image-crop";
 import style from './CropModal.module.css'
+import {useIntl} from 'react-intl';
+import {useSelector} from 'react-redux';
 
 const CropModal = ({active, setActive, src, setImage, crop, setCrop, getCroppedImg, inputType}) => {
 
   const [modalName, setModalName] = useState('')
   const [buttonName, setButtonName] = useState('')
+  const locale = useSelector(state => state.userData.locale)
+  const intl = useIntl()
 
   useEffect(() => {
     if (inputType === 'imageLoad') {
-      setModalName('Добавление изображения')
-      setButtonName('Добавить')
+      setModalName(intl.formatMessage({id: 'crop_add_img_head'}))
+      setButtonName(intl.formatMessage({id: 'crop_add_img_button'}))
     } else if (inputType === 'avatarChange') {
-      setModalName('Изменение изображения профиля')
-      setButtonName('Изменить')
+      setModalName(intl.formatMessage({id: 'crop_add_avatar_head'}))
+      setButtonName(intl.formatMessage({id: 'crop_add_avatar_button'}))
     } else {
-      setModalName('Кадрирование изображения')
-      setButtonName('Кадрировать')
+      setModalName(intl.formatMessage({id: 'crop_add_crop_head'}))
+      setButtonName(intl.formatMessage({id: 'crop_add_crop_button'}))
     }
-  }, [])
+  }, [locale])
 
 
   return (

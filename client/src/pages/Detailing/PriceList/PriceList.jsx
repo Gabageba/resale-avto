@@ -1,24 +1,25 @@
 import React from 'react';
 import style from './PriceList.module.css'
+import {FormattedMessage} from 'react-intl';
 
 const PriceList = () => {
   return (
     <div>
-      <h1 className='header-info'>Прайс-лист</h1>
+      <h1 className='header-info'><FormattedMessage id='detailing_price_list_head' /></h1>
       <table className={style.table}>
         <tr>
           <th></th>
-          <td>I класс</td>
-          <td>II класс</td>
-          <td>III класс</td>
-          <td>IV класс</td>
-          <td>V класс</td>
+          <td>I <FormattedMessage id='detailing_price_list_class' /></td>
+          <td>II <FormattedMessage id='detailing_price_list_class' /></td>
+          <td>III <FormattedMessage id='detailing_price_list_class' /></td>
+          <td>IV <FormattedMessage id='detailing_price_list_class' /></td>
+          <td>V <FormattedMessage id='detailing_price_list_class' /></td>
         </tr>
         <tr>
-          <td colSpan={6} className={style.title}>Полировка</td>
+          <td colSpan={6} className={style.title}><FormattedMessage id='detailing_types_polishing' /></td>
         </tr>
         <tr>
-          <th >Полная абразивная полировка кузова в 3 этапа</th>
+          <th ><FormattedMessage id='detailing_price_full_polishing' /></th>
           <td>18 000</td>
           <td>20 000</td>
           <td>22 000</td>
@@ -26,10 +27,10 @@ const PriceList = () => {
           <td>26 000</td>
         </tr>
         <tr>
-          <td colSpan={6} className={style.title}>Химчистка</td>
+          <td colSpan={6} className={style.title}><FormattedMessage id='detailing_types_dry_cleaning' /></td>
         </tr>
         <tr>
-          <th>Полная химчистка</th>
+          <th><FormattedMessage id='detailing_price_full_dry_cleaning' /></th>
           <td>13 000</td>
           <td>14 000</td>
           <td>15 000</td>
@@ -37,12 +38,12 @@ const PriceList = () => {
           <td>17 000</td>
         </tr>
         <tr>
-          <td colSpan={6} className={style.title}>Комплексы услуг</td>
+          <td colSpan={6} className={style.title}><FormattedMessage id='detailing_price_complex' /></td>
         </tr>
         <tr>
           <th>
-            <div> Предпродажная подготовка автомобиля</div>
-            <div className={style.additionalInfo}>(химчистка + полировка + защитное восковое покрытие)</div>
+            <div><FormattedMessage id='detailing_price_preparation' /></div>
+            <div className={style.additionalInfo}><FormattedMessage id='detailing_price_preparation_info' /></div>
           </th>
           <td>18 000</td>
           <td>20 000</td>
@@ -51,10 +52,10 @@ const PriceList = () => {
           <td>26 000</td>
         </tr>
         <tr>
-          <td colSpan={6} className={style.title}>Защитные покрытия автомобиля</td>
+          <td colSpan={6} className={style.title}><FormattedMessage id='detailing_price_coatings' /></td>
         </tr>
         <tr>
-          <th>Ручное восковое покрытие</th>
+          <th><FormattedMessage id='detailing_price_wax' /></th>
           <td>3 000</td>
           <td>3 500</td>
           <td>4 000</td>
@@ -62,7 +63,7 @@ const PriceList = () => {
           <td>5 000</td>
         </tr>
         <tr>
-          <th>Жидкое стекло</th>
+          <th><FormattedMessage id='detailing_types_glass' /></th>
           <td>8 000</td>
           <td>9 000</td>
           <td>10 000</td>
@@ -70,7 +71,7 @@ const PriceList = () => {
           <td>12 000</td>
         </tr>
         <tr>
-          <th>Керамика 2 слоя</th>
+          <th><FormattedMessage id='detailing_price_ceramics_2sl' /></th>
           <td>25 000</td>
           <td>27 500</td>
           <td>30 000</td>
@@ -78,7 +79,7 @@ const PriceList = () => {
           <td>35 000</td>
         </tr>
         <tr>
-          <th>Керамика 3 слоя</th>
+          <th><FormattedMessage id='detailing_price_ceramics_3sl' /></th>
           <td>35 000</td>
           <td>37 500</td>
           <td>40 000</td>
@@ -86,7 +87,7 @@ const PriceList = () => {
           <td>45 000</td>
         </tr>
         <tr>
-          <th>Керамика 4 слоя</th>
+          <th><FormattedMessage id='detailing_price_ceramics_4sl' /></th>
           <td>45 000</td>
           <td>47 500</td>
           <td>50 000</td>
@@ -94,11 +95,11 @@ const PriceList = () => {
           <td>55 000</td>
         </tr>
         <tr>
-          <th>Антидождь(передняя полусфера)</th>
+          <th><FormattedMessage id='detailing_price_anti_rain' /></th>
           <td colSpan={5}>3 000</td>
         </tr>
         <tr>
-          <th>Антидождь(все стекла)</th>
+          <th><FormattedMessage id='detailing_price_anti_rain_full' /></th>
           <td colSpan={5}>5 000</td>
         </tr>
       </table>

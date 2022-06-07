@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './ChangeCar.module.css'
+import {FormattedMessage} from 'react-intl';
 
 const ChangeCar = () => {
   return (
@@ -7,25 +8,24 @@ const ChangeCar = () => {
       <div className={style.line}/>
       <div className={style.header}>
         <h2>01</h2>
-        <p>Заполните заявку на сайте</p>
+        <p><FormattedMessage id='trade_in_change_fill' /></p>
       </div>
-      <p className={style.content}>Форма заявки расположена выше, ее заполнение займет 1-2 мин. <br/>
-        После заполнения заявки на сайте вы получите скидку на новый автомобиль!</p>
+      <p className={style.content}><FormattedMessage id='trade_in_change_fill_content_p1' /><br/>
+        <FormattedMessage id='trade_in_change_fill_content_p2' /></p>
       <div className={style.line}/>
 
       <div className={style.header}>
         <h2>02</h2>
-        <p>Мы выгодно оценим ваше авто</p>
+        <p><FormattedMessage id='trade_in_change_rate' /></p>
       </div>
-      <p className={style.content}>Разницу в стоимости старого и нового авто можно будет оплатить наличными в кассу салона /
-        оформить автокредит / в рассрочку</p>
+      <p className={style.content}><FormattedMessage id='trade_in_change_rate_content' /></p>
       <div className={style.line}/>
 
       <div className={style.header}>
         <h2>03</h2>
-        <p>Обменяйте старое авто на новое</p>
+        <p><FormattedMessage id='trade_in_change_change' /></p>
       </div>
-      <p className={style.content}>Мы можем поставить Ваш новый автомобиль на учёт в ГИБДД, и установить необходимое дополнительное оборудование</p>
+      <p className={style.content}><FormattedMessage id='trade_in_change_change_content' /></p>
       <div className={style.line}/>
     </div>
   )

@@ -1,7 +1,8 @@
-import {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import style from './AutoCompleteDropDown.module.css'
 import {useDispatch, useSelector} from 'react-redux';
 import {setSpecErrorSearch} from '../../redux/carSpecReducer';
+import {FormattedMessage} from 'react-intl';
 
 const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, setChosen, chosen}) => {
 
@@ -86,7 +87,7 @@ const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, s
               tabIndex="0"
               className={style.contentAdd}
             >
-              <div className={style.name}>Добавить</div>
+              <div className={style.name}><FormattedMessage id='dd_add' /></div>
             </div> :
             <div
               onClick={() => {
@@ -97,7 +98,7 @@ const AutoCompleteDropDown = ({optionsData, dropDownName, isAdd, choseSpecAdd, s
               tabIndex="0"
               className={style.contentAdd}
             >
-              <div className={style.name}>Все</div>
+              <div className={style.name}><FormattedMessage id='dd_all' /></div>
             </div>
           }
           {options

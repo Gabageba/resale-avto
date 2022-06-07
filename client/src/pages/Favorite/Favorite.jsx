@@ -4,7 +4,6 @@ import InLineCarCards from '../../components/InLineCarCards/InLineCarCards';
 import {deleteAndFetchFavorite, fetchFavourite} from '../../http/favouriteAPI';
 import {useDispatch, useSelector} from 'react-redux';
 import {setCurrentPageFavAC, setFavoritesAC, setTotalCountFavAC} from '../../redux/favoritesReducer';
-import CarCards from '../../components/CarCards/CarCards';
 import Spinner from '../../components/Spinner/Spinner';
 import {fetchBrands, fetchDriveUnits, fetchModels, fetchTransmission} from '../../http/carAPI';
 import {
@@ -17,6 +16,7 @@ import {
 import Pages from '../../components/Pages/Pages';
 import Footer from '../../components/Footer/Footer';
 import Lock from '../../components/Lock/Lock';
+import {FormattedMessage} from 'react-intl';
 
 const Favorite = () => {
 
@@ -65,11 +65,11 @@ const Favorite = () => {
     return (
     <div className={style.favorite}>
       {user.additionalInfo.isActivate ? null : <Lock/>}
-      <h1>избранное</h1>
+      <h1><FormattedMessage id='favorite_head' /></h1>
       {
         favorites.length === 0 ?
           <div className={style.error}>
-            <div className={style.errorText}>Вы не добавили ни один автомобиль в избранное...</div>
+            <div className={style.errorText}><FormattedMessage id='favorite_error' /></div>
           </div>
           :
           <div className={style.cars}>

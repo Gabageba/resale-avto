@@ -16,11 +16,13 @@
     font-family: Montserrat, serif;
     font-weight: 500;
     margin-top: 277px;
-    margin-left: 111px;
+    /*margin-left: 111px;*/
+  margin-right: 52px;
     font-size: 14px;
     line-height: 124.4%;
     color: #C3073F;
     text-decoration: none;
+    text-align: right;
 }
 
 .more:hover {

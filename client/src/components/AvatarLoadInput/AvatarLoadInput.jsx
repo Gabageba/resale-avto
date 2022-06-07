@@ -6,6 +6,7 @@ import {useDispatch} from 'react-redux';
 import {setSelectedFileAC} from '../../redux/carSpecReducer';
 import {deleteAvatar, updateAvatar} from '../../http/userAPI';
 import {setUserAC} from '../../redux/userReducer';
+import {FormattedMessage} from 'react-intl';
 
 const AvatarLoadInput = ({userId, editAvatar}) => {
 
@@ -79,10 +80,10 @@ const AvatarLoadInput = ({userId, editAvatar}) => {
       <div className={editAvatar ? style.editAvatarActive : style.editAvatar}>
         <div className={editAvatar ? style.editTextActive : style.editText}>
           <label>
-            <div className={style.update}>Обновить фотографию</div>
+            <div className={style.update}><FormattedMessage id='avatar_load' /></div>
             <input type="file" accept="image/" onChange={handleFileChange} className={style.input}/>
           </label>
-          <div className={style.delete} onClick={deleteImg}>Удалить фотографию</div>
+          <div className={style.delete} onClick={deleteImg}><FormattedMessage id='avatar_delete' /></div>
         </div>
 
       </div>
