@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+.recommendation {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 1160px;
+  /*grid-column-gap: 25px;*/
+  grid-row-gap: 40px;
+  margin-bottom: 50px;
+}
+
 .img {
   margin-top: 206px;
   position: relative;
@@ -72,5 +82,5 @@ display: flex;
 }
 
 .historyHeader {
-  margin-top: 84px;
+  margin-top: 100px;
 }

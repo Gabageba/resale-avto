@@ -74,6 +74,12 @@ export const fetchTransmission = async () => {
   return data
 }
 
+
+export const fetchRecommendation = async () => {
+  const {data} = await $authHost.get('api/car/recommendation')
+  return data
+}
+
 export const fetchCars = async (page, limit, sortName, brandId, modelId, bodyTypeId, driveUnitId, transmissionId, steeringWheelId, minPrice, maxPrice, minYear, maxYear, minMillage, maxMillage) => {
   const {data} = await $host.get('api/car', {
     params: {

@@ -135,6 +135,7 @@ const Catalog = () => {
     return <Spinner/>
   }
 
+
   const onSearchClick = () => {
     dispatch(setCurrentPageAC(1))
     fetchCars(currentPage, limit,selectedSort.name, selectedBrand.id, selectedModel.id,

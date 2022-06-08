@@ -1,6 +1,6 @@
 const uuid = require('uuid')
 const path = require('path')
-const {Car, Image, FavoritesCar, HistoryCar} = require('../models/models')
+const {Car, Image, FavoritesCar, HistoryCar, Brand, History} = require('../models/models')
 const ApiError = require('../error/ApiError')
 const {Op} = require('sequelize');
 
@@ -186,6 +186,23 @@ class CarController {
 
     const cars = await Car.findAndCountAll({order: [['createdAt', 'DESC']], limit, offset})
     return res.json(cars)
+  }
+
+  async getRecommendation(req, res, next) {
+    try {
+      const page =  1
+      const limit =  3
+      let offset = page * limit - limit
+
+      const randOne = Math.floor(Math.random() * (25 - 1)) + 1;
+      const randTwo = Math.floor(Math.random() * (24 - 1)) + 1;
+      const randThree = Math.floor(Math.random() * (11 - 1)) + 1;
+
+      const cars = await Car.findAll({order: [['createdAt', 'DESC']], where:{ [Op.or]: [{ brandId: randOne }, { modelId: randTwo }, {bodyTypeId: randThree}]}, limit, offset})
+      return res.json(cars)
+    } catch (e) {
+      next(ApiError.badRequest(e.message))
+    }
   }
 }
 
