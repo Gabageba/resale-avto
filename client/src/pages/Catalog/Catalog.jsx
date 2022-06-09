@@ -27,7 +27,7 @@ import {
   setSelectedMinMillageAC,
   setSelectedMinPriceAC,
   setSelectedMinYearAC,
-  setSelectedModelsAC,
+  setSelectedModelsAC, setSelectedSteeringWheelAC,
   setSelectedTransmissionAC,
   setSteeringWheelsAC,
   setTransmissionsAC
@@ -62,6 +62,7 @@ const Catalog = () => {
   const selectedView = useSelector(state => state.showSetting.selectedView)
 
   useEffect(() => {
+    clear()
     fetchBrands().then(data => dispatch(setBrandsAC(data)))
     fetchModels().then(data => {
       dispatch(setModelsAC(data))
@@ -78,6 +79,22 @@ const Catalog = () => {
     })
       .finally(() => setLoading(false))
   }, [])
+
+  const clear = () => {
+    dispatch(setSelectedBrandAC(''))
+    dispatch(setSelectedModelsAC(''))
+    dispatch(setSelectedBodyTypeAC(''))
+    dispatch(setSelectedDriveUnitAC(''))
+    dispatch(setSelectedSteeringWheelAC(''))
+    dispatch(setSelectedSteeringWheelAC(''))
+    dispatch(setSelectedTransmissionAC(''))
+    dispatch(setSelectedMinPriceAC(''))
+    dispatch(setSelectedMaxPriceAC(''))
+    dispatch(setSelectedMinYearAC(''))
+    dispatch(setSelectedMaxYearAC(''))
+    dispatch(setSelectedMinMillageAC(''))
+    dispatch(setSelectedMaxMillageAC(''))
+  }
 
 
   useEffect(() => {
@@ -116,12 +133,13 @@ const Catalog = () => {
   }, [selectedView])
 
   useEffect(() => {
+    setLoading(true)
     fetchCars(currentPage, limit, selectedSort.name, selectedBrand.id, selectedModel.id,
       selectedBodyType.id, selectedDriveUnit.id, selectedTransmission.id,
       selectedSteeringWheel.id, minPrice, maxPrice, minYear, maxYear, minMillage, maxMillage).then(data => {
       dispatch(setTotalCountAC(data.count))
       dispatch(setCarsAC(data.rows))
-    })
+    }).finally(() => setLoading(false))
   }, [currentPage])
 
   useEffect(() => {
@@ -142,9 +160,9 @@ const Catalog = () => {
       selectedBodyType.id, selectedDriveUnit.id, selectedTransmission.id,
       selectedSteeringWheel.id, minPrice, maxPrice, minYear, maxYear, minMillage, maxMillage)
       .then(data => {
-      dispatch(setTotalCountAC(data.count))
-      dispatch(setCarsAC(data.rows))
-    })
+        dispatch(setTotalCountAC(data.count))
+        dispatch(setCarsAC(data.rows))
+      })
   }
 
   const onClearClick = () => {

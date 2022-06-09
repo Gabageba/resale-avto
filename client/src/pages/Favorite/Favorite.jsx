@@ -44,10 +44,11 @@ const Favorite = () => {
   }, [])
 
   useEffect(() => {
+    setLoading(true)
     fetchFavourite(user.mainInfo.id,page,limit).then(data => {
       dispatch(setFavoritesAC(data.rows))
       dispatch(setTotalCountFavAC(data.count))
-    })
+    }).finally(() => setLoading(false))
   }, [page])
 
   if (loading) {
@@ -62,7 +63,7 @@ const Favorite = () => {
   }
 
 
-    return (
+  return (
     <div className={style.favorite}>
       {user.additionalInfo.isActivate ? null : <Lock/>}
       <h1><FormattedMessage id='favorite_head' /></h1>

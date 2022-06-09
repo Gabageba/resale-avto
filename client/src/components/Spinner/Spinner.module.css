@@ -17,6 +17,7 @@
   text-transform:uppercase;
   text-shadow:0 0 10px #C3073F;
   box-shadow:0 0 20px rgba(0,0,0,.5);
+  z-index: 10000;
 }
 .ring:before {
   content:'';

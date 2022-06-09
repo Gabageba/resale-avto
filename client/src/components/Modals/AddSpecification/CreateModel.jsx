@@ -3,7 +3,7 @@ import style from './AddSpecificationModal.module.css';
 import {createModel} from '../../../http/carAPI';
 import AutoCompleteDropDown from '../../AutoCompleteDropDown/AutoCompleteDropDown';
 import {useDispatch, useSelector} from 'react-redux';
-import {setModelsAC, setSelectedBrandAC, setSpecAddErrorSearch} from '../../../redux/carSpecReducer';
+import {setFilterModels, setModelsAC, setSelectedBrandAC, setSpecAddErrorSearch} from '../../../redux/carSpecReducer';
 import {FormattedMessage, useIntl} from 'react-intl';
 
 const CreateModel = ({setActive}) => {
@@ -22,6 +22,7 @@ const CreateModel = ({setActive}) => {
       formData.append('name', value.toLowerCase())
       formData.append('brandId', selectedBrand.id)
       createModel(formData).then(data => {
+        dispatch(setFilterModels(data))
         dispatch(setModelsAC(data))
         setActive(false)
         setValue('')

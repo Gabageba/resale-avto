@@ -45,11 +45,11 @@ const History = () => {
   }, [])
 
   useEffect(() => {
+    setLoading(true)
     fetchHistory(user.mainInfo.id, page, limit).then(data => {
-      console.log(data)
       dispatch(setHistoryAC(data.rows))
       dispatch(setTotalCountHistAC(data.count))
-    })
+    }).finally(() => setLoading(false))
   }, [page])
 
   if (loading) {

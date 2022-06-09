@@ -35,10 +35,11 @@ const Applications = () => {
   }, [])
 
   useEffect(() => {
+    setLoading(true)
     fetchApplications(selectedApplicationType, limit, page).then(data => {
       dispatch(setApplicationsAC(data.rows))
       dispatch(setTotalCountApplicationAC(data.count))
-    })
+    }).finally(() => setLoading(false))
   }, [page])
 
   if (loading) {
