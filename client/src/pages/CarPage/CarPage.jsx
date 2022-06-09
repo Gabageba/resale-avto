@@ -37,14 +37,14 @@ const CarPage = () => {
     <div>
       <div className={style.carPage}>
         <div>
-          <img className={style.fullImg} src={selectedImage ? process.env.REACT_APP_API_URL + selectedImage : null}
+          <img className={style.fullImg} src={selectedImage ? process.env.REACT_APP_API_URL + '/'  + selectedImage : null}
                alt={car.model}/>
           <div className={style.littleImg}>
-            <img src={process.env.REACT_APP_API_URL + car.img} alt="" onClick={() => setSelectedImage(car.img)}
+            <img src={process.env.REACT_APP_API_URL + '/' + car.img} alt="" onClick={() => setSelectedImage(car.img)}
                  className={car.img === selectedImage ? style.selectedMini : style.mini}/>
             {img.length === 0 ? null
               : img.map(img => (
-                <img src={process.env.REACT_APP_API_URL + img.img} key={img.id} alt={img.img} onClick={() => setSelectedImage(img.img)}
+                <img src={process.env.REACT_APP_API_URL + '/' + img.img} key={img.id} alt={img.img} onClick={() => setSelectedImage(img.img)}
                      className={img.img === selectedImage ? style.selectedMini : style.mini}/>
               ))
             }

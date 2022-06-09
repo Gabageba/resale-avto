@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import style from './Applications.module.css'
 import ApplicationCard from '../../components/ApplicationCard/ApplicationCard';
 import {fetchApplications, fetchApplicationTypes} from '../../http/applicationAPI';
@@ -11,6 +11,7 @@ import {
 } from '../../redux/applicationsReducer';
 import Pages from '../../components/Pages/Pages';
 import {FormattedMessage} from 'react-intl';
+import Spinner from '../../components/Spinner/Spinner';
 
 const Applications = () => {
   const selectedApplicationType =  useSelector(state => state.application.selectedApplicationType)
@@ -18,6 +19,7 @@ const Applications = () => {
   const applications =  useSelector(state => state.application.applications)
   const page =  useSelector(state => state.application.currentPage)
   const totalCount =  useSelector(state => state.application.totalCount)
+  const [loading, setLoading] = useState(true)
 
 
   const dispatch = useDispatch()
@@ -29,7 +31,7 @@ const Applications = () => {
       dispatch(setApplicationsAC(data.rows))
       dispatch(setTotalCountApplicationAC(data.count))
       dispatch(setCurrentPageApplicationAC(1))
-    })
+    }).finally(() => setLoading(false))
   }, [])
 
   useEffect(() => {
@@ -38,6 +40,10 @@ const Applications = () => {
       dispatch(setTotalCountApplicationAC(data.count))
     })
   }, [page])
+
+  if (loading) {
+    return <Spinner/>
+  }
 
   return (
     <div className={style.applications}>

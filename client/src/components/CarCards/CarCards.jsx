@@ -52,7 +52,7 @@ const CarCards = ({carData, isDel}) => {
 
       { brand && model ?
       <div>
-        <img src={process.env.REACT_APP_API_URL + carData.img} alt={carData.name} className={style.image}/>
+        <img src={process.env.REACT_APP_API_URL + '/' + carData.img} alt={carData.name} className={style.image}/>
         <p className={brand[0].name.length + model[0].name.length >= 20 ? style.bigCarName : style.carName}>{`${brand[0].name } ${model[0].name}`}</p>
         <p className={style.year}>{carData.year}</p>
         <div className={style.otherSpec}>

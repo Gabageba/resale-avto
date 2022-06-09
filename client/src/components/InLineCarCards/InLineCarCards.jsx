@@ -20,7 +20,7 @@ const InLineCarCards = ({carData, isDel, onDel}) => {
     <div className={style.inLineCards}>
       <div className={style.car}>
         <div className={style.info} onClick={() => navigate(CAR_PAGE_ROUTE + '/' + carData.id)}>
-          <img src={process.env.REACT_APP_API_URL + carData.img} alt={carData.name} className={style.image}/>
+          <img src={process.env.REACT_APP_API_URL + '/' + carData.img} alt={carData.name} className={style.image}/>
           <div className={style.infoBlock}>
             <div className={style.main}>
               {brand && model ? <p className={style.carName}>{`${brand[0].name} ${model[0].name}, `}</p> : null}

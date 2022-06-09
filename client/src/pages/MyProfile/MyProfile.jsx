@@ -26,7 +26,6 @@ const MyProfile = () => {
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
 
-  console.log(recommendation)
 
   useEffect(() => {
     fetchBrands().then(data => dispatch(setBrandsAC(data)))
@@ -35,7 +34,6 @@ const MyProfile = () => {
       dispatch(setFilterModels(data))
     })
     fetchRecommendation().then(data => {
-      console.log(data)
       dispatch(setRecommendation(data))
     })
     fetchHistory(user.mainInfo.id, 1, 3).then(data => {
@@ -48,6 +46,7 @@ const MyProfile = () => {
     return <Spinner/>
   }
 
+
   return (
     <div>
       <ProfileSettingModal active={profileSettingActive} setActive={setProfileSettingActive}
@@ -58,7 +57,7 @@ const MyProfile = () => {
         {/*onMouseLeave={() => setEditAvatar(false)}*/}
         <div className={style.img} onMouseEnter={() => setEditAvatar(true)} onMouseLeave={() => setEditAvatar(false)}>
           <img className={style.profileImg}
-               src={user.additionalInfo.avatar ? process.env.REACT_APP_API_URL + user.additionalInfo.avatar : avatar}
+               src={user.additionalInfo.avatar ? process.env.REACT_APP_API_URL + '/' + user.additionalInfo.avatar : avatar}
                alt=""/>
           <AvatarLoadInput editAvatar={editAvatar} userId={user.mainInfo.id}/>
         </div>

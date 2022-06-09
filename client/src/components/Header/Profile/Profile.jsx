@@ -39,7 +39,7 @@ const Profile = () => {
         <span>
           <div className={style.dropDown}>
             <div className={style.profile}>
-              <img className={style.icon} src={user.additionalInfo.avatar ? process.env.REACT_APP_API_URL + user.additionalInfo.avatar : userPhoto} alt=""/>
+              <img className={style.icon} src={user.additionalInfo.avatar ? process.env.REACT_APP_API_URL + '/' + user.additionalInfo.avatar : userPhoto} alt=""/>
               <p className={style.name}>{user.additionalInfo.name}</p>
             </div>
             <div className={style.dropDownContent}>
