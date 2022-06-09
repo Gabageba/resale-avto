@@ -16,6 +16,7 @@ const CarCards = ({carData, isDel}) => {
   const limit = useSelector(state => state.cars.limit)
   const user = useSelector(state => state.userData.user)
   const currentPage = useSelector(state => state.cars.currentPage)
+  const isAuth = useSelector(state => state.userData.isAuth)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const intl = useIntl()
@@ -33,8 +34,12 @@ const CarCards = ({carData, isDel}) => {
   return (
     <div className={isDel ? style.carCardsDelete :style.carCards} key={carData.id} onClick={() => {
       if (!isDel) {
-        addInHistory(carData.id, user.mainInfo.id).then()
-        navigate(CAR_PAGE_ROUTE + '/' + carData.id)
+        if (isAuth){
+          addInHistory(carData.id, user.mainInfo.id).then()
+          navigate(CAR_PAGE_ROUTE + '/' + carData.id)
+        } else {
+          navigate(CAR_PAGE_ROUTE + '/' + carData.id)
+        }
       }
     }}>
       {
@@ -51,17 +56,17 @@ const CarCards = ({carData, isDel}) => {
       }
 
       { brand && model ?
-      <div>
-        <img src={process.env.REACT_APP_API_URL + '/' + carData.img} alt={carData.name} className={style.image}/>
-        <p className={brand[0].name.length + model[0].name.length >= 20 ? style.bigCarName : style.carName}>{`${brand[0].name } ${model[0].name}`}</p>
-        <p className={style.year}>{carData.year}</p>
-        <div className={style.otherSpec}>
-          <AdditionalSpec nameSpec={intl.formatMessage({id: 'car_millage'})} dataSpec={`${fmtMillage} км`}/>
-          <AdditionalSpec nameSpec={intl.formatMessage({id: 'car_owners'})} dataSpec={carData.owners}/>
+        <div>
+          <img src={process.env.REACT_APP_API_URL + '/' + carData.img} alt={carData.name} className={style.image}/>
+          <p className={brand[0].name.length + model[0].name.length >= 20 ? style.bigCarName : style.carName}>{`${brand[0].name } ${model[0].name}`}</p>
+          <p className={style.year}>{carData.year}</p>
+          <div className={style.otherSpec}>
+            <AdditionalSpec nameSpec={intl.formatMessage({id: 'car_millage'})} dataSpec={`${fmtMillage} км`}/>
+            <AdditionalSpec nameSpec={intl.formatMessage({id: 'car_owners'})} dataSpec={carData.owners}/>
+          </div>
+          <p className={style.price}>{fmtPrice} ₽</p>
         </div>
-        <p className={style.price}>{fmtPrice} ₽</p>
-      </div>
-      : null}
+        : null}
     </div>
   )
 }

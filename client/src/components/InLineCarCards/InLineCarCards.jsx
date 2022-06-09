@@ -3,6 +3,7 @@ import style from './InLineCarCards.module.css'
 import {useSelector} from 'react-redux';
 import {CAR_PAGE_ROUTE} from '../../utils/const';
 import {useNavigate} from 'react-router-dom';
+import { addInHistory } from "../../http/historyAPI";
 
 const InLineCarCards = ({carData, isDel, onDel}) => {
 
@@ -10,6 +11,8 @@ const InLineCarCards = ({carData, isDel, onDel}) => {
   let model = useSelector(state => state.specifications.models).filter((m) => m.id === carData.modelId)
   let transmission = useSelector(state => state.specifications.transmissions).filter((t) => t.id === carData.transmissionId)
   let driveUnit = useSelector(state => state.specifications.driveUnits).filter((du) => du.id === carData.driveUnitId)
+  const user = useSelector(state => state.userData.user)
+  const isAuth = useSelector(state => state.userData.isAuth)
   const fmtMillage = new Intl.NumberFormat('ru-RU').format(carData.millage);
   const fmtPrice =  new Intl.NumberFormat('ru-RU').format(carData.price);
 
@@ -19,7 +22,16 @@ const InLineCarCards = ({carData, isDel, onDel}) => {
 
     <div className={style.inLineCards}>
       <div className={style.car}>
-        <div className={style.info} onClick={() => navigate(CAR_PAGE_ROUTE + '/' + carData.id)}>
+        <div className={style.info} onClick={() => {
+          if (!isDel) {
+            if (isAuth){
+              addInHistory(carData.id, user.mainInfo.id).then()
+              navigate(CAR_PAGE_ROUTE + '/' + carData.id)
+            } else {
+              navigate(CAR_PAGE_ROUTE + '/' + carData.id)
+            }
+          };
+        }}>
           <img src={process.env.REACT_APP_API_URL + '/' + carData.img} alt={carData.name} className={style.image}/>
           <div className={style.infoBlock}>
             <div className={style.main}>
